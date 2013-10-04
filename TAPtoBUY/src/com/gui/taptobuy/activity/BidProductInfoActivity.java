@@ -15,3 +15,4 @@ public class BidProductInfoActivity extends Activity {
 	}
 
 }
+////////////
