@@ -1,5 +1,5 @@
 package com.gui.taptobuy.activity;
-/*kebin*/
+/*kidd*/
 import com.gui.taptobuy.phase1.R;
 
 import android.app.Activity;
