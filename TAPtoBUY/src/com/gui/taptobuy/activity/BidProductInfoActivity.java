@@ -1,5 +1,6 @@
 package com.gui.taptobuy.activity;
-/*kidd*/
+/*kidd*/ 
+//Blahhhh
 import com.gui.taptobuy.phase1.R;
 
 import android.app.Activity;
