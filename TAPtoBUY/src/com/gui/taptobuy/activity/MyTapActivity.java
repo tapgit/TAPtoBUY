@@ -1,0 +1,12 @@
+package com.gui.taptobuy.activity;
+
+import android.app.Activity;
+import android.os.Bundle;
+import com.gui.taptobuy.phase1.R;
+
+public class MyTapActivity extends Activity {
+	protected void onCreate(Bundle savedInstanceState) {		
+		super.onCreate(savedInstanceState);			
+		setContentView(R.layout.mytap);
+	}
+}

@@ -1,0 +1,108 @@
+package com.gui.taptobuy.views;
+
+import android.widget.ImageView;
+
+public class Product {
+	
+	private int productID;	
+	private int bidsAmount;
+	private ImageView picture;
+	private String price;
+	private String currentBid;
+	private String product;
+	private String brand;
+	private String dimensions;
+	private String description;
+	private String shipping;
+	private String prodTitle;
+	private String category;
+	private String startingDate;
+	private boolean ForAuction;
+	private String endingDate;
+	
+	//Sacarlos del User cuando se le de submit al producto a vender
+	float sellerRating;
+	int sellerID;
+	String sellerUserName;
+	
+	public Product(boolean forAuction,int productID, int bidsAmount, ImageView picture, String price,String currentBid,String product,String brand,String dimensions,String 
+			description,String sellerUserName,String shipping,String prodTitle,String category,String startingDate,String endingDate)
+	{
+	
+		this.bidsAmount = bidsAmount;
+		this.ForAuction = forAuction;
+		this.productID = productID;
+		this.picture = picture;
+		this.price = price;
+		this.currentBid = currentBid;
+		this.product = product;
+		this.brand = brand;
+		this.dimensions = dimensions;
+		this.description = description;
+		this.shipping = shipping;
+		this.prodTitle = prodTitle;
+		this.category = category;
+		this.startingDate = startingDate;
+		this.endingDate = endingDate;
+		this.sellerUserName = sellerUserName;
+	}	
+	
+	public void IncreaseBidsAmount(){
+		this.bidsAmount++;
+	}
+	///////////////////////////
+	public boolean getforAuction(){
+		return ForAuction;
+	}
+	public int getProductID() {
+		return productID;
+	}
+	public int getBidsAmount() {
+		return bidsAmount;
+	}
+	public ImageView getPicture() {
+		return picture;
+	}
+	public String getPrice() {
+		return price;
+	}
+	public String getCurrentBid() {
+		return currentBid;
+	}
+	public String getProduct() {
+		return product;
+	}
+	public String getBrand() {
+		return brand;
+	}
+	public String getDimensions() {
+		return dimensions;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public String getShipping() {
+		return shipping;
+	}
+	public String getProdTitle() {
+		return prodTitle;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public String getStartingDate() {
+		return startingDate;
+	}
+	public String getEndingDate() {
+		return endingDate;
+	}
+	public float getSellerRating() {
+		return sellerRating;
+	}
+	public int getSellerID() {
+		return sellerID;
+	}
+	public String getSellerUserName() {
+		return sellerUserName;
+	}
+}
