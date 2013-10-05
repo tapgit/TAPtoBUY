@@ -33,7 +33,7 @@
         android:layout_alignLeft="@+id/BidInfoProdID"
         android:layout_below="@+id/BidInfoProdID"
         android:text="Brand"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/BidInfoDimensions"
@@ -51,7 +51,7 @@
         android:layout_alignLeft="@+id/BidInfoProdTitle"
         android:layout_below="@+id/BidInfoProdTitle"
         android:text="Product ID"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/BidInfoUserName"
@@ -60,7 +60,7 @@
         android:layout_alignLeft="@+id/BidInfoDescription"
         android:layout_below="@+id/BidInfoDescription"
         android:text="SellerUsername"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/BidsInfoCurrentBid"
@@ -69,7 +69,7 @@
         android:layout_alignLeft="@+id/BidInfoUserName"
         android:layout_below="@+id/BidInfoUserName"
         android:text="Current Bid:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearance" />
 
     <TextView
         android:id="@+id/BidInfoTimeLeft"
@@ -91,7 +91,7 @@
         android:inputType="textMultiLine"
         android:text="Description:"
         android:textStyle="bold"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/BidInfoDollarSy"
@@ -131,7 +131,7 @@
         android:layout_alignLeft="@+id/BidsInfoCurrentBid"
         android:layout_below="@+id/BidsInfoCurrentBid"
         android:text="Shipping:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>
 

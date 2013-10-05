@@ -48,8 +48,6 @@ public class SearchActivity extends Activity implements OnClickListener   {
 	private Product item3,item4,item5,item6,item7,item8;
 	private ImageView pic;
 	/////////////////////////////////////////////////
-
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
@@ -59,14 +57,14 @@ public class SearchActivity extends Activity implements OnClickListener   {
 		setContentView(R.layout.search);
 		/////////////////////////////////////////////////////////////////////////////////
 		pic = (ImageView)findViewById(R.id.BuyItProductPic);	
-		item1 = new Product(true,001,4,pic,"$190.50","$154.00","lumia","nokia","5.2 x 3 inches","new, unopend, factory unlocked","Einstein","free shiping","Nokia sasda 920 black 32gb","Phones","10/12/2013","10/1/2014");
-		item2 = new Product(false,002,5,pic,"$10","$154.00","lumia","nokia","5.2 x 3 inches","new, unopend, factory unlocked","Gauss","free shiping","Nokia SHAshasha 920 black 32gb","Phones","10/12/2013","10/1/2014");
-		item3 = new Product(true,003,10,pic,"$100000","$154.00","lumia","nokia","5.2 x 3 inches","new, unopend, factory unlocked","Tesla","free shiping","Nokia charmin! 920 black 32gb","Phones","10/12/2013","10/1/2014");
-		item4 = new Product(false,002,5,pic,"$10","$154.00","lumia","nokia","5.2 x 3 inches","new, unopend, factory unlocked","Newton","free shiping","Nokia SHAshasha 920 black 32gb","Phones","10/12/2013","10/1/2014");
-		item5 = new Product(true,003,10,pic,"$100000","$154.00","lumia","nokia","5.2 x 3 inches","new, unopend, factory unlocked","kido","free shiping","Nokia charmin! 920 black 32gb","Phones","10/12/2013","10/1/2014");
-		item6 = new Product(false,003,10,pic,"$100000","$154.00","lumia","nokia","5.2 x 3 inches","new, unopend, factory unlocked","kevin","free shiping","Nokia charmin! 920 black 32gb","Phones","10/12/2013","10/1/2014");
-		item7 = new Product(true,002,5,pic,"$10","$154.00","lumia","nokia","5.2 x 3 inches","new, unopend, factory unlocked","joshua","free shiping","Nokia SHAshasha 920 black 32gb","Phones","10/12/2013","10/1/2014");
-		item8 = new Product(false,003,10,pic,"$100000","$154.00","lumia","nokia","5.2 x 3 inches","new, unopend, factory unlocked","efra","free shiping","Nokia charmin! 920 black 32gb","Phones","10/12/2013","10/1/2014");
+		item1 = new Product(true,001,4,pic,"$190.50","$154.00","lumia","nokia","5.2 x 3 inches","new, unopend, factory unlocked","Einstein","free shipping","Nokia sasda 920 black 32gb","Phones","10/12/2013","10/1/2014");
+		item2 = new Product(false,002,5,pic,"$10","$154.00","lumia","nokia","5.2 x 3 inches","new, unopend, factory unlocked","Gauss","free shipping","Nokia SHAshasha 920 black 32gb","Phones","10/12/2013","10/1/2014");
+		item3 = new Product(true,003,10,pic,"$100000","$154.00","lumia","nokia","5.2 x 3 inches","new, unopend, factory unlocked","Tesla","free shipping","Nokia charmin! 920 black 32gb","Phones","10/12/2013","10/1/2014");
+		item4 = new Product(false,002,5,pic,"$10","$154.00","lumia","nokia","5.2 x 3 inches","new, unopend, factory unlocked","Newton","free shipping","Nokia SHAshasha 920 black 32gb","Phones","10/12/2013","10/1/2014");
+		item5 = new Product(true,003,10,pic,"$100000","$154.00","lumia","nokia","5.2 x 3 inches","new, unopend, factory unlocked","kido","free shipping","Nokia charmin! 920 black 32gb","Phones","10/12/2013","10/1/2014");
+		item6 = new Product(false,003,10,pic,"$100000","$154.00","lumia","nokia","5.2 x 3 inches","new, unopend, factory unlocked","kevin","free shipping","Nokia charmin! 920 black 32gb","Phones","10/12/2013","10/1/2014");
+		item7 = new Product(true,002,5,pic,"$10","$154.00","lumia","nokia","5.2 x 3 inches","new, unopend, factory unlocked","joshua","free shipping","Nokia SHAshasha 920 black 32gb","Phones","10/12/2013","10/1/2014");
+		item8 = new Product(false,003,10,pic,"$100000","$154.00","lumia","nokia","5.2 x 3 inches","new, unopend, factory unlocked","efra","free shipping","Nokia charmin! 920 black 32gb","Phones","10/12/2013","10/1/2014");
 		
 		itemsOnSale = new ArrayList<Product>();
 		itemsOnSale.add(item1);

@@ -33,7 +33,7 @@ public class RegisterActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-		setContentView(R.layout.activity_userregister);		
+		setContentView(R.layout.user_register);		
 		initialize();		
 	}
 

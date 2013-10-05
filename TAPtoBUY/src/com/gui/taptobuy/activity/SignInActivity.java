@@ -22,7 +22,6 @@ public class SignInActivity extends Activity implements View.OnClickListener {
 	private Button signOutB;
 	private Button registerB;
 	private Button bSearch;
-	private Intent intent;
 	private TextView signInText;
 	private ImageView signOutPic;
 	private TextView registerText;
@@ -31,7 +30,7 @@ public class SignInActivity extends Activity implements View.OnClickListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_login);
+		setContentView(R.layout.signin_home);
 
 		cartB = (Button) findViewById(R.id.bCart);
 		categoriesB = (Button) findViewById(R.id.bCategories);
@@ -73,8 +72,8 @@ public class SignInActivity extends Activity implements View.OnClickListener {
     	dialog.setContentView(R.layout.login_dialog);
         dialog.setTitle("Sign in");
         
-        final EditText usernameID_ET = (EditText) dialog.findViewById(R.id.etNameToLogin);
-        final EditText passwordET = (EditText) dialog.findViewById(R.id.etPasswordToLogin);        
+        final EditText username = (EditText) dialog.findViewById(R.id.etNameToLogin);
+        final EditText password = (EditText) dialog.findViewById(R.id.etPasswordToLogin);        
         Button btnSignIn = (Button) dialog.findViewById(R.id.bSignIn);
 
 		switch( v.getId() ) {
@@ -86,8 +85,8 @@ public class SignInActivity extends Activity implements View.OnClickListener {
 			            
 			            public void onClick(View v) 
 			            {			                
-			            	String userID = usernameID_ET.getText().toString();
-			        		String userPassword = passwordET.getText().toString();
+			            	String userID = username.getText().toString();
+			        		String userPassword = password.getText().toString();
 			        		
 			        		if(userID.equals("") || userPassword.equals("")){
 			        			Toast.makeText(SignInActivity.this, "Error, you must provide userID & password", Toast.LENGTH_SHORT).show();			                    
@@ -124,8 +123,8 @@ public class SignInActivity extends Activity implements View.OnClickListener {
 	         {	            
 	            public void onClick(View v) 
 	            {	              
-	            	String userID = usernameID_ET.getText().toString();
-	        		String userPassword = passwordET.getText().toString();
+	            	String userID = username.getText().toString();
+	        		String userPassword = password.getText().toString();
 	        		
 	        		if(userID.equals("") || userPassword.equals("")){
 	        			Toast.makeText(SignInActivity.this, "Error, you must provide userID & password", Toast.LENGTH_SHORT).show();	                   
