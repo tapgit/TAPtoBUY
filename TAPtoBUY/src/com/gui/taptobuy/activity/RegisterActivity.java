@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -23,7 +24,7 @@ public class RegisterActivity extends Activity {
 	private EditText userZipCode;
 	private EditText userCelNum;
 	private EditText userEmail;
-	private EditText userID;
+	private EditText userName;
 	private EditText userPassword1;
 	private EditText userPassword2;
 	
@@ -31,7 +32,7 @@ public class RegisterActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		
+		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 		setContentView(R.layout.activity_userregister);		
 		initialize();		
 	}
@@ -48,7 +49,7 @@ public class RegisterActivity extends Activity {
 		userZipCode = (EditText) findViewById(R.id.etUserZipCode);
 		userCelNum = (EditText) findViewById(R.id.etUserCelNum);
 		userEmail = (EditText) findViewById(R.id.etUserEmail);
-		userID = (EditText) findViewById(R.id.etUserID);
+		userName = (EditText) findViewById(R.id.etUserName);
 		userPassword1 = (EditText) findViewById(R.id.etUserPassword1);
 		userPassword2 = (EditText) findViewById(R.id.etUserPassword2);		
 		Button submitInf = (Button) findViewById(R.id.bSubmitUserInf);
