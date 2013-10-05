@@ -2,7 +2,14 @@ package com.gui.taptobuy.activity;
 
 import com.gui.taptobuy.manager.CategoryManager;
 import com.gui.taptobuy.phase1.R;
-
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONObject;
+import android.os.AsyncTask;
+import android.util.Log;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.Dialog;
@@ -72,8 +79,8 @@ public class SignInActivity extends Activity implements View.OnClickListener {
     	dialog.setContentView(R.layout.login_dialog);
         dialog.setTitle("Sign in");
         
-        final EditText username = (EditText) dialog.findViewById(R.id.etNameToLogin);
-        final EditText password = (EditText) dialog.findViewById(R.id.etPasswordToLogin);        
+        final EditText usernameET = (EditText) dialog.findViewById(R.id.etNameToLogin);
+        final EditText passwordET = (EditText) dialog.findViewById(R.id.etPasswordToLogin);        
         Button btnSignIn = (Button) dialog.findViewById(R.id.bSignIn);
 
 		switch( v.getId() ) {
@@ -85,8 +92,8 @@ public class SignInActivity extends Activity implements View.OnClickListener {
 			            
 			            public void onClick(View v) 
 			            {			                
-			            	String userID = username.getText().toString();
-			        		String userPassword = password.getText().toString();
+			            	String userID = usernameET.getText().toString();
+			        		String userPassword = passwordET.getText().toString();
 			        		
 			        		if(userID.equals("") || userPassword.equals("")){
 			        			Toast.makeText(SignInActivity.this, "Error, you must provide userID & password", Toast.LENGTH_SHORT).show();			                    
@@ -118,30 +125,30 @@ public class SignInActivity extends Activity implements View.OnClickListener {
 			break;
 
 		case R.id.bSign_in:			       
-	        
-	         btnSignIn.setOnClickListener(new View.OnClickListener() 
-	         {	            
-	            public void onClick(View v) 
-	            {	              
-	            	String userID = username.getText().toString();
-	        		String userPassword = password.getText().toString();
-	        		
-	        		if(userID.equals("") || userPassword.equals("")){
-	        			Toast.makeText(SignInActivity.this, "Error, you must provide userID & password", Toast.LENGTH_SHORT).show();	                   
-	        		}
-	        		else if(!userID.equals(userPassword)){
-						Toast.makeText(SignInActivity.this, "Incorrect Password or User", Toast.LENGTH_SHORT).show();								
-					}
-	        		else if(userID.equals(userPassword)){      		
-		        		Toast.makeText(SignInActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();		        	
-		        		signInDisabler();
-		        		dialog.dismiss();		              	                
-						startActivity(new Intent(SignInActivity.this, SearchActivity.class));					
-		        	}
-	             }
-	        });    
-	         dialog.show();
-	         break;
+		//			
+//			if(SignIn.doSignIn(this)){
+//				signInDisabler();
+//				startActivity(new Intent(this, SearchActivity.class));
+//			}
+//			goSignIn(); 
+			
+			Button dlgBtnSignIn = (Button) dialog.findViewById(R.id.bSignIn);	
+			dlgBtnSignIn.setOnClickListener(new View.OnClickListener() 
+			{	
+				public void onClick(View v) 
+				{	
+					String username = usernameET.getText().toString();
+					String password = passwordET.getText().toString();
+					if(username.equals("") || password.equals("")){
+						Toast.makeText(SignInActivity.this, "Error, you must provide userID & password", Toast.LENGTH_SHORT).show();			
+					}	
+					new DoSignInTask().execute(username,password);
+				}
+			});    
+			dialog.show();
+		
+			break;
+		
 
 		case R.id.bRegister:			
 			startActivity(new Intent(this, RegisterActivity.class));
@@ -177,4 +184,63 @@ public class SignInActivity extends Activity implements View.OnClickListener {
 		signOutB.setVisibility(View.GONE);
 		signOutPic.setVisibility(View.GONE);
 	} 
+	public class DoSignInTask extends AsyncTask<String,Integer,Boolean> {
+		
+	    @Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			
+		}
+
+		protected Boolean doInBackground(String... params) {
+	    	
+	    	boolean result = true;
+	    	
+	    	HttpClient httpClient = new DefaultHttpClient();
+	        
+			HttpPost post = new HttpPost("http://10.0.2.2:9000/login");
+			post.setHeader("content-type", "application/json");
+			
+			try
+	        {
+				//Construimos el objeto cliente en formato JSON
+				JSONObject userData = new JSONObject();
+				
+				//dato.put("Id", Integer.parseInt(txtId.getText().toString()));
+				userData.put("username", params[0]);
+				userData.put("password", params[1]);
+				
+				StringEntity entity = new StringEntity(userData.toString());
+				post.setEntity(entity);
+				
+	        	HttpResponse resp = httpClient.execute(post);
+	        	if(resp.getStatusLine().getStatusCode() == 200){
+	        		result = true;
+	        	}
+	        	else{
+	        		result = false;
+	        	}
+	        }
+	        catch(Exception ex)
+	        {
+	        	Log.e("ServicioRest","Error!", ex);
+	        	result = false;
+	        }
+	 
+	        return result;
+	    }
+	    
+	    protected void onPostExecute(Boolean result) {
+	    	
+	    	if (result)
+	    	{
+				Toast.makeText(SignInActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+				signInDisabler();
+	    	}
+	    	else{
+				Toast.makeText(SignInActivity.this, "Incorrect Password or User", Toast.LENGTH_SHORT).show();
+				signInEnabler();
+	    	}
+	    }
+	}
 }
