@@ -33,6 +33,8 @@ public class SignInActivity extends Activity implements View.OnClickListener {
 	private ImageView signOutPic;
 	private TextView registerText;
 	public static boolean signed = false;
+	private Dialog dialog; 
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,14 +50,14 @@ public class SignInActivity extends Activity implements View.OnClickListener {
 		signInText = (TextView)findViewById(R.id.textSign_in);
 		signOutPic = (ImageView)findViewById(R.id.signOutPic);
 		registerText = (TextView)findViewById(R.id.textRegister);
-		
+
 		bSearch.setOnClickListener(this);
 		cartB.setOnClickListener(this);
 		categoriesB.setOnClickListener(this);
 		signInB.setOnClickListener(this);
 		registerB.setOnClickListener(this);
 		signOutB.setOnClickListener(this);	
-		
+
 	}
 
 	@Override
@@ -73,45 +75,35 @@ public class SignInActivity extends Activity implements View.OnClickListener {
 
 	@Override
 	public void onClick(View v) { 
-		
-		final Dialog dialog = new Dialog(SignInActivity.this);
-    	
-    	dialog.setContentView(R.layout.login_dialog);
-        dialog.setTitle("Sign in");
-        
-        final EditText usernameET = (EditText) dialog.findViewById(R.id.etNameToLogin);
-        final EditText passwordET = (EditText) dialog.findViewById(R.id.etPasswordToLogin);        
-        Button btnSignIn = (Button) dialog.findViewById(R.id.bSignIn);
+
+		dialog = new Dialog(SignInActivity.this);
+
+		dialog.setContentView(R.layout.login_dialog);
+		dialog.setTitle("Sign in");
+
+		final EditText usernameET = (EditText) dialog.findViewById(R.id.etNameToLogin);
+		final EditText passwordET = (EditText) dialog.findViewById(R.id.etPasswordToLogin);        
+		Button btnSignIn = (Button) dialog.findViewById(R.id.bSignIn);
 
 		switch( v.getId() ) {
 
 		case R.id.bCart:
 			if(!signed){
-			
-				  btnSignIn.setOnClickListener(new View.OnClickListener() {
-			            
-			            public void onClick(View v) 
-			            {			                
-			            	String userID = usernameET.getText().toString();
-			        		String userPassword = passwordET.getText().toString();
-			        		
-			        		if(userID.equals("") || userPassword.equals("")){
-			        			Toast.makeText(SignInActivity.this, "Error, you must provide userID & password", Toast.LENGTH_SHORT).show();			                    
-			        		}
-			        		else if(!userID.equals(userPassword)){
-								Toast.makeText(SignInActivity.this, "Incorrect Password or User", Toast.LENGTH_SHORT).show();								
-							}
-			        		else if(userID.equals(userPassword)){     		
-				        		Toast.makeText(SignInActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();				        		
-				        		signInDisabler();
-				        		dialog.dismiss();             
-				                startActivity(new Intent(SignInActivity.this,CartActivity.class)); 				                
-			        		}
-			             }
-			        });    
-			         dialog.show();
-				
-				}
+
+				btnSignIn.setOnClickListener(new View.OnClickListener() {
+
+					public void onClick(View v) 
+					{			                
+						String username = usernameET.getText().toString();
+						String password = passwordET.getText().toString();
+						if(username.equals("") || password.equals("")){
+							Toast.makeText(SignInActivity.this, "Error, you must provide userID & password", Toast.LENGTH_SHORT).show();			
+						}	
+						new SignInTaskFromCartBtn().execute(username,password);         				                
+					}
+				});    
+				dialog.show();
+			}
 			else{
 				startActivity(new Intent(this, CartActivity.class));
 			}
@@ -125,13 +117,6 @@ public class SignInActivity extends Activity implements View.OnClickListener {
 			break;
 
 		case R.id.bSign_in:			       
-		//			
-//			if(SignIn.doSignIn(this)){
-//				signInDisabler();
-//				startActivity(new Intent(this, SearchActivity.class));
-//			}
-//			goSignIn(); 
-			
 			Button dlgBtnSignIn = (Button) dialog.findViewById(R.id.bSignIn);	
 			dlgBtnSignIn.setOnClickListener(new View.OnClickListener() 
 			{	
@@ -142,13 +127,12 @@ public class SignInActivity extends Activity implements View.OnClickListener {
 					if(username.equals("") || password.equals("")){
 						Toast.makeText(SignInActivity.this, "Error, you must provide userID & password", Toast.LENGTH_SHORT).show();			
 					}	
-					new DoSignInTask().execute(username,password);
+					new SignInTaskFromSignInBtn().execute(username,password);
 				}
 			});    
 			dialog.show();
-		
 			break;
-		
+
 
 		case R.id.bRegister:			
 			startActivity(new Intent(this, RegisterActivity.class));
@@ -157,13 +141,13 @@ public class SignInActivity extends Activity implements View.OnClickListener {
 		case R.id.bSearch:    
 			startActivity(new Intent(this, SearchActivity.class));			
 			break;
-			
+
 		case R.id.bSign_Out:			
 			signInEnabler();
 			break;
 		}
 	}
-	
+
 	private void signInDisabler()
 	{
 		signed = true;
@@ -184,63 +168,78 @@ public class SignInActivity extends Activity implements View.OnClickListener {
 		signOutB.setVisibility(View.GONE);
 		signOutPic.setVisibility(View.GONE);
 	} 
-	public class DoSignInTask extends AsyncTask<String,Integer,Boolean> {
-		
-	    @Override
-		protected void onPreExecute() {
-			super.onPreExecute();
-			
+
+	private boolean signIn(String username, String password){
+		boolean correct = false;
+		HttpClient httpClient = new DefaultHttpClient();
+		HttpPost post = new HttpPost("http://10.0.2.2:9000/login");
+		post.setHeader("content-type", "application/json");
+		try
+		{
+			//Construimos el objeto cliente en formato JSON
+			JSONObject userData = new JSONObject();
+
+			//dato.put("Id", Integer.parseInt(txtId.getText().toString()));
+			userData.put("username", username);
+			userData.put("password", password);
+
+			StringEntity entity = new StringEntity(userData.toString());
+			post.setEntity(entity);
+
+			HttpResponse resp = httpClient.execute(post);
+			if(resp.getStatusLine().getStatusCode() == 200){
+				correct = true;
+			}
+			else{
+				correct = false;
+			}
 		}
+		catch(Exception ex)
+		{
+			Log.e("Password check","Error!", ex);
+		}
+		return correct;
+	}
+	public class SignInTaskFromSignInBtn extends AsyncTask<String,Integer,Boolean> {
 
 		protected Boolean doInBackground(String... params) {
-	    	
-	    	boolean result = true;
-	    	
-	    	HttpClient httpClient = new DefaultHttpClient();
-	        
-			HttpPost post = new HttpPost("http://10.0.2.2:9000/login");
-			post.setHeader("content-type", "application/json");
-			
-			try
-	        {
-				//Construimos el objeto cliente en formato JSON
-				JSONObject userData = new JSONObject();
-				
-				//dato.put("Id", Integer.parseInt(txtId.getText().toString()));
-				userData.put("username", params[0]);
-				userData.put("password", params[1]);
-				
-				StringEntity entity = new StringEntity(userData.toString());
-				post.setEntity(entity);
-				
-	        	HttpResponse resp = httpClient.execute(post);
-	        	if(resp.getStatusLine().getStatusCode() == 200){
-	        		result = true;
-	        	}
-	        	else{
-	        		result = false;
-	        	}
-	        }
-	        catch(Exception ex)
-	        {
-	        	Log.e("ServicioRest","Error!", ex);
-	        	result = false;
-	        }
-	 
-	        return result;
-	    }
-	    
-	    protected void onPostExecute(Boolean result) {
-	    	
-	    	if (result)
-	    	{
+			return signIn(params[0], params[1]);
+		}
+
+		protected void onPostExecute(Boolean correct) {
+
+			if (correct)
+			{
 				Toast.makeText(SignInActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
 				signInDisabler();
-	    	}
-	    	else{
+				dialog.dismiss();   
+				SignInActivity.this.startActivity(new Intent(SignInActivity.this, SearchActivity.class));
+			}
+			else{
 				Toast.makeText(SignInActivity.this, "Incorrect Password or User", Toast.LENGTH_SHORT).show();
 				signInEnabler();
-	    	}
-	    }
+			}
+		}
+	}
+	private class SignInTaskFromCartBtn extends AsyncTask<String,Integer,Boolean> {
+
+		protected Boolean doInBackground(String... params) {
+			return signIn(params[0], params[1]);
+		}
+
+		protected void onPostExecute(Boolean correct) {
+
+			if (correct)
+			{
+				Toast.makeText(SignInActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+				signInDisabler();
+				dialog.dismiss();   
+				startActivity(new Intent(SignInActivity.this,CartActivity.class));
+			}
+			else{
+				Toast.makeText(SignInActivity.this, "Incorrect Password or User", Toast.LENGTH_SHORT).show();
+				signInEnabler();
+			}
+		}
 	}
 }
