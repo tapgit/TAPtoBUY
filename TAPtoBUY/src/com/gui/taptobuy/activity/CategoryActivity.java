@@ -39,25 +39,24 @@ public class CategoryActivity extends Activity implements OnItemClickListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {		
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.emptylist);
-		currentParentCategoryName = "All";	
+		setContentView(R.layout.emptylist);	
 		categoryList = (ListView)findViewById(R.id.ViewList);
 		this.layoutInflator = LayoutInflater.from(this);	
 		categoryList.setOnItemClickListener(this);
-		showingCategories = new ArrayList<Category>();
-		new getSubCategoriesTask().execute(currentParentCategoryName); 
+		new getSubCategoriesTask().execute("All"); 
 	}
 		
 	
 	private ArrayList<Category> getSubCategories(String clickedCategory){
 		HttpClient httpClient = new DefaultHttpClient();
 		String categoryDir = "http://10.0.2.2:9000/categories/";
-		if(currentParentCategoryName.equals("All") && clickedCategory.equals("All")){
-			categoryDir+=currentParentCategoryName;
+		if(currentParentCategoryName == null && clickedCategory.equals("All")){
+			categoryDir+="All";
 		}
 		else{
 			categoryDir+=currentParentCategoryName + "/" + clickedCategory;
 		}
+		currentParentCategoryName = new String(clickedCategory);
 		HttpGet get = new HttpGet(categoryDir);
 		get.setHeader("content-type", "application/json");
 		try
@@ -66,11 +65,10 @@ public class CategoryActivity extends Activity implements OnItemClickListener {
 			if(resp.getStatusLine().getStatusCode() == 200){
 				String jsonString = EntityUtils.toString(resp.getEntity());
 				JSONObject json = new JSONObject(jsonString);
-				showingCategories = new ArrayList<Category>();
-/////////////////////////////////////////////////////				
+				showingCategories = new ArrayList<Category>();		
 				String tmpCatName = "";
 				Iterator<String> iter = (Iterator<String>) json.keys();
-				for(int i=0;i<json.length();i++){
+				while(iter.hasNext()){
 					tmpCatName = String.valueOf(iter.next());
 					showingCategories.add(new Category(tmpCatName,json.getBoolean(tmpCatName)));
 				}
@@ -107,9 +105,6 @@ public class CategoryActivity extends Activity implements OnItemClickListener {
 	public void onItemClick(AdapterView<?> categories, View v, int arg2, long arg3) 
 	{
 		MyViewCategory categoriesHolder = (MyViewCategory) v.getTag();
-		currentParentCategoryName = categoriesHolder.category.getName();
-		Toast.makeText(this, currentParentCategoryName, Toast.LENGTH_LONG).show();
-		new getSubCategoriesTask().execute(currentParentCategoryName);
-		
+		new getSubCategoriesTask().execute(categoriesHolder.category.getName());	
 	}
 }
