@@ -11,9 +11,9 @@ import org.json.JSONObject;
 
 
 
+import com.gui.taptobuy.Entities.Category;
 import com.gui.taptobuy.customadapter.CategoriesCustomAdapter;
 import com.gui.taptobuy.phase1.R;
-import com.gui.taptobuy.views.Category;
 
 import android.app.Activity;
 import android.os.AsyncTask;
@@ -84,7 +84,7 @@ public class CategoryActivity extends Activity implements OnItemClickListener {
 		return showingCategories;
 	}
 	
-	public class getSubCategoriesTask extends AsyncTask<String,Void,ArrayList<Category>> {
+	private class getSubCategoriesTask extends AsyncTask<String,Void,ArrayList<Category>> {
 
 		protected ArrayList<Category> doInBackground(String... params) {
 			return getSubCategories(params[0]);//download subcategories of clickedCategory

@@ -138,7 +138,7 @@
             android:text="Country/Region" />
 
         <EditText
-            android:id="@+id/etUserCountry"
+            android:id="@+id/etShipUserCountry"
             android:layout_marginLeft="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -152,7 +152,7 @@
 
         <EditText
             android:layout_marginLeft="5dp"
-            android:id="@+id/etUserStreetAdd"
+            android:id="@+id/etShipUserStreetAdd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text" />
@@ -165,7 +165,7 @@
 
         <EditText
             android:layout_marginLeft="5dp" 
-            android:id="@+id/etUserCity"
+            android:id="@+id/etShipUserCity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textCapCharacters" />
@@ -177,7 +177,7 @@
             android:text="State" />
 
         <EditText
-            android:id="@+id/etUserState"
+            android:id="@+id/etShipUserState"
             android:layout_marginLeft="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -191,7 +191,7 @@
 
         <EditText
             android:layout_marginLeft="5dp"
-            android:id="@+id/etUserZipCode"
+            android:id="@+id/etShipUserZipCode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number" />
@@ -204,7 +204,7 @@
 
         <EditText
             android:layout_marginLeft="5dp"
-            android:id="@+id/etUserCelNum"
+            android:id="@+id/etShipUserTelNum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="phone" />        
@@ -239,7 +239,7 @@
             android:text="Country/Region" />
 
         <EditText
-            android:id="@+id/etUserCountry"
+            android:id="@+id/etBillUserCountry"
             android:layout_marginLeft="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -253,7 +253,7 @@
 
         <EditText
             android:layout_marginLeft="5dp"
-            android:id="@+id/etUserStreetAdd"
+            android:id="@+id/etBillUserStreetAdd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text" />
@@ -266,7 +266,7 @@
 
         <EditText
             android:layout_marginLeft="5dp" 
-            android:id="@+id/etUserCity"
+            android:id="@+id/etBillUserCity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textCapCharacters" />
@@ -278,7 +278,7 @@
             android:text="State" />
 
         <EditText
-            android:id="@+id/etUserState"
+            android:id="@+id/etBillUserState"
             android:layout_marginLeft="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -292,7 +292,7 @@
 
         <EditText
             android:layout_marginLeft="5dp"
-            android:id="@+id/etUserZipCode"
+            android:id="@+id/etBillUserZipCode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number" />
@@ -305,7 +305,7 @@
 
         <EditText
             android:layout_marginLeft="5dp"
-            android:id="@+id/etUserCelNum"
+            android:id="@+id/etBillUserTelNum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="phone" />       
@@ -368,7 +368,7 @@
 
         <EditText
             android:layout_marginLeft="5dp"
-            android:id="@+id/etExpirationDate"
+            android:id="@+id/etCreditCardExpirationDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"           
             android:inputType="date" />        

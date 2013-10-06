@@ -1,4 +1,4 @@
-package com.gui.taptobuy.views;
+package com.gui.taptobuy.Entities;
 
 public class User {
 

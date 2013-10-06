@@ -2,10 +2,10 @@ package com.gui.taptobuy.customadapter;
 
 import java.util.ArrayList;
 
+import com.gui.taptobuy.Entities.Category;
 import com.gui.taptobuy.activity.CategoryActivity;
 import com.gui.taptobuy.activity.CategoryActivity.MyViewCategory;
 import com.gui.taptobuy.phase1.R;
-import com.gui.taptobuy.views.Category;
 
 import android.view.LayoutInflater;
 import android.view.View;

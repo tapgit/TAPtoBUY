@@ -2,12 +2,12 @@ package com.gui.taptobuy.customadapter;
 
 import java.util.ArrayList;
 
+import com.gui.taptobuy.Entities.Product;
 import com.gui.taptobuy.activity.BidProductInfoActivity;
 import com.gui.taptobuy.activity.BuyItProductInfoActivity;
 import com.gui.taptobuy.activity.SearchActivity;
 import com.gui.taptobuy.activity.SearchActivity.MyViewItem;
 import com.gui.taptobuy.phase1.R;
-import com.gui.taptobuy.views.Product;
 
 import android.content.Intent;
 import android.net.Uri;

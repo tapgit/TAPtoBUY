@@ -174,7 +174,6 @@ public class SignInActivity extends Activity implements View.OnClickListener {
 		post.setHeader("content-type", "application/json");
 		try
 		{
-			//Construimos el objeto cliente en formato JSON
 			JSONObject userData = new JSONObject();
 
 			userData.put("username", username);

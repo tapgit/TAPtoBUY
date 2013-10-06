@@ -3,9 +3,9 @@ package com.gui.taptobuy.activity;
 
 import java.util.ArrayList;
 
+import com.gui.taptobuy.Entities.Product;
 import com.gui.taptobuy.customadapter.ItemCustomAdapter;
 import com.gui.taptobuy.phase1.R;
-import com.gui.taptobuy.views.Product;
 
 import android.app.Activity;
 import android.app.Dialog;
