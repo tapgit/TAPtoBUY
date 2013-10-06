@@ -22,26 +22,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ItemCustomAdapter extends BaseAdapter implements OnClickListener{
-
-
 	
-	//private static final String debugTag = "TrackDataAdapter";
 	private SearchActivity activity;
-	//private LastFMIconTask imgFetcher;  -- clases que usa para loadear las imagenes
+	//private IconTask imgFetcher;  -- clases que usa para loadear las imagenes
 	private ImageView itemPic;
 	private LayoutInflater layoutInflater;
-	private ArrayList<Product> items;
-	
-	
+	private ArrayList<Product> items;	
 	
     public ItemCustomAdapter (SearchActivity a, ImageView i, LayoutInflater l, ArrayList<Product> items)
     {
     	this.activity = a;
-    	this.itemPic = i;
+    	//this.itemPic = i;
     	this.layoutInflater = l;
     	this.items = items;
     }
-    
+  ////////////////////////////////////////////////////////// 
     @Override
     public int getCount() {
         return this.items.size();
@@ -62,7 +57,7 @@ public class ItemCustomAdapter extends BaseAdapter implements OnClickListener{
     public long getItemId(int pos) {
         return pos;
     }
-
+///////////////////////////////////////////////////////////////////////
     @Override
     public View getView(int position, View itemRow, ViewGroup parent) {
         MyViewItem itemHolder;
@@ -77,7 +72,7 @@ public class ItemCustomAdapter extends BaseAdapter implements OnClickListener{
                  itemHolder.priceAndShiping = (TextView) itemRow.findViewById(R.id.BidPrice);
                  itemHolder.bidsAmount = (TextView) itemRow.findViewById(R.id.bids);
                  itemHolder.timeRemaining = (TextView) itemRow.findViewById(R.id.BidRemaningTime);                      
-                 itemHolder.sellerRating = (RatingBar)itemRow.findViewById(R.id.BidSellerRating);    
+                 itemHolder.sellerRating = (RatingBar)itemRow.findViewById(R.id.BidSellerRating);
                  
                  itemHolder.sellerRating.setTag(itemHolder);
                  itemHolder.itemPic.setTag(itemHolder);
@@ -102,13 +97,12 @@ public class ItemCustomAdapter extends BaseAdapter implements OnClickListener{
 	            itemRow.setTag(itemHolder);         
         }        
         
-        	itemRow.setOnClickListener(this); // en onClick definir que pasa si escojes un producto
-   		
+        	itemRow.setOnClickListener(this);    		
    	
    			itemHolder.item = item;
    			itemHolder.productName.setText(item.getProdTitle());   		
 	   		itemHolder.sellerUserName.setText(item.getSellerUserName());
-	   		itemHolder.priceAndShiping.setText(item.getPrice()+"+"+item.getShipping());     		
+	   		itemHolder.priceAndShiping.setText(item.getPrice()+" + "+item.getShipping());     		
 	   		//itemHolder.sellerRating.setRating(item.getSellerRating());
 	   		//itemHolder.timeRemaining.setText(item.get) //viene del server    	
 

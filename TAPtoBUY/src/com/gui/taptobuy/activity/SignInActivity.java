@@ -1,6 +1,6 @@
 package com.gui.taptobuy.activity;
 
-import com.gui.taptobuy.manager.CategoryManager;
+
 import com.gui.taptobuy.phase1.R;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -109,10 +109,8 @@ public class SignInActivity extends Activity implements View.OnClickListener {
 			}
 			break;
 
-		case R.id.bCategories:
-			// deben estar dentro de un try catch todos los startActivity
-
-			CategoryManager.getCategories();//download categories (initialize)    		
+		case R.id.bCategories:			
+			   		
 			startActivity(new Intent(this, CategoryActivity.class));   		
 			break;
 

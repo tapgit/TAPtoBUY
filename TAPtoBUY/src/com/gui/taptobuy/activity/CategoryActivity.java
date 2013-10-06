@@ -1,34 +1,114 @@
 package com.gui.taptobuy.activity;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Iterator;
 
-import com.gui.taptobuy.manager.CategoryManager;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONObject;
 
+
+import com.gui.taptobuy.activity.SearchActivity.MyViewItem;
+import com.gui.taptobuy.customadapter.CategoriesCustomAdapter;
+import com.gui.taptobuy.phase1.R;
+import com.gui.taptobuy.views.Category;
+
+import android.app.Activity;
 import android.app.ListActivity;
-import android.content.Intent;
+
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ArrayAdapter;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class CategoryActivity extends ListActivity {	
+
+public class CategoryActivity extends Activity implements OnClickListener {
+	
+	private LayoutInflater layoutInflator;
+	private ListView categoryList;
+	private ArrayList<Category> showingCategories;
+	private String currentParentCategoryName;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {		
-		super.onCreate(savedInstanceState);			
-		setListAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1, CategoryManager.currentCategoriesNames));
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.emptylist);
+		currentParentCategoryName = "All";	
+		categoryList = (ListView)findViewById(R.id.ViewList);
+		categoryList.setOnClickListener(this);
+		this.layoutInflator = LayoutInflater.from(this);	
+		showingCategories = new ArrayList<Category>();
+		new getSubCategoriesTask().execute(currentParentCategoryName); 
+	}
+		
+	
+	private ArrayList<Category> getSubCategories(String clickedCategory){
+		HttpClient httpClient = new DefaultHttpClient();
+		String categoryDir = "http://10.0.2.2:9000/categories/";
+		if(currentParentCategoryName.equals("All")){
+			categoryDir+=currentParentCategoryName;
+		}
+		else{
+			categoryDir+=currentParentCategoryName + "/" + clickedCategory;
+		}
+		HttpGet get = new HttpGet(categoryDir);
+		get.setHeader("content-type", "application/json");
+		try
+		{
+			HttpResponse resp = httpClient.execute(get);
+			if(resp.getStatusLine().getStatusCode() == 200){
+				String jsonString = EntityUtils.toString(resp.getEntity());
+				JSONObject json = new JSONObject(jsonString);
+				showingCategories = new ArrayList<Category>();
+/////////////////////////////////////////////////////				
+				String tmpCatName = "";
+				Iterator<String> iter = (Iterator<String>) json.keys();
+				for(int i=0;i<json.length();i++){
+					tmpCatName = String.valueOf(iter.next());
+					showingCategories.add(new Category(tmpCatName,json.getBoolean(tmpCatName)));
+				}
+			}
+			else{
+				Log.e("JSON","Categories json could not be downloaded.");
+			}
+		}
+		catch(Exception ex)
+		{
+			Log.e("Categories","Error!", ex);
+		}
+		return showingCategories;
+	}
+	
+	public class getSubCategoriesTask extends AsyncTask<String,Void,ArrayList<Category>> {
+
+		protected ArrayList<Category> doInBackground(String... params) {
+			return getSubCategories(params[0]);//download subcategories of clickedCategory
+		}
+
+		protected void onPostExecute(ArrayList<Category> showingCategories ) {
+			categoryList.setAdapter(new CategoriesCustomAdapter(CategoryActivity.this,CategoryActivity.this.layoutInflator, showingCategories));
+		}
+	}
+	
+	public static class MyViewCategory {
+		public Category category;
+		public TextView categoryName;
+		public ImageView arrow;		
 	}
 
-	protected void onListItemClick(ListView lv, View v, int position,long id){
-		super.onListItemClick(lv, v, position, id);
-
-		CategoryManager.goforward(position);
-		Intent showSubCategories = new Intent("com.gui.taptobuy.phase1.CATEGORYACTIVITY");//el nombre del action
-		this.startActivity(showSubCategories);
-	}
 	@Override
-	protected void onRestart() {	
-		super.onRestart();
-		CategoryManager.goBack();
+	public void onClick(View v) {
+//		MyViewCategory categoriesHolder = (MyViewCategory) v.getTag();  
+//		
+//		String categoryName = categoriesHolder.category.getName();
+//		Toast.makeText(this, categoryName, Toast.LENGTH_LONG).show();
+//		new getSubCategoriesTask().execute(categoryName);
 	}
 }

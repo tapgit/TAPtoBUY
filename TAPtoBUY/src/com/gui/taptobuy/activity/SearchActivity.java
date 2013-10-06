@@ -4,7 +4,6 @@ package com.gui.taptobuy.activity;
 import java.util.ArrayList;
 
 import com.gui.taptobuy.customadapter.ItemCustomAdapter;
-import com.gui.taptobuy.manager.CategoryManager;
 import com.gui.taptobuy.phase1.R;
 import com.gui.taptobuy.views.Product;
 
@@ -180,8 +179,7 @@ public class SearchActivity extends Activity implements OnClickListener   {
 
 
 		case R.id.bCategories:
-
-			CategoryManager.getCategories();//download categories (initialize)    		
+  		
 			startActivity(new Intent(this, CategoryActivity.class));   		
 			break;
 
@@ -247,6 +245,6 @@ public class SearchActivity extends Activity implements OnClickListener   {
 	}
 
 	public void setItems(ArrayList<Product> items) {
-		this.itemsList.setAdapter(new ItemCustomAdapter(this,this.pic,this.layoutInflator, this.itemsOnSale));
+		itemsList.setAdapter(new ItemCustomAdapter(this,this.pic,this.layoutInflator, this.itemsOnSale));
 	}
 }

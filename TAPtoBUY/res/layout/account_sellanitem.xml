@@ -139,7 +139,6 @@
             android:id="@+id/sell_BuyNowPriceInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/sell_buyNowPricetext"
             android:layout_alignBottom="@+id/sell_buyNowPricetext"
             android:layout_alignRight="@+id/sell_Description"
             android:layout_toRightOf="@+id/sell_buyNowPricetext"
@@ -150,7 +149,6 @@
             android:id="@+id/editText4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/sell_StartingPrice"
             android:layout_alignBottom="@+id/sell_StartingPrice"
             android:layout_alignRight="@+id/editText5"
             android:layout_toRightOf="@+id/sell_StartingPrice"
@@ -185,6 +183,16 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
+            android:id="@+id/sell_buyNowPricetext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/sell_Description"
+            android:layout_marginLeft="5dp"
+            android:text="Buy Now Price: $"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
             android:id="@+id/sell_NumOfDays"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -192,17 +200,6 @@
             android:layout_alignLeft="@+id/sell_StartingPrice"
             android:inputType="numberDecimal"
             android:text="Numbers of days for sale:"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/sell_buyNowPricetext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="5dp"
-            android:layout_below="@+id/sell_Description"
-            android:layout_marginTop="14dp"
-            android:text="Buy Now Price: $"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>
