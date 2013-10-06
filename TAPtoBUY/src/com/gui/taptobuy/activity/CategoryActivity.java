@@ -10,27 +10,27 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 
 
-import com.gui.taptobuy.activity.SearchActivity.MyViewItem;
+
 import com.gui.taptobuy.customadapter.CategoriesCustomAdapter;
 import com.gui.taptobuy.phase1.R;
 import com.gui.taptobuy.views.Category;
 
 import android.app.Activity;
-import android.app.ListActivity;
-
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class CategoryActivity extends Activity implements OnClickListener {
+
+public class CategoryActivity extends Activity implements OnItemClickListener {
 	
 	private LayoutInflater layoutInflator;
 	private ListView categoryList;
@@ -42,8 +42,8 @@ public class CategoryActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.emptylist);
 		currentParentCategoryName = "All";	
 		categoryList = (ListView)findViewById(R.id.ViewList);
-		categoryList.setOnClickListener(this);
 		this.layoutInflator = LayoutInflater.from(this);	
+		categoryList.setOnItemClickListener(this);
 		showingCategories = new ArrayList<Category>();
 		new getSubCategoriesTask().execute(currentParentCategoryName); 
 	}
@@ -104,11 +104,12 @@ public class CategoryActivity extends Activity implements OnClickListener {
 	}
 
 	@Override
-	public void onClick(View v) {
-//		MyViewCategory categoriesHolder = (MyViewCategory) v.getTag();  
-//		
-//		String categoryName = categoriesHolder.category.getName();
-//		Toast.makeText(this, categoryName, Toast.LENGTH_LONG).show();
-//		new getSubCategoriesTask().execute(categoryName);
+	public void onItemClick(AdapterView<?> categories, View v, int arg2, long arg3) 
+	{
+		MyViewCategory categoriesHolder = (MyViewCategory) v.getTag();
+		String categoryName = categoriesHolder.category.getName();
+		Toast.makeText(this, categoryName, Toast.LENGTH_LONG).show();
+		new getSubCategoriesTask().execute(categoryName);
+		
 	}
 }
