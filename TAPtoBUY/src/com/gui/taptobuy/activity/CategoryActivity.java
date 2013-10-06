@@ -52,7 +52,7 @@ public class CategoryActivity extends Activity implements OnItemClickListener {
 	private ArrayList<Category> getSubCategories(String clickedCategory){
 		HttpClient httpClient = new DefaultHttpClient();
 		String categoryDir = "http://10.0.2.2:9000/categories/";
-		if(currentParentCategoryName.equals("All")){
+		if(currentParentCategoryName.equals("All") && clickedCategory.equals("All")){
 			categoryDir+=currentParentCategoryName;
 		}
 		else{
@@ -107,9 +107,9 @@ public class CategoryActivity extends Activity implements OnItemClickListener {
 	public void onItemClick(AdapterView<?> categories, View v, int arg2, long arg3) 
 	{
 		MyViewCategory categoriesHolder = (MyViewCategory) v.getTag();
-		String categoryName = categoriesHolder.category.getName();
-		Toast.makeText(this, categoryName, Toast.LENGTH_LONG).show();
-		new getSubCategoriesTask().execute(categoryName);
+		currentParentCategoryName = categoriesHolder.category.getName();
+		Toast.makeText(this, currentParentCategoryName, Toast.LENGTH_LONG).show();
+		new getSubCategoriesTask().execute(currentParentCategoryName);
 		
 	}
 }
