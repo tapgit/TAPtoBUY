@@ -89,12 +89,22 @@
             </intent-filter>
         </activity>
         
-                <activity
+          <activity
             android:name="com.gui.taptobuy.activity.MyTapActivity"
             android:label="@string/myTapLabel"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="com.gui.taptobuy.phase1.MYTAPACTIVITY" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+          <activity
+            android:name="com.gui.taptobuy.activity.SellAnItemActivity"
+            android:label="@string/sellanItemLabel"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="com.gui.taptobuy.phase1.SELLANITEMACTIVITY" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

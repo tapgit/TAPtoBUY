@@ -179,7 +179,6 @@ public class SignInActivity extends Activity implements View.OnClickListener {
 			//Construimos el objeto cliente en formato JSON
 			JSONObject userData = new JSONObject();
 
-			//dato.put("Id", Integer.parseInt(txtId.getText().toString()));
 			userData.put("username", username);
 			userData.put("password", password);
 

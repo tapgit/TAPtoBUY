@@ -63,10 +63,56 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName" />
+        
+         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Username" />
+
+        <EditText
+            android:id="@+id/etUserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
+            android:text="Password" />
+
+        <EditText
+            android:id="@+id/etUserPassword1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Re-enter Password" />
+
+        <EditText
+            android:id="@+id/etUserPassword2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+        
+        <TextView
+            android:layout_marginTop="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email Address" />
+
+        <EditText
+            android:id="@+id/etUserEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress" />      
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
             android:textStyle="bold"
             android:text="Shipping Address:" />
         
@@ -161,9 +207,17 @@
             android:id="@+id/etUserCelNum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="phone" />
+            android:inputType="phone" />        
+       
+    	
+         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:textStyle="bold"
+            android:text="Billing Address:" />
         
-        <LinearLayout
+         <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
 
@@ -178,60 +232,148 @@
     	</LinearLayout>
 
         <TextView
-            android:layout_marginTop="3dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Email Address" />
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="2dp"
+            android:text="Country/Region" />
 
         <EditText
-            android:id="@+id/etUserEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textEmailAddress" />
-        
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Credit card number" />
-
-        <EditText
-            android:id="@+id/etCreditCard"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Username" />
-
-        <EditText
-            android:id="@+id/etUserName"
+            android:id="@+id/etUserCountry"
+            android:layout_marginLeft="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text" />
 
         <TextView
+            android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Password" />
+            android:text="Street Address" />
 
         <EditText
-            android:id="@+id/etUserPassword1"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/etUserStreetAdd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword" />
+            android:inputType="text" />
 
         <TextView
+            android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Re-enter Password" />
+            android:text="City" />
 
         <EditText
-            android:id="@+id/etUserPassword2"
+            android:layout_marginLeft="5dp" 
+            android:id="@+id/etUserCity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword" />
+            android:inputType="textCapCharacters" />
+
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="State" />
+
+        <EditText
+            android:id="@+id/etUserState"
+            android:layout_marginLeft="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapWords" />
+
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Zip Code" />
+
+        <EditText
+            android:layout_marginLeft="5dp"
+            android:id="@+id/etUserZipCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number" />
+
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Telephone Number" />
+
+        <EditText
+            android:layout_marginLeft="5dp"
+            android:id="@+id/etUserCelNum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone" />       
+        
+         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:textStyle="bold"
+            android:text="Credit Card:" />
+        
+         <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <Button            
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="400dp"
+            android:layout_height="4dp"           
+            android:layout_weight="21.07"
+            android:background="@drawable/customb2"
+            android:clickable="false" />
+
+    	</LinearLayout>
+    	
+          <TextView
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Number" />
+
+        <EditText
+            android:layout_marginLeft="5dp"
+            android:id="@+id/etCreditCardNum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"            
+            android:inputType="number" />
+        
+         <TextView
+            
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Holder's name" />
+
+        <EditText
+           
+            android:id="@+id/etCreditCardHolderName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:inputType="textPersonName" />
+        
+         <TextView
+             
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Expiration Date" />
+
+        <EditText
+            android:layout_marginLeft="5dp"
+            android:id="@+id/etExpirationDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"           
+            android:inputType="date" />        
+        
+        
 
         <Button
             android:id="@+id/bSubmitUserInf"

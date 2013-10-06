@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@drawable/portrait_back" >
         <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="0dp"
@@ -75,7 +76,7 @@
             android:ems="10" />
 
         <EditText
-            android:id="@+id/editText4"
+            android:id="@+id/sell_BrandInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/sell_Brand"
@@ -84,11 +85,11 @@
             android:ems="10" />
 
         <EditText
-            android:id="@+id/editText5"
+            android:id="@+id/sell_DimensionsInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/sell_Dimensions"
-            android:layout_alignRight="@+id/editText4"
+            android:layout_alignRight="@+id/sell_BrandInput"
             android:layout_toRightOf="@+id/sell_Dimensions"
             android:ems="10" />
 
@@ -113,16 +114,95 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
-            android:id="@+id/BuyInfoDescription"
+            android:id="@+id/sell_Description"
             android:layout_width="140dp"
-            android:layout_height="90dp"
+            android:layout_height="100dp"
             android:layout_alignLeft="@+id/sell_Dimensions"
-            android:layout_alignRight="@+id/editText5"
-            android:layout_marginTop="3dp"
+            android:layout_alignRight="@+id/sell_DimensionsInput"
             android:layout_below="@+id/sell_Dimensions"
+            android:layout_marginTop="3dp"
             android:inputType="textMultiLine"
             android:text="Description:\n"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/sell_sellItemB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="Sell this Item!" />
+
+        <EditText
+            android:id="@+id/sell_BuyNowPriceInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/sell_buyNowPricetext"
+            android:layout_alignBottom="@+id/sell_buyNowPricetext"
+            android:layout_alignRight="@+id/sell_Description"
+            android:layout_toRightOf="@+id/sell_buyNowPricetext"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/editText4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/sell_StartingPrice"
+            android:layout_alignBottom="@+id/sell_StartingPrice"
+            android:layout_alignRight="@+id/editText5"
+            android:layout_toRightOf="@+id/sell_StartingPrice"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/editText5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/sell_BuyNowPriceInput"
+            android:layout_below="@+id/editText4"
+            android:layout_toRightOf="@+id/sell_NumOfDays"
+            android:ems="10"
+            android:inputType="date" />
+
+        <CheckBox
+            android:id="@+id/sell_ForBiddingCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/sell_buyNowPricetext"
+            android:text="For Bidding" />
+
+        <TextView
+            android:id="@+id/sell_StartingPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sell_ForBiddingCheck"
+            android:layout_toLeftOf="@+id/sell_BuyNowPriceInput"
+            android:text="Starting Price: $"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/sell_NumOfDays"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/editText5"
+            android:layout_alignLeft="@+id/sell_StartingPrice"
+            android:inputType="numberDecimal"
+            android:text="Numbers of days for sale:"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/sell_buyNowPricetext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dp"
+            android:layout_below="@+id/sell_Description"
+            android:layout_marginTop="14dp"
+            android:text="Buy Now Price: $"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>
