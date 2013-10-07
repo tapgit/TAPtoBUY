@@ -216,7 +216,11 @@ public class SearchActivity extends Activity implements OnClickListener   {
 			break;
 
 		case R.id.bSignOut:
-			signInEnabler();			         
+			SignInActivity.signed = false;
+			Intent home = new Intent(this, SignInActivity.class);
+			home.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(home);			
+					         
 			break;
 		}
 	}
@@ -228,13 +232,6 @@ public class SearchActivity extends Activity implements OnClickListener   {
 		signOut.setVisibility(View.VISIBLE);
 		myTap.setVisibility(View.VISIBLE);
 	}
-	private void signInEnabler()
-	{
-		SignInActivity.signed = false;
-		signIn.setVisibility(View.VISIBLE);
-		signOut.setVisibility(View.GONE);
-		myTap.setVisibility(View.GONE);  
-	} 
 	
 	public static class MyViewItem {
 		public TextView productName, sellerUserName, priceAndShiping,bidsAmount,timeRemaining;

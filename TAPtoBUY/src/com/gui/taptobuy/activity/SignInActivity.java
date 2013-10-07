@@ -120,6 +120,7 @@ public class SignInActivity extends Activity implements View.OnClickListener {
 			{	
 				public void onClick(View v) 
 				{	
+				
 					String username = usernameET.getText().toString();
 					String password = passwordET.getText().toString();
 					if(username.equals("") || password.equals("")){

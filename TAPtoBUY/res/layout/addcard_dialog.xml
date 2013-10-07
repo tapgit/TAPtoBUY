@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+     <EditText
+        android:id="@+id/addCard_CardNum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"        
+        android:inputType="numberDecimal"
+        android:hint="Card Number" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/addCard_HolderName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"        
+        android:hint="Holder's Name (as on the card)"
+        android:inputType="textPersonName" />   
+        
+    <EditText
+        android:id="@+id/addCard_ExpDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"       
+        android:hint="Expiration Date (mm/dd/yyyy)"
+        android:inputType="date" />   
+
+    <Button
+        android:id="@+id/addCardB"
+        android:layout_width="130dp"
+        android:layout_height="52dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="5dp"        
+        android:text="Add" />
+    
+
+</LinearLayout>

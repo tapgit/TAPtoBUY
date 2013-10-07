@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -122,6 +123,6 @@ public class ItemCustomAdapter extends BaseAdapter implements OnClickListener{
 			else{
 				this.activity.startActivity(new Intent(this.activity, BuyItProductInfoActivity.class));
 			}		
-    	}    			
+    	}    	
     }
 }

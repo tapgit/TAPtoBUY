@@ -101,13 +101,64 @@
         
           <activity
             android:name="com.gui.taptobuy.activity.SellAnItemActivity"
-            android:label="@string/sellanItemLabel"
+            android:label="@string/sellanItemLabel"           
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="com.gui.taptobuy.phase1.SELLANITEMACTIVITY" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        
+        <activity
+            android:name="com.gui.taptobuy.activity.MyHistoryActivity"
+            android:label="@string/myHistoryLabel"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="com.gui.taptobuy.phase1.MYHISTORYACTIVITY" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+         <activity
+            android:name="com.gui.taptobuy.activity.MySellingActivity"
+            android:label="@string/mySellingLabel"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="com.gui.taptobuy.phase1.MYSELLINGACTIVITY" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name="com.gui.taptobuy.activity.MyBiddingActivity"
+            android:label="@string/myBiddingLabel"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="com.gui.taptobuy.phase1.MYBIDDINGACTIVITY" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name="com.gui.taptobuy.activity.OrderCheckoutActivity"
+            android:label="@string/orderCheckoutLabel"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="com.gui.taptobuy.phase1.ORDERCHECKOUTACTIVITY" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name="com.gui.taptobuy.activity.AccountSettingsActivity"
+            android:label="@string/accountSettingsLabel"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="com.gui.taptobuy.phase1.ACCOUNTSETTINGSACTIVITY" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
     
          
     </application>

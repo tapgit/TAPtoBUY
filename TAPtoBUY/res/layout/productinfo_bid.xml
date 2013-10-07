@@ -93,24 +93,14 @@
         android:textStyle="bold"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
-    <TextView
-        android:id="@+id/BidInfoDollarSy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/BidInfoPlaceBidText"
-        android:layout_alignBottom="@+id/BidInfoPlaceBidText"
-        android:layout_alignLeft="@+id/BidInfoPlaceBidText"
-        android:text="$"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
     <EditText
-        android:id="@+id/BidInfoPlaceBidText"
+        android:id="@+id/BidInfoPlaceBidInput"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"        
         android:layout_toRightOf="@+id/BidInfoProdBrand"
         android:layout_marginBottom="5dp"
-        android:ems="10"
+        android:hint="cb+cb*.01"        
         android:inputType="numberDecimal" />
 
     <Button
@@ -131,6 +121,16 @@
         android:layout_alignLeft="@+id/BidsInfoCurrentBid"
         android:layout_below="@+id/BidsInfoCurrentBid"
         android:text="Shipping:"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/BidInfoDollarSy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/BidInfoPlaceBidInput"
+        android:layout_alignBottom="@+id/BidInfoPlaceBidInput"
+        android:layout_alignRight="@+id/BidInfoProdBrand"
+        android:text="$"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

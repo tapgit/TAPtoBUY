@@ -58,4 +58,23 @@
         android:layout_marginTop="16dp"
         android:text="Bidding Items" />
 
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_alignLeft="@+id/myTap_sellAnItem"
+        android:layout_marginTop="10dp"
+        android:layout_toLeftOf="@+id/myTap_AccountSet"
+        android:src="@drawable/description_posts" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="90dp"
+        android:layout_height="110dp"
+        android:layout_alignBaseline="@+id/myTap_AccountSet"        
+        android:layout_alignLeft="@+id/imageView1"
+        android:layout_marginLeft="28dp"
+        android:text="You have 0 items won"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
 </RelativeLayout>

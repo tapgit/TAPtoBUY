@@ -43,15 +43,16 @@ public class MyTapActivity extends Activity implements View.OnClickListener {
 		switch (button.getId()){
 		
 		case R.id.myTap_AccountSet:
+			// hacer un if para saber si el user es Admin or not
+			startActivity(new Intent(this, AccountSettingsActivity.class));
 			break;
 			
 		case R.id.myTap_SignOut:
 			SignInActivity.signed = false;
 			Intent home = new Intent(this, SignInActivity.class);
 			home.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-			startActivity(home);
+			startActivity(home);			
 			
-			this.finish();
 			break;
 		
 		case R.id.myTap_sellAnItem:

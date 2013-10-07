@@ -10,6 +10,6 @@ public class MySellingActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {		
 		super.onCreate(savedInstanceState);
-		//setContentView(R.layout.account_MySelling);
+		setContentView(R.layout.emptylist);
 	}
 }

@@ -371,9 +371,7 @@
             android:id="@+id/etCreditCardExpirationDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"           
-            android:inputType="date" />        
-        
-        
+            android:inputType="date" />            
 
         <Button
             android:id="@+id/bSubmitUserInf"
@@ -386,8 +384,7 @@
             android:layout_marginBottom="7dp"            
             android:layout_marginTop="15dp"
             android:text="Submit" />
-    </LinearLayout>  
         
+  	  </LinearLayout>         
     </ScrollView>
-
 </LinearLayout>
