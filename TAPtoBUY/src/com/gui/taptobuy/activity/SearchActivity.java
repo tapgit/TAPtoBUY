@@ -38,13 +38,12 @@ public class SearchActivity extends Activity implements OnClickListener   {
 	private Button myTap;	
 	private Spinner sorter;
 	//private boolean searchDone;
-	private ArrayList<Product> itemsOnSale;
+	static ArrayList<Product> itemsOnSale;
 	private ListView itemsList;
 	private LayoutInflater layoutInflator;
 	/////////////////////////////////////////////
-	private Product item1;
-	private Product item2;
-	private Product item3,item4,item5,item6,item7,item8;
+	
+	private Product item1, item2, item3,item4,item5,item6,item7,item8;
 	private ImageView pic;
 	/////////////////////////////////////////////////
 	@Override
@@ -188,7 +187,7 @@ public class SearchActivity extends Activity implements OnClickListener   {
 			break;
 
 		case R.id.bSearch:
-			setItems(itemsOnSale);
+			itemsList.setAdapter(new ItemCustomAdapter(this,this.pic,this.layoutInflator, this.itemsOnSale));
 			break;
 
 		case R.id.bSignIn:		
@@ -239,9 +238,5 @@ public class SearchActivity extends Activity implements OnClickListener   {
 		public TextView buyItNow;
 		public ImageView itemPic;
 		public Product item;
-	}
-
-	public void setItems(ArrayList<Product> items) {
-		itemsList.setAdapter(new ItemCustomAdapter(this,this.pic,this.layoutInflator, this.itemsOnSale));
-	}
+	}	
 }
