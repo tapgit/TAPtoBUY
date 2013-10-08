@@ -1,108 +1,119 @@
 package com.gui.taptobuy.Entities;
 
-import android.widget.ImageView;
 
 public class Product {
-	
-	private int productID;	
-	private int bidsAmount;
-	private ImageView picture;
-	private String price;
-	private String currentBid;
+	private int id;
+	private String title;
+	private String timeDuration;
+	private boolean timeEnded;
+	private double shippingPrice; //free=> 0
+	//item_info
 	private String product;
+	private String model;
 	private String brand;
 	private String dimensions;
 	private String description;
-	private String shipping;
-	private String prodTitle;
-	private String category;
-	private String startingDate;
-	private boolean ForAuction;
-	private String endingDate;
+	private String imgLink;
 	
-	//Sacarlos del User cuando se le de submit al producto a vender
-	float sellerRating;
-	int sellerID;
-	String sellerUserName;
-	
-	public Product(boolean forAuction,int productID, int bidsAmount, ImageView picture, String price,String currentBid,String product,String brand,String dimensions,String 
-			description,String sellerUserName,String shipping,String prodTitle,String category,String startingDate,String endingDate)
-	{
-	
-		this.bidsAmount = bidsAmount;
-		this.ForAuction = forAuction;
-		this.productID = productID;
-		this.picture = picture;
-		this.price = price;
-		this.currentBid = currentBid;
+	private String sellerUsername;
+	private double sellerRate;
+	public Product(int id, String title, String timeDuration,
+			boolean timeEnded, double shippingPrice, String product,
+			String model, String brand, String dimensions, String description,
+			String imgLink, String sellerUsername, double sellerRate) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.timeDuration = timeDuration;
+		this.timeEnded = timeEnded;
+		this.shippingPrice = shippingPrice;
 		this.product = product;
+		this.model = model;
 		this.brand = brand;
 		this.dimensions = dimensions;
 		this.description = description;
-		this.shipping = shipping;
-		this.prodTitle = prodTitle;
-		this.category = category;
-		this.startingDate = startingDate;
-		this.endingDate = endingDate;
-		this.sellerUserName = sellerUserName;
-	}	
-	
-	public void IncreaseBidsAmount(){
-		this.bidsAmount++;
+		this.imgLink = imgLink;
+		this.sellerUsername = sellerUsername;
+		this.sellerRate = sellerRate;
 	}
-	///////////////////////////
-	public boolean getforAuction(){
-		return ForAuction;
+	public int getId() {
+		return id;
 	}
-	public int getProductID() {
-		return productID;
+	public void setId(int id) {
+		this.id = id;
 	}
-	public int getBidsAmount() {
-		return bidsAmount;
+	public String getTitle() {
+		return title;
 	}
-	public ImageView getPicture() {
-		return picture;
+	public void setTitle(String title) {
+		this.title = title;
 	}
-	public String getPrice() {
-		return price;
+	public String getTimeDuration() {
+		return timeDuration;
 	}
-	public String getCurrentBid() {
-		return currentBid;
+	public void setTimeDuration(String timeDuration) {
+		this.timeDuration = timeDuration;
+	}
+	public boolean isTimeEnded() {
+		return timeEnded;
+	}
+	public void setTimeEnded(boolean timeEnded) {
+		this.timeEnded = timeEnded;
+	}
+	public double getShippingPrice() {
+		return shippingPrice;
+	}
+	public void setShippingPrice(double shippingPrice) {
+		this.shippingPrice = shippingPrice;
 	}
 	public String getProduct() {
 		return product;
 	}
+	public void setProduct(String product) {
+		this.product = product;
+	}
+	public String getModel() {
+		return model;
+	}
+	public void setModel(String model) {
+		this.model = model;
+	}
 	public String getBrand() {
 		return brand;
+	}
+	public void setBrand(String brand) {
+		this.brand = brand;
 	}
 	public String getDimensions() {
 		return dimensions;
 	}
+	public void setDimensions(String dimensions) {
+		this.dimensions = dimensions;
+	}
 	public String getDescription() {
 		return description;
 	}
-	public String getShipping() {
-		return shipping;
+	public void setDescription(String description) {
+		this.description = description;
 	}
-	public String getProdTitle() {
-		return prodTitle;
+	public String getImgLink() {
+		return imgLink;
 	}
-	public String getCategory() {
-		return category;
+	public void setImgLink(String imgLink) {
+		this.imgLink = imgLink;
 	}
-	public String getStartingDate() {
-		return startingDate;
+	public String getSellerUsername() {
+		return sellerUsername;
 	}
-	public String getEndingDate() {
-		return endingDate;
+	public void setSellerUsername(String sellerUsername) {
+		this.sellerUsername = sellerUsername;
 	}
-	public float getSellerRating() {
-		return sellerRating;
+	public double getSellerRate() {
+		return sellerRate;
 	}
-	public int getSellerID() {
-		return sellerID;
+	public void setSellerRate(double sellerRate) {
+		this.sellerRate = sellerRate;
 	}
-	public String getSellerUserName() {
-		return sellerUserName;
-	}
+	
+	
 }

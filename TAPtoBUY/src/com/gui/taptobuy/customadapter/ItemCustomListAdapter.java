@@ -3,6 +3,8 @@ package com.gui.taptobuy.customadapter;
 import java.util.ArrayList;
 
 import com.gui.taptobuy.Entities.Product;
+import com.gui.taptobuy.Entities.ProductForAuction;
+import com.gui.taptobuy.Entities.ProductForSale;
 import com.gui.taptobuy.activity.BidProductInfoActivity;
 import com.gui.taptobuy.activity.BuyItProductInfoActivity;
 import com.gui.taptobuy.activity.SearchActivity;
@@ -22,7 +24,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ItemCustomAdapter extends BaseAdapter implements OnClickListener{
+public class ItemCustomListAdapter extends BaseAdapter implements OnClickListener{
 	
 	private SearchActivity activity;
 	//private IconTask imgFetcher;  -- clases que usa para loadear las imagenes
@@ -30,7 +32,7 @@ public class ItemCustomAdapter extends BaseAdapter implements OnClickListener{
 	private LayoutInflater layoutInflater;
 	private ArrayList<Product> items;	
 	
-    public ItemCustomAdapter (SearchActivity a, ImageView i, LayoutInflater l, ArrayList<Product> items)
+    public ItemCustomListAdapter (SearchActivity a, ImageView i, LayoutInflater l, ArrayList<Product> items)
     {
     	this.activity = a;
     	//this.itemPic = i;
@@ -63,7 +65,7 @@ public class ItemCustomAdapter extends BaseAdapter implements OnClickListener{
     public View getView(int position, View itemRow, ViewGroup parent) {
         MyViewItem itemHolder;
         Product item = items.get(position);
-        if(item.getforAuction())
+        if(item instanceof ProductForAuction)
         {        	
                  itemRow = layoutInflater.inflate(R.layout.bidproduct_row, parent, false); 
                  itemHolder = new MyViewItem();
@@ -79,9 +81,10 @@ public class ItemCustomAdapter extends BaseAdapter implements OnClickListener{
                  itemHolder.itemPic.setTag(itemHolder);
                  itemRow.setTag(itemHolder);
                  
-                 itemHolder.bidsAmount.setText(item.getBidsAmount()+" bids");
+                 itemHolder.bidsAmount.setText(((ProductForAuction) item).getTotalBids()+" bids");
+                 itemHolder.priceAndShiping.setText(((ProductForAuction) item).getCurrentBidPrice()+" + "+item.getShippingPrice());  
         }
-        else
+        else //for sale
         {	        
         	    itemRow = layoutInflater.inflate(R.layout.buyitproduct_row, parent, false); 
 	            itemHolder = new MyViewItem();
@@ -95,15 +98,16 @@ public class ItemCustomAdapter extends BaseAdapter implements OnClickListener{
 	            
 	            itemHolder.sellerRating.setTag(itemHolder);
 	            itemHolder.itemPic.setTag(itemHolder);
-	            itemRow.setTag(itemHolder);         
+	            itemRow.setTag(itemHolder);        
+	            
+	            itemHolder.priceAndShiping.setText(((ProductForSale) item).getInstantPrice()+" + "+item.getShippingPrice());  
         }        
         
         	itemRow.setOnClickListener(this);    		
    	
    			itemHolder.item = item;
-   			itemHolder.productName.setText(item.getProdTitle());   		
-	   		itemHolder.sellerUserName.setText(item.getSellerUserName());
-	   		itemHolder.priceAndShiping.setText(item.getPrice()+" + "+item.getShipping());     		
+   			itemHolder.productName.setText(item.getTitle());   		
+	   		itemHolder.sellerUserName.setText(item.getSellerUsername());		
 	   		//itemHolder.sellerRating.setRating(item.getSellerRating());
 	   		//itemHolder.timeRemaining.setText(item.get) //viene del server    	
 
@@ -117,10 +121,10 @@ public class ItemCustomAdapter extends BaseAdapter implements OnClickListener{
     
     	if(v instanceof View)
     	{      	
-			if(itemHolder.item.getforAuction()){
+			if(itemHolder.item instanceof ProductForAuction){
 				this.activity.startActivity(new Intent(this.activity, BidProductInfoActivity.class));	
 			}
-			else{
+			else{//for sale
 				this.activity.startActivity(new Intent(this.activity, BuyItProductInfoActivity.class));
 			}		
     	}    	

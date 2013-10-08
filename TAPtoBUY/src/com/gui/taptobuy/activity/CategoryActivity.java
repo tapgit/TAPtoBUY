@@ -12,7 +12,7 @@ import org.json.JSONObject;
 
 
 import com.gui.taptobuy.Entities.Category;
-import com.gui.taptobuy.customadapter.CategoriesCustomAdapter;
+import com.gui.taptobuy.customadapter.CategoriesCustomListAdapter;
 import com.gui.taptobuy.phase1.R;
 
 import android.app.Activity;
@@ -91,7 +91,7 @@ public class CategoryActivity extends Activity implements OnItemClickListener {
 		}
 
 		protected void onPostExecute(ArrayList<Category> showingCategories ) {
-			categoryList.setAdapter(new CategoriesCustomAdapter(CategoryActivity.this,CategoryActivity.this.layoutInflator, showingCategories));
+			categoryList.setAdapter(new CategoriesCustomListAdapter(CategoryActivity.this,CategoryActivity.this.layoutInflator, showingCategories));
 		}
 	}
 	

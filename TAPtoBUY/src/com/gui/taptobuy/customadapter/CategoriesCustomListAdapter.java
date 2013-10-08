@@ -15,14 +15,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-public class CategoriesCustomAdapter extends BaseAdapter {
+public class CategoriesCustomListAdapter extends BaseAdapter {
 	
 	private CategoryActivity activity;
 	//private IconTask imgFetcher;  -- clases que usa para loadear las imagenes	
 	private LayoutInflater layoutInflater;
 	private ArrayList<Category> categories;		
 	
-	public CategoriesCustomAdapter (CategoryActivity a, LayoutInflater l, ArrayList<Category> categories)
+	public CategoriesCustomListAdapter (CategoryActivity a, LayoutInflater l, ArrayList<Category> categories)
     {
     	this.activity = a;    	
     	this.layoutInflater = l;

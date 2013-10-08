@@ -14,7 +14,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button
-        android:id="@+id/cartButton"
+        android:id="@+id/cartBuyNowB"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_alignParentRight="true"
@@ -25,7 +25,7 @@
         android:textSize="12sp" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/cartcheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -50,7 +50,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
-        android:id="@+id/cartSellerID"
+        android:id="@+id/cartSellerUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/cartPrice"
@@ -70,7 +70,7 @@
         android:rating="3.5" />
 
     <Button
-        android:id="@+id/BuyItRemoveb"
+        android:id="@+id/cartBuyItRemoveB"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_alignLeft="@+id/cartButton"
