@@ -55,12 +55,13 @@ public class SearchActivity extends Activity implements OnClickListener   {
 	private Spinner sorter;
 	private EditText searchET;
 	//private boolean searchDone;
-	static ArrayList<Product> itemsOnSale;
+	private ArrayList<Product> itemsOnSale;
 	private ListView itemsList;
 	private LayoutInflater layoutInflator;
 	/////////////////////////////////////////////
 
-	private Item item1, item2, item3,item4,item5,item6,item7,item8;
+	//private Item item1, item2, item3,item4,item5,item6,item7,item8;
+	private Product item;
 	private ImageView pic;
 	/////////////////////////////////////////////////
 	@Override
@@ -71,7 +72,10 @@ public class SearchActivity extends Activity implements OnClickListener   {
 		super.onCreate(savedInstanceState);	
 		setContentView(R.layout.search);
 		/////////////////////////////////////////////////////////////////////////////////
-		//		pic = (ImageView)findViewById(R.id.BuyItProductPic);	
+				pic = (ImageView)findViewById(R.id.BuyItProductPic);
+				itemsOnSale = new ArrayList<Product>();
+				
+				
 		//		item1 = new Item(true,001,4,pic,"$190.50","$154.00","lumia","nokia","5.2 x 3 inches","new, unopend, factory unlocked","Einstein","free shipping","Nokia sasda 920 black 32gb","Phones","10/12/2013","10/1/2014");
 		//		item2 = new Item(false,002,5,pic,"$10","$154.00","lumia","nokia","5.2 x 3 inches","new, unopend, factory unlocked","Gauss","free shipping","Nokia SHAshasha 920 black 32gb","Phones","10/12/2013","10/1/2014");
 		//		item3 = new Item(true,003,10,pic,"$100000","$154.00","lumia","nokia","5.2 x 3 inches","new, unopend, factory unlocked","Tesla","free shipping","Nokia charmin! 920 black 32gb","Phones","10/12/2013","10/1/2014");
@@ -90,8 +94,11 @@ public class SearchActivity extends Activity implements OnClickListener   {
 		//		itemsOnSale.add(item6);
 		//		itemsOnSale.add(item7);
 		//		itemsOnSale.add(item8);
-
-		//itemsOnSale = new ArrayList<Product>();
+		
+//		item = new ProductForSale(0, "iphone 5s", "3d 7h", false, 0, "iphone", "5s", "apple", "100x35", "brand new", "http:image","kido" , (float) 4.5, 10, 7, 670.45);
+//		itemsOnSale.add(item);
+		
+		
 
 
 

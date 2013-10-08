@@ -103,12 +103,12 @@ public class ItemCustomListAdapter extends BaseAdapter implements OnClickListene
 	            itemHolder.priceAndShiping.setText(((ProductForSale) item).getInstantPrice()+" + "+item.getShippingPrice());  
         }        
         
-        	itemRow.setOnClickListener(this);    		
-   	
+        	itemRow.setOnClickListener(this);  
+        	
    			itemHolder.item = item;
    			itemHolder.productName.setText(item.getTitle());   		
 	   		itemHolder.sellerUserName.setText(item.getSellerUsername());		
-	   		//itemHolder.sellerRating.setRating(item.getSellerRating());
+	   		itemHolder.sellerRating.setRating((float)item.getSellerRate());
 	   		//itemHolder.timeRemaining.setText(item.get) //viene del server    	
 
         return itemRow;
