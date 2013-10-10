@@ -9,20 +9,23 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.gui.taptobuy.Entities.Category;
-import com.gui.taptobuy.Entities.Item;
 import com.gui.taptobuy.Entities.Product;
 import com.gui.taptobuy.Entities.ProductForAuction;
 import com.gui.taptobuy.Entities.ProductForSale;
 import com.gui.taptobuy.customadapter.CategoriesCustomListAdapter;
 import com.gui.taptobuy.customadapter.ItemCustomListAdapter;
+import com.gui.taptobuy.datatask.Host;
+import com.gui.taptobuy.datatask.ImageDownload;
 import com.gui.taptobuy.phase1.R;
 
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -55,7 +58,7 @@ public class SearchActivity extends Activity implements OnClickListener   {
 	private Spinner sorter;
 	private EditText searchET;
 	//private boolean searchDone;
-	private ArrayList<Product> itemsOnSale;
+public static ArrayList<Product> searchResultItems;
 	private ListView itemsList;
 	private LayoutInflater layoutInflator;
 	/////////////////////////////////////////////
@@ -72,36 +75,9 @@ public class SearchActivity extends Activity implements OnClickListener   {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);	
 		setContentView(R.layout.search);
-		/////////////////////////////////////////////////////////////////////////////////
-				pic = (ImageView)findViewById(R.id.BuyItProductPic);
-				itemsOnSale = new ArrayList<Product>();
-				Intent myIntent = getIntent();
-				
-				//Toast.makeText(this,myIntent.getStringExtra("toSearch"),Toast.LENGTH_LONG).show();
-				
-		//		item1 = new Item(true,001,4,pic,"$190.50","$154.00","lumia","nokia","5.2 x 3 inches","new, unopend, factory unlocked","Einstein","free shipping","Nokia sasda 920 black 32gb","Phones","10/12/2013","10/1/2014");
-		//		item2 = new Item(false,002,5,pic,"$10","$154.00","lumia","nokia","5.2 x 3 inches","new, unopend, factory unlocked","Gauss","free shipping","Nokia SHAshasha 920 black 32gb","Phones","10/12/2013","10/1/2014");
-		//		item3 = new Item(true,003,10,pic,"$100000","$154.00","lumia","nokia","5.2 x 3 inches","new, unopend, factory unlocked","Tesla","free shipping","Nokia charmin! 920 black 32gb","Phones","10/12/2013","10/1/2014");
-		//		item4 = new Item(false,002,5,pic,"$10","$154.00","lumia","nokia","5.2 x 3 inches","new, unopend, factory unlocked","Newton","free shipping","Nokia SHAshasha 920 black 32gb","Phones","10/12/2013","10/1/2014");
-		//		item5 = new Item(true,003,10,pic,"$100000","$154.00","lumia","nokia","5.2 x 3 inches","new, unopend, factory unlocked","kido","free shipping","Nokia charmin! 920 black 32gb","Phones","10/12/2013","10/1/2014");
-		//		item6 = new Item(false,003,10,pic,"$100000","$154.00","lumia","nokia","5.2 x 3 inches","new, unopend, factory unlocked","kevin","free shipping","Nokia charmin! 920 black 32gb","Phones","10/12/2013","10/1/2014");
-		//		item7 = new Item(true,002,5,pic,"$10","$154.00","lumia","nokia","5.2 x 3 inches","new, unopend, factory unlocked","joshua","free shipping","Nokia SHAshasha 920 black 32gb","Phones","10/12/2013","10/1/2014");
-		//		item8 = new Item(false,003,10,pic,"$100000","$154.00","lumia","nokia","5.2 x 3 inches","new, unopend, factory unlocked","efra","free shipping","Nokia charmin! 920 black 32gb","Phones","10/12/2013","10/1/2014");
-		//		
-		//		itemsOnSale = new ArrayList<Item>();
-		//		itemsOnSale.add(item1);
-		//		itemsOnSale.add(item2);
-		//		itemsOnSale.add(item3);
-		//		itemsOnSale.add(item4);
-		//		itemsOnSale.add(item5);
-		//		itemsOnSale.add(item6);
-		//		itemsOnSale.add(item7);
-		//		itemsOnSale.add(item8);
-		
-//		item = new ProductForSale(0, "iphone 5s", "3d 7h", false, 0, "iphone", "5s", "apple", "100x35", "brand new", "http:image","kido" , (float) 4.5, 10, 7, 670.45);
-//		itemsOnSale.add(item);
+		//////////////////////////////////////////////////
+		new searchProductsTask().execute("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");//searchET.getText().toString());
 
-		///////////////////////////////////////////////////////////////////////////////////////
 		categories = (Button)findViewById(R.id.bCategories);
 		cart = (Button)findViewById(R.id.bCart);
 		search = (Button)findViewById(R.id.bSearch);
@@ -181,21 +157,12 @@ public class SearchActivity extends Activity implements OnClickListener   {
 
 					public void onClick(View v) 
 					{			                
-						String userID = usernameID_ET.getText().toString();
-						String userPassword = passwordET.getText().toString();
-
-						if(userID.equals("") || userPassword.equals("")){
-							Toast.makeText(SearchActivity.this, "Error, you must provide userID & password", Toast.LENGTH_SHORT).show();			                    
-						}
-						else if(!userID.equals(userPassword)){
-							Toast.makeText(SearchActivity.this, "Incorrect Password or User", Toast.LENGTH_SHORT).show();								
-						}
-						else if(userID.equals(userPassword)){     		
-							Toast.makeText(SearchActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();				        		
-							signInDisabler();
-							dialog.dismiss();             
-							startActivity(new Intent(SearchActivity.this,CartActivity.class)); 				                
-						}
+						String username = usernameET.getText().toString();
+						String password = passwordET.getText().toString();
+						if(username.equals("") || password.equals("")){
+							Toast.makeText(SearchActivity.this, "Error, you must provide userID & password", Toast.LENGTH_SHORT).show();			
+						}	
+						//new SignInTaskFromCartBtn().execute(username,password);   
 					}
 				});    
 				dialog.show();				
@@ -204,6 +171,7 @@ public class SearchActivity extends Activity implements OnClickListener   {
 				startActivity(new Intent(this, CartActivity.class));
 			}
 			break;
+
 
 
 		case R.id.bCategories:
@@ -216,8 +184,8 @@ public class SearchActivity extends Activity implements OnClickListener   {
 			break;
 
 		case R.id.bSearch:
-			//itemsList.setAdapter(new ItemCustomListAdapter(this,this.pic,this.layoutInflator, this.itemsOnSale));
-			new searchProductsTask().execute(searchET.getText().toString());
+//itemsList.setAdapter(new ItemCustomListAdapter(this,this.pic,this.layoutInflator, this.itemsOnSale));
+			new searchProductsTask().execute("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");//searchET.getText().toString());
 			break;
 
 		case R.id.bSignIn:		
@@ -225,20 +193,12 @@ public class SearchActivity extends Activity implements OnClickListener   {
 
 				public void onClick(View v) 
 				{	          
-					String userID = usernameID_ET.getText().toString();
-					String userPassword = passwordET.getText().toString();
-
-					if(userID.equals("") || userPassword.equals("")){
-						Toast.makeText(SearchActivity.this, "Error, you must provide userID & password", Toast.LENGTH_SHORT).show();			                    
-					}
-					else if(!userID.equals(userPassword)){
-						Toast.makeText(SearchActivity.this, "Incorrect Password or User", Toast.LENGTH_SHORT).show();								
-					}
-					else if(userID.equals(userPassword)){     		
-						Toast.makeText(SearchActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();				        		
-						signInDisabler();
-						dialog.dismiss(); 		                				                
-					}
+					String username = usernameET.getText().toString();
+					String password = passwordET.getText().toString();
+					if(username.equals("") || password.equals("")){
+						Toast.makeText(SearchActivity.this, "Error, you must provide userID & password", Toast.LENGTH_SHORT).show();			
+					}	
+					//new SignInTaskFromSignInBtn().execute(username,password);
 				}
 			});    
 			dialog.show();				
@@ -272,69 +232,71 @@ public class SearchActivity extends Activity implements OnClickListener   {
 		public Button cartBuy;
 		public Button cartRemove;
 	}	
-	private ArrayList<Product> getSearchItems(String searchString){
+private ArrayList<Product> getSearchItems(String searchString){
 		HttpClient httpClient = new DefaultHttpClient();
-		String searchDir = "http://10.0.2.2:9000/search/" + searchString;
+		String searchDir = Host.hostName +"/search/" + "aaaaaaaaaaaaaaaaaaaaaaaaa";
 		HttpGet get = new HttpGet(searchDir);
 		get.setHeader("content-type", "application/json");
 		try
 		{
 			HttpResponse resp = httpClient.execute(get);
-			//if(resp.getStatusLine().getStatusCode() == 200){
+			if(resp.getStatusLine().getStatusCode() == 200){
 				String jsonString = EntityUtils.toString(resp.getEntity());
-				JSONObject json = new JSONObject(jsonString);
-				itemsOnSale = new ArrayList<Product>();		
-				
-				//				String tmpCatName = "";
-				//				Iterator<String> iter = (Iterator<String>) json.keys();
-				//				while(iter.hasNext()){
-				//					tmpCatName = String.valueOf(iter.next());
-				//					showingCategories.add(new Category(tmpCatName,json.getBoolean(tmpCatName)));
-				//				}
-				
-				JSONObject aSearchRes = null;
-				JSONObject item = null;
-				Product tempProduct = null;
+				JSONArray searchResultArray = (new JSONObject(jsonString)).getJSONArray("results");
+				searchResultItems = new ArrayList<Product>();
 
-				for(int i=0;i<json.length();i++){
-					aSearchRes = json.getJSONObject("item-00" + i);
-					if(aSearchRes.getBoolean("forBid")){
-						item = aSearchRes.getJSONObject("item");
-						tempProduct = new ProductForAuction(item.getInt("id"), item.getString("title"), item.getString("timeDuration"), item.getBoolean("timeEnded"), 
-								item.getDouble("shippingPrice"), item.getString("product"), item.getString("model"), item.getString("brand"),  item.getString("dimensions"),
-								item.getString("description"), item.getString("imgLink"), item.getString("sellerUsername"), item.getDouble("sellerRate"), 
-								item.getDouble("startinBidPrice"), item.getDouble("currentBidPrice"), item.getInt("totalBids"), item.getDouble("bidRate"));
+				JSONObject searchElement = null;
+				JSONObject jsonItem = null;
+				Product anItem = null;
+
+				for(int i=0; i<searchResultArray.length();i++){
+					searchElement = searchResultArray.getJSONObject(i);
+					jsonItem = searchElement.getJSONObject("item");
+					if(searchElement.getBoolean("forBid")){
+						anItem = new ProductForAuction(jsonItem.getInt("id"), jsonItem.getString("title"), jsonItem.getString("timeRemaining"), 
+								jsonItem.getDouble("shippingPrice"), jsonItem.getString("imgLink"),  jsonItem.getString("sellerUsername"), 
+								jsonItem.getDouble("sellerRate"),  jsonItem.getDouble("startinBidPrice"),  jsonItem.getDouble("currentBidPrice"),  jsonItem.getInt("totalBids"));
 					}
 					else{
-						item = aSearchRes.getJSONObject("item");
-						tempProduct = new ProductForSale(item.getInt("id"), item.getString("title"), item.getString("timeDuration"), item.getBoolean("timeEnded"), 
-								item.getDouble("shippingPrice"), item.getString("product"), item.getString("model"), item.getString("brand"),  item.getString("dimensions"),
-								item.getString("description"), item.getString("imgLink"), item.getString("sellerUsername"), item.getDouble("sellerRate"), 
-								item.getInt("startingQuantity"),item.getInt("remainingQuantity"), item.getDouble("instantPrice"));
+						anItem = new ProductForSale(jsonItem.getInt("id"), jsonItem.getString("title"), jsonItem.getString("timeRemaining"), 
+								jsonItem.getDouble("shippingPrice"), jsonItem.getString("imgLink"),  jsonItem.getString("sellerUsername"), 
+								jsonItem.getDouble("sellerRate"), jsonItem.getInt("remainingQuantity"), jsonItem.getDouble("instantPrice"));
 					}
-					itemsOnSale.add(tempProduct);
+					searchResultItems.add(anItem);
 				}
-//
-//			}
-//			else{
-//				Log.e("JSON","search json could not be downloaded.");
-//			}
+
+			}
+			else{
+				Log.e("JSON","search json could not be downloaded.");
+			}
 		}
 		catch(Exception ex)
 		{
 			Log.e("Search","Error!", ex);
 		}
-		return itemsOnSale;
+		return searchResultItems;
 	}
 
 	private class searchProductsTask extends AsyncTask<String,Void,ArrayList<Product>> {
-
+		public  int downloadadImagesIndex = 0;
 		protected ArrayList<Product> doInBackground(String... params) {
 			return getSearchItems(params[0]);//get search result
 		}
-
-		protected void onPostExecute(ArrayList<Product> searchResult ) {
-			itemsList.setAdapter(new ItemCustomListAdapter(SearchActivity.this,SearchActivity.this.pic,SearchActivity.this.layoutInflator, searchResult));
+		protected void onPostExecute(ArrayList<Product> searchResultItems ) {
+			//download images
+			for(Product itm: searchResultItems){
+				new DownloadImageTask().execute(itm.getImgLink());
+			}
+			itemsList.setAdapter(new ItemCustomListAdapter(SearchActivity.this,SearchActivity.this.pic,SearchActivity.this.layoutInflator, searchResultItems));
+		}			
+		private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+			protected Bitmap doInBackground(String... urls) {
+				return ImageDownload.downloadImage(urls[0]);
+			}
+			protected void onPostExecute(Bitmap result) {
+					searchResultItems.get(downloadadImagesIndex++).setImg(result);
+			}
 		}
 	}
+
 }

@@ -1,6 +1,7 @@
 package com.gui.taptobuy.activity;
 
 
+import com.gui.taptobuy.datatask.Host;
 import com.gui.taptobuy.phase1.R;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -171,7 +172,7 @@ public class SignInActivity extends Activity implements View.OnClickListener {
 	private boolean signIn(String username, String password){
 		boolean correct = false;
 		HttpClient httpClient = new DefaultHttpClient();
-		HttpPost post = new HttpPost("http://10.0.2.2:9000/login");
+		HttpPost post = new HttpPost(Host.hostName+ "/login");
 		post.setHeader("content-type", "application/json");
 		try
 		{
@@ -197,7 +198,7 @@ public class SignInActivity extends Activity implements View.OnClickListener {
 		}
 		return correct;
 	}
-	public class SignInTaskFromSignInBtn extends AsyncTask<String,Integer,Boolean> {
+	private class SignInTaskFromSignInBtn extends AsyncTask<String,Integer,Boolean> {
 
 		protected Boolean doInBackground(String... params) {
 			return signIn(params[0], params[1]);
