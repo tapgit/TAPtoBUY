@@ -7,6 +7,8 @@ import java.util.Iterator;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
@@ -17,7 +19,7 @@ import com.gui.taptobuy.Entities.Product;
 import com.gui.taptobuy.Entities.ProductForAuction;
 import com.gui.taptobuy.Entities.ProductForSale;
 import com.gui.taptobuy.customadapter.CategoriesCustomListAdapter;
-import com.gui.taptobuy.customadapter.ItemCustomListAdapter;
+import com.gui.taptobuy.customadapter.SearchResultsCustomListAdapter;
 import com.gui.taptobuy.datatask.Main;
 import com.gui.taptobuy.datatask.ImageDownload;
 import com.gui.taptobuy.phase1.R;
@@ -61,11 +63,9 @@ public class SearchActivity extends Activity implements OnClickListener   {
 	public static ArrayList<Product> searchResultItems;
 	private ListView itemsList;
 	private LayoutInflater layoutInflator;
-	/////////////////////////////////////////////
 
-	//private Item item1, item2, item3,item4,item5,item6,item7,item8;
-	private Product item;
 	private ImageView pic;
+	private Dialog dialog;
 	/////////////////////////////////////////////////
 
 	@Override
@@ -139,7 +139,7 @@ public class SearchActivity extends Activity implements OnClickListener   {
 	@Override
 	public void onClick(View v) { 
 
-		final Dialog dialog = new Dialog(SearchActivity.this);
+		dialog = new Dialog(SearchActivity.this);
 
 		dialog.setContentView(R.layout.login_dialog);
 		dialog.setTitle("Sign in");
@@ -162,7 +162,7 @@ public class SearchActivity extends Activity implements OnClickListener   {
 						if(username.equals("") || password.equals("")){
 							Toast.makeText(SearchActivity.this, "Error, you must provide userID & password", Toast.LENGTH_SHORT).show();			
 						}	
-						//new SignInTaskFromCartBtn().execute(username,password);   
+						new SignInTaskFromCartBtn().execute(username,password);   
 					}
 				});    
 				dialog.show();				
@@ -198,7 +198,7 @@ public class SearchActivity extends Activity implements OnClickListener   {
 					if(username.equals("") || password.equals("")){
 						Toast.makeText(SearchActivity.this, "Error, you must provide userID & password", Toast.LENGTH_SHORT).show();			
 					}	
-					//new SignInTaskFromSignInBtn().execute(username,password);
+					new SignInTaskFromSignInBtn().execute(username,password);
 				}
 			});    
 			dialog.show();				
@@ -287,7 +287,7 @@ public class SearchActivity extends Activity implements OnClickListener   {
 			for(Product itm: searchResultItems){
 				new DownloadImageTask().execute(itm.getImgLink());
 			}
-			itemsList.setAdapter(new ItemCustomListAdapter(SearchActivity.this,SearchActivity.this.pic,SearchActivity.this.layoutInflator, searchResultItems));
+			itemsList.setAdapter(new SearchResultsCustomListAdapter(SearchActivity.this,SearchActivity.this.pic,SearchActivity.this.layoutInflator, searchResultItems));
 		}			
 		private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
 
@@ -297,6 +297,78 @@ public class SearchActivity extends Activity implements OnClickListener   {
 			protected void onPostExecute(Bitmap result) {
 				itemsList.invalidateViews();
 				searchResultItems.get(downloadadImagesIndex++).setImg(result);
+			}
+		}
+	}
+	
+	private boolean signIn(String username, String password){
+		boolean correct = false;
+		HttpClient httpClient = new DefaultHttpClient();
+		HttpPost post = new HttpPost(Main.hostName+ "/login");
+		post.setHeader("content-type", "application/json");
+		try
+		{
+			JSONObject userData = new JSONObject();
+
+			userData.put("username", username);
+			userData.put("password", password);
+
+			StringEntity entity = new StringEntity(userData.toString());
+			post.setEntity(entity);
+
+			HttpResponse resp = httpClient.execute(post);
+			if(resp.getStatusLine().getStatusCode() == 200){
+				correct = true;
+			}
+			else{
+				correct = false;
+			}
+		}
+		catch(Exception ex)
+		{
+			Log.e("Password check","Error!", ex);
+		}
+		return correct;
+	}
+	private class SignInTaskFromSignInBtn extends AsyncTask<String,Integer,Boolean> {
+
+		protected Boolean doInBackground(String... params) {
+			return signIn(params[0], params[1]);
+		}
+
+		protected void onPostExecute(Boolean correct) {
+
+			if (correct)
+			{
+				Toast.makeText(SearchActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+				signInDisabler();
+				dialog.dismiss();   
+				SearchActivity.this.startActivity(new Intent(SearchActivity.this, SearchActivity.class));
+			}
+			else{
+				Toast.makeText(SearchActivity.this, "Incorrect Password or User", Toast.LENGTH_SHORT).show();
+				//signInEnabler();
+			}
+		}
+	}
+	private class SignInTaskFromCartBtn extends AsyncTask<String,Integer,Boolean> {
+
+		protected Boolean doInBackground(String... params) {
+			return signIn(params[0], params[1]);
+		}
+
+		protected void onPostExecute(Boolean correct) {
+
+			if (correct)
+			{
+				Toast.makeText(SearchActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+				signInDisabler();
+				dialog.dismiss();   
+				startActivity(new Intent(SearchActivity.this,CartActivity.class));
+			}
+			else{
+				Toast.makeText(SearchActivity.this, "Incorrect Password or User", Toast.LENGTH_SHORT).show();
+				///signInEnabler();
 			}
 		}
 	}

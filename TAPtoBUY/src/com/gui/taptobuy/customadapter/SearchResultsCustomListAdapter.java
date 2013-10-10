@@ -40,7 +40,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ItemCustomListAdapter extends BaseAdapter implements OnClickListener{
+public class SearchResultsCustomListAdapter extends BaseAdapter implements OnClickListener{
 
 	private SearchActivity activity;
 	//private IconTask imgFetcher;  -- clases que usa para loadear las imagenes
@@ -48,7 +48,7 @@ public class ItemCustomListAdapter extends BaseAdapter implements OnClickListene
 	private LayoutInflater layoutInflater;
 	private ArrayList<Product> items;	
 
-	public ItemCustomListAdapter (SearchActivity a, ImageView i, LayoutInflater l, ArrayList<Product> items)
+	public SearchResultsCustomListAdapter (SearchActivity a, ImageView i, LayoutInflater l, ArrayList<Product> items)
 	{
 		this.activity = a;
 		//this.itemPic = i;
@@ -152,7 +152,7 @@ public class ItemCustomListAdapter extends BaseAdapter implements OnClickListene
 
 	private Product getProductInfo(String productId){
 		HttpClient httpClient = new DefaultHttpClient();
-		String productInfoDir = Main.hostName +"/product/" + productId;
+		String productInfoDir = Main.hostName +"/productInfo/" + productId;
 		HttpGet get = new HttpGet(productInfoDir);
 		get.setHeader("content-type", "application/json");
 		Product theItem = null;

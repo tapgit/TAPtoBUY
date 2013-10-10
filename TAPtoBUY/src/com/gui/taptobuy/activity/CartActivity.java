@@ -14,7 +14,7 @@ import com.gui.taptobuy.Entities.Product;
 import com.gui.taptobuy.Entities.ProductForAuction;
 import com.gui.taptobuy.Entities.ProductForSale;
 
-import com.gui.taptobuy.customadapter.ItemCustomListAdapter;
+import com.gui.taptobuy.customadapter.SearchResultsCustomListAdapter;
 import com.gui.taptobuy.datatask.ImageDownload;
 import com.gui.taptobuy.datatask.Main;
 import com.gui.taptobuy.phase1.R;
@@ -25,14 +25,16 @@ import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-public class CartActivity extends Activity 
-{		
+public class CartActivity extends Activity implements OnClickListener{	
 	private ArrayList<ProductForSale> cartItems;
 	private Button buyB;
+	private Button buySelectedB;
 	private Button removeB;
 	
 	@Override
@@ -40,9 +42,25 @@ public class CartActivity extends Activity
 		super.onCreate(savedInstanceState);		
 		setContentView(R.layout.cart);
 		
+//		buyB = (Button) findViewById(R.id.cartBuyNowB);
+//		buyB.setOnClickListener(this);
+//		
+//		buySelectedB = (Button) findViewById(R.id.cartBuySelectedB);
+//		buySelectedB.setOnClickListener(this);
+//		
+//		removeB = (Button) findViewById(R.id.);
+//		removeB.setOnClickListener(this);
+
+		
 	
 	}
 	
+
+	@Override
+	public void onClick(View arg0) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 //	
 //	private ArrayList<ProductForSale> getCartItems(String searchString){
