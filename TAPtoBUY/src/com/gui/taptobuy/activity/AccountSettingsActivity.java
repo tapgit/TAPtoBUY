@@ -28,8 +28,10 @@ public class AccountSettingsActivity extends Activity implements OnClickListener
 	protected void onCreate(Bundle savedInstanceState) {		
 		super.onCreate(savedInstanceState);
 		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+		//if(!user.isAdmin)
 		setContentView(R.layout.account_settings);
-		
+		//else
+		//setContentView(R.layout.account_admin);
 		setDef = (Button)findViewById(R.id.accSet_setDefaultCardB);
 		add = (Button)findViewById(R.id.accSet_AddB);
 		remove = (Button)findViewById(R.id.accSet_RemoveB);
@@ -47,6 +49,7 @@ public class AccountSettingsActivity extends Activity implements OnClickListener
 
 
 		// setting action for when an sorting instance is selected
+		
 		cardsSpinner.setOnItemSelectedListener(new OnItemSelectedListener(){	
 			@Override
 			public void onItemSelected(AdapterView<?> arg0,View arg1,int arg2, long arg3) 

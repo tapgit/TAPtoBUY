@@ -14,7 +14,6 @@ import org.json.JSONObject;
 
 import com.gui.taptobuy.Entities.Category;
 import com.gui.taptobuy.Entities.Product;
-
 import com.gui.taptobuy.Entities.ProductForAuction;
 import com.gui.taptobuy.Entities.ProductForSale;
 import com.gui.taptobuy.customadapter.CategoriesCustomListAdapter;
@@ -59,15 +58,16 @@ public class SearchActivity extends Activity implements OnClickListener   {
 	private Spinner sorter;
 	private EditText searchET;
 	//private boolean searchDone;
-	public static ArrayList<Product> searchResultItems;
+public static ArrayList<Product> searchResultItems;
 	private ListView itemsList;
 	private LayoutInflater layoutInflator;
 	/////////////////////////////////////////////
 
 	//private Item item1, item2, item3,item4,item5,item6,item7,item8;
-	//private Product item;
+	private Product item;
 	private ImageView pic;
 	/////////////////////////////////////////////////
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
@@ -75,11 +75,9 @@ public class SearchActivity extends Activity implements OnClickListener   {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);	
 		setContentView(R.layout.search);
-
 		//////////////////////////////////////////////////
 		new searchProductsTask().execute("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");//searchET.getText().toString());
 
-		
 		categories = (Button)findViewById(R.id.bCategories);
 		cart = (Button)findViewById(R.id.bCart);
 		search = (Button)findViewById(R.id.bSearch);
@@ -111,6 +109,7 @@ public class SearchActivity extends Activity implements OnClickListener   {
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_single_choice, sortingOptions);
 		sorter.setAdapter(adapter);
 
+	
 
 		// setting action for when an sorting instance is selected
 		sorter.setOnItemSelectedListener(new OnItemSelectedListener(){	
@@ -174,6 +173,7 @@ public class SearchActivity extends Activity implements OnClickListener   {
 			break;
 
 
+
 		case R.id.bCategories:
 
 			startActivity(new Intent(this, CategoryActivity.class));   		
@@ -184,7 +184,7 @@ public class SearchActivity extends Activity implements OnClickListener   {
 			break;
 
 		case R.id.bSearch:
-			//itemsList.setAdapter(new ItemCustomListAdapter(this,this.pic,this.layoutInflator, this.itemsOnSale));
+//itemsList.setAdapter(new ItemCustomListAdapter(this,this.pic,this.layoutInflator, this.itemsOnSale));
 			new searchProductsTask().execute("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");//searchET.getText().toString());
 			break;
 
@@ -232,7 +232,7 @@ public class SearchActivity extends Activity implements OnClickListener   {
 		public Button cartBuy;
 		public Button cartRemove;
 	}	
-	private ArrayList<Product> getSearchItems(String searchString){
+private ArrayList<Product> getSearchItems(String searchString){
 		HttpClient httpClient = new DefaultHttpClient();
 		String searchDir = Main.hostName +"/search/" + "aaaaaaaaaaaaaaaaaaaaaaaaa";
 		HttpGet get = new HttpGet(searchDir);

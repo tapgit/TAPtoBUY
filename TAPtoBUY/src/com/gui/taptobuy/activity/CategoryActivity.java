@@ -17,6 +17,7 @@ import com.gui.taptobuy.datatask.Main;
 import com.gui.taptobuy.phase1.R;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -106,6 +107,13 @@ public class CategoryActivity extends Activity implements OnItemClickListener {
 	public void onItemClick(AdapterView<?> categories, View v, int arg2, long arg3) 
 	{
 		MyViewCategory categoriesHolder = (MyViewCategory) v.getTag();
+		if(categoriesHolder.category.HasSubCategories())		
 		new getSubCategoriesTask().execute(categoriesHolder.category.getName());	
+		else{
+			Intent search = new Intent(this, SearchActivity.class);
+			search.putExtra("toSearch", categoriesHolder.category.getName());
+			startActivity(search);
+		}
+		
 	}
 }
