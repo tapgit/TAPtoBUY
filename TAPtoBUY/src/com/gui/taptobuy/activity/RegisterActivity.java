@@ -7,6 +7,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONObject;
 
+import com.gui.taptobuy.datatask.Host;
 import com.gui.taptobuy.phase1.R;
 
 import android.app.Activity;
@@ -105,6 +106,7 @@ public class RegisterActivity extends Activity {
 					if(!password1ET.getText().toString().equals(password2ET.getText().toString()) ) {			
 						Toast.makeText(RegisterActivity.this, "Passwords don't match, try again", Toast.LENGTH_LONG).show();			
 					}
+					//Chequiar si estan vacios
 					else{
 						new registerTask().execute();
 					}	
@@ -115,7 +117,7 @@ public class RegisterActivity extends Activity {
 	private int register(){
 		int result = -1;
 		HttpClient httpClient = new DefaultHttpClient();
-		HttpPost post = new HttpPost("http://10.0.2.2:9000/register");
+		HttpPost post = new HttpPost(Host.hostName + "/register");
 		post.setHeader("content-type", "application/json");
 		try
 		{
@@ -154,7 +156,7 @@ public class RegisterActivity extends Activity {
 			post.setEntity(entity);
 
 			HttpResponse resp = httpClient.execute(post);
-			if(resp.getStatusLine().getStatusCode() == 200){
+			if(resp.getStatusLine().getStatusCode() == 201){
 				result = 0;
 			}
 			else{

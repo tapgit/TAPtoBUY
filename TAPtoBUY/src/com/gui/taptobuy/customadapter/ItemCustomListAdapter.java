@@ -25,108 +25,121 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ItemCustomListAdapter extends BaseAdapter implements OnClickListener{
-	
+
 	private SearchActivity activity;
 	//private IconTask imgFetcher;  -- clases que usa para loadear las imagenes
-	private ImageView itemPic;
+	//private ImageView itemPic;
 	private LayoutInflater layoutInflater;
 	private ArrayList<Product> items;	
-	
-    public ItemCustomListAdapter (SearchActivity a, ImageView i, LayoutInflater l, ArrayList<Product> items)
-    {
-    	this.activity = a;
-    	//this.itemPic = i;
-    	this.layoutInflater = l;
-    	this.items = items;
-    }
-  ////////////////////////////////////////////////////////// 
-    @Override
-    public int getCount() {
-        return this.items.size();
-    }
 
-    @Override
-    public boolean areAllItemsEnabled () 
-    {
-    	return true;
-    }
-    
-    @Override
-    public Object getItem(int arg0) {
-        return null;
-    }
+	public ItemCustomListAdapter (SearchActivity a, ImageView i, LayoutInflater l, ArrayList<Product> items)
+	{
+		this.activity = a;
+		//this.itemPic = i;
+		this.layoutInflater = l;
+		this.items = items;
+	}
+	////////////////////////////////////////////////////////// 
+	@Override
+	public int getCount() {
+		return this.items.size();
+	}
 
-    @Override
-    public long getItemId(int pos) {
-        return pos;
-    }
-///////////////////////////////////////////////////////////////////////
-    @Override
-    public View getView(int position, View itemRow, ViewGroup parent) {
-        MyViewItem itemHolder;
-        Product item = items.get(position);
-        if(item instanceof ProductForAuction)
-        {        	
-                 itemRow = layoutInflater.inflate(R.layout.bidproduct_row, parent, false); 
-                 itemHolder = new MyViewItem();
-                 itemHolder.itemPic =  (ImageView) itemRow.findViewById(R.id.BidProductPic);
-                 itemHolder.productName = (TextView) itemRow.findViewById(R.id.BidProdName);
-                 itemHolder.sellerUserName = (TextView) itemRow.findViewById(R.id.BidSellerUserName);
-                 itemHolder.priceAndShiping = (TextView) itemRow.findViewById(R.id.BidPrice);
-                 itemHolder.bidsAmount = (TextView) itemRow.findViewById(R.id.bids);
-                 itemHolder.timeRemaining = (TextView) itemRow.findViewById(R.id.BidRemaningTime);                      
-                 itemHolder.sellerRating = (RatingBar)itemRow.findViewById(R.id.BidSellerRating);
-                 
-                 itemHolder.sellerRating.setTag(itemHolder);
-                 itemHolder.itemPic.setTag(itemHolder);
-                 itemRow.setTag(itemHolder);
-                 
-                 itemHolder.bidsAmount.setText(((ProductForAuction) item).getTotalBids()+" bids");
-                 itemHolder.priceAndShiping.setText(((ProductForAuction) item).getCurrentBidPrice()+" + "+item.getShippingPrice());  
-        }
-        else //for sale
-        {	        
-        	    itemRow = layoutInflater.inflate(R.layout.buyitproduct_row, parent, false); 
-	            itemHolder = new MyViewItem();
-	            itemHolder.itemPic =  (ImageView) itemRow.findViewById(R.id.BuyItProductPic);
-	            itemHolder.productName = (TextView) itemRow.findViewById(R.id.BuyItProdName);
-	            itemHolder.sellerUserName = (TextView) itemRow.findViewById(R.id.BuyItSellerID);
-	            itemHolder.priceAndShiping = (TextView) itemRow.findViewById(R.id.BuyItPrice);        
-	            itemHolder.timeRemaining = (TextView) itemRow.findViewById(R.id.BuyItRemaningTime);
-	            itemHolder.buyItNow = (TextView) itemRow.findViewById(R.id.BuyItNowText);        
-	            itemHolder.sellerRating = (RatingBar)itemRow.findViewById(R.id.BuyItSellerRating);            
-	            
-	            itemHolder.sellerRating.setTag(itemHolder);
-	            itemHolder.itemPic.setTag(itemHolder);
-	            itemRow.setTag(itemHolder);        
-	            
-	            itemHolder.priceAndShiping.setText(((ProductForSale) item).getInstantPrice()+" + "+item.getShippingPrice());  
-        }        
-        
-        	itemRow.setOnClickListener(this);  
-        	
-   			itemHolder.item = item;
-   			itemHolder.productName.setText(item.getTitle());   		
-	   		itemHolder.sellerUserName.setText(item.getSellerUsername());		
-	   		itemHolder.sellerRating.setRating((float)item.getSellerRate());
-	   		//itemHolder.timeRemaining.setText(item.get) //viene del server    	
+	@Override
+	public boolean areAllItemsEnabled () 
+	{
+		return true;
+	}
 
-        return itemRow;
-    }
-    
-    @Override
+	@Override
+	public Object getItem(int arg0) {
+		return null;
+	}
+
+	@Override
+	public long getItemId(int pos) {
+		return pos;
+	}
+	///////////////////////////////////////////////////////////////////////
+	@Override
+	public View getView(int position, View itemRow, ViewGroup parent) {
+		MyViewItem itemHolder;
+		Product item = items.get(position);
+		if(item instanceof ProductForAuction)
+		{        	
+			itemRow = layoutInflater.inflate(R.layout.bidproduct_row, parent, false); 
+			itemHolder = new MyViewItem();
+			itemHolder.itemPic =  (ImageView) itemRow.findViewById(R.id.BidProductPic);
+			itemHolder.productName = (TextView) itemRow.findViewById(R.id.BidProdName);
+			itemHolder.sellerUserName = (TextView) itemRow.findViewById(R.id.BidSellerUserName);
+			itemHolder.priceAndShiping = (TextView) itemRow.findViewById(R.id.BidPrice);
+			itemHolder.bidsAmount = (TextView) itemRow.findViewById(R.id.bids);
+			itemHolder.timeRemaining = (TextView) itemRow.findViewById(R.id.BidRemaningTime);                      
+			itemHolder.sellerRating = (RatingBar)itemRow.findViewById(R.id.BidSellerRating);
+
+			itemHolder.sellerRating.setTag(itemHolder);
+			itemHolder.itemPic.setTag(itemHolder);
+			itemRow.setTag(itemHolder);
+
+			itemHolder.bidsAmount.setText(((ProductForAuction) item).getTotalBids()+" bids");
+			double shippingPrice = item.getShippingPrice();
+			if(shippingPrice == 0){
+				itemHolder.priceAndShiping.setText("$" + ((ProductForAuction) item).getCurrentBidPrice()+" (Free Shipping)");
+			}
+			else{
+				itemHolder.priceAndShiping.setText("$" + ((ProductForAuction) item).getCurrentBidPrice()+" (Shipping: $" + shippingPrice + ")"); 
+			}
+		}
+		else //for sale
+		{	        
+			itemRow = layoutInflater.inflate(R.layout.buyitproduct_row, parent, false); 
+			itemHolder = new MyViewItem();
+			itemHolder.itemPic =  (ImageView) itemRow.findViewById(R.id.BuyItProductPic);
+			itemHolder.productName = (TextView) itemRow.findViewById(R.id.BuyItProdName);
+			itemHolder.sellerUserName = (TextView) itemRow.findViewById(R.id.BuyItSellerID);
+			itemHolder.priceAndShiping = (TextView) itemRow.findViewById(R.id.BuyItPrice);        
+			itemHolder.timeRemaining = (TextView) itemRow.findViewById(R.id.BuyItRemaningTime);
+			itemHolder.buyItNow = (TextView) itemRow.findViewById(R.id.BuyItNowText);        
+			itemHolder.sellerRating = (RatingBar)itemRow.findViewById(R.id.BuyItSellerRating);            
+
+			itemHolder.sellerRating.setTag(itemHolder);
+			itemHolder.itemPic.setTag(itemHolder);
+			itemRow.setTag(itemHolder);  
+
+			double shippingPrice = item.getShippingPrice();
+			if(shippingPrice == 0){
+				itemHolder.priceAndShiping.setText("$" + ((ProductForSale) item).getInstantPrice() +" (Free Shipping)");
+			}
+			else{
+				itemHolder.priceAndShiping.setText("$" + ((ProductForSale) item).getInstantPrice() +" (Shipping: $" + shippingPrice + ")"); 
+			}        
+		}
+		itemRow.setOnClickListener(this);  
+
+		itemHolder.item = item;
+		itemHolder.productName.setText(item.getTitle());   		
+		itemHolder.sellerUserName.setText(item.getSellerUsername());		
+		itemHolder.sellerRating.setRating((float)item.getSellerRate());
+		itemHolder.timeRemaining.setText(item.getTimeRemaining());	
+		
+		itemHolder.itemPic.setImageBitmap(item.getImg());
+
+		return itemRow;
+	}
+
+	@Override
 	public void onClick(View v) 
-    {
-    	MyViewItem itemHolder = (MyViewItem) v.getTag();    	    
-    
-    	if(v instanceof View)
-    	{      	
+	{
+		MyViewItem itemHolder = (MyViewItem) v.getTag();    	    
+
+		if(v instanceof View)
+		{      	
 			if(itemHolder.item instanceof ProductForAuction){
 				this.activity.startActivity(new Intent(this.activity, BidProductInfoActivity.class));	
 			}
 			else{//for sale
 				this.activity.startActivity(new Intent(this.activity, BuyItProductInfoActivity.class));
 			}		
-    	}    	
-    }
+		}    	
+	}
 }
