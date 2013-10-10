@@ -149,9 +149,6 @@ public class ItemCustomListAdapter extends BaseAdapter implements OnClickListene
 		MyViewItem itemHolder = (MyViewItem) v.getTag();    
 		new productInfoTask().execute(itemHolder.item.getId() + "");
 	}
-	public void startBidProductInfoActivity(){
-		this.activity.startActivity(new Intent(this.activity, BidProductInfoActivity.class));
-	}
 
 	private Product getProductInfo(String productId){
 		HttpClient httpClient = new DefaultHttpClient();
@@ -185,7 +182,7 @@ public class ItemCustomListAdapter extends BaseAdapter implements OnClickListene
 		}
 		catch(Exception ex)
 		{
-			Log.e("Search","Error!", ex);
+			Log.e("Product Info","Error!", ex);
 		}
 		return theItem;
 	}
@@ -206,13 +203,13 @@ public class ItemCustomListAdapter extends BaseAdapter implements OnClickListene
 				return ImageDownload.downloadImage(params[0]);
 			}
 			protected void onPostExecute(Bitmap result) {
-				//downloadedProductInfo.setImg(result);
+				downloadedProductInfo.setImg(result);
 				if(downloadedProductInfo instanceof ProductForAuctionInfo){//for auction
 					BidProductInfoActivity.showingProductInfo = (ProductForAuctionInfo) downloadedProductInfo;
-					startBidProductInfoActivity();
+					activity.startActivity(new Intent(activity, BidProductInfoActivity.class));
 				}
 				else{//for sale
-					//BuyItProductInfoActivity.showingProductInfo = (ProductForSaleInfo) downloadedProductInfo;
+					BuyItProductInfoActivity.showingProductInfo = (ProductForSaleInfo) downloadedProductInfo;
 					activity.startActivity(new Intent(activity, BuyItProductInfoActivity.class));
 				}
 			}
