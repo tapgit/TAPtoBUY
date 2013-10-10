@@ -1,6 +1,7 @@
 package com.gui.taptobuy.activity;
 
 import com.gui.taptobuy.Entities.ProductForSale;
+import com.gui.taptobuy.Entities.ProductForSaleInfo;
 import com.gui.taptobuy.phase1.R;
 
 import android.app.Activity;
@@ -16,7 +17,7 @@ import android.widget.Toast;
 public class BuyItProductInfoActivity extends Activity implements OnClickListener
 {	
 
-	public static ProductForSale SaleProduct;
+	public static ProductForSaleInfo showingProductInfo;
 	private Button buyNow;
 	private Button addtoCart;
 	private ImageView prodPic;

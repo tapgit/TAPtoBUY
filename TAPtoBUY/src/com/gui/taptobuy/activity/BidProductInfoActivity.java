@@ -1,5 +1,6 @@
 package com.gui.taptobuy.activity;
 import com.gui.taptobuy.Entities.ProductForAuction;
+import com.gui.taptobuy.Entities.ProductForAuctionInfo;
 import com.gui.taptobuy.phase1.R;
 
 import android.app.Activity;
@@ -16,7 +17,7 @@ public class BidProductInfoActivity extends Activity implements OnClickListener{
 
 	private Button placeBid;
 	private EditText bidInput;
-	public static ProductForAuction BidProduct;	
+	public static ProductForAuctionInfo showingProductInfo;	
 	private ImageView prodPic;
 	private TextView prodTitle, prodId, prodTime, prodBrand, prodDimen, prodDescrip, prodSellerUserN, prodPrice, prodShipPrice;
 	@Override
@@ -32,7 +33,7 @@ public class BidProductInfoActivity extends Activity implements OnClickListener{
 		prodDimen = (TextView) findViewById(R.id.BidInfoDimensions);
 		prodDescrip = (TextView) findViewById(R.id.BidInfoDescription);
 		prodSellerUserN = (TextView) findViewById(R.id.BidInfoUserName);
-		prodPrice = (TextView) findViewById(R.id.BidInfoPlaceBidInput);
+		prodPrice = (TextView) findViewById(R.id.BidsInfoCurrentBid);
 		prodShipPrice = (TextView) findViewById(R.id.BidInfoShippingPrice);
 		
 		
@@ -40,6 +41,19 @@ public class BidProductInfoActivity extends Activity implements OnClickListener{
 		bidInput = (EditText) findViewById(R.id.BidInfoPlaceBidInput);
 		placeBid.setOnClickListener(this);
 		bidInput.setOnClickListener(this);
+		
+		prodPic.setImageBitmap(showingProductInfo.getImg());
+		prodTitle.setText(showingProductInfo.getTitle());
+		prodId.setText(showingProductInfo.getId());
+//		prodTime.setText(showingProductInfo.getTimeRemaining());
+//		prodBrand.setText(showingProductInfo.getBrand());
+//		prodDimen.setText(showingProductInfo.getDimensions());
+//		prodDescrip.setText(showingProductInfo.getDescription());
+//		prodSellerUserN.setText(showingProductInfo.getSellerUsername());
+//		prodPrice.setText(showingProductInfo.getStartinBidPrice()+"");
+//		prodShipPrice.setText(showingProductInfo.getShippingPrice()+"");
+		
+		
 	}
 	@Override
 	public void onClick(View v) {
