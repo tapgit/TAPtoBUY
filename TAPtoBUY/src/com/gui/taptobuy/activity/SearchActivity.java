@@ -144,7 +144,7 @@ public static ArrayList<Product> searchResultItems;
 		dialog.setContentView(R.layout.login_dialog);
 		dialog.setTitle("Sign in");
 
-		final EditText usernameID_ET = (EditText) dialog.findViewById(R.id.etNameToLogin);
+		final EditText usernameET = (EditText) dialog.findViewById(R.id.etNameToLogin);
 		final EditText passwordET = (EditText) dialog.findViewById(R.id.etPasswordToLogin);        
 		Button btnSignIn = (Button) dialog.findViewById(R.id.bSignIn);
 
