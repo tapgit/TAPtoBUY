@@ -110,4 +110,13 @@
         android:layout_alignLeft="@+id/BuyInfoPrice"
         android:text="Buy Now" />
 
+    <TextView
+        android:id="@+id/buyInfotimeleft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/BuyInfoProdTitle"
+        android:layout_below="@+id/BuyInfoProdTitle"
+        android:text="Time left: "
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
 </RelativeLayout>

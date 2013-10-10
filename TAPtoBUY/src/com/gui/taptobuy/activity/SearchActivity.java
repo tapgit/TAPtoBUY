@@ -295,7 +295,10 @@ public class SearchActivity extends Activity implements OnClickListener   {
 				return ImageDownload.downloadImage(urls[0]);
 			}
 			protected void onPostExecute(Bitmap result) {
+<<<<<<< HEAD
 				itemsList.invalidateViews();
+=======
+>>>>>>> refs/remotes/origin/master
 				searchResultItems.get(downloadadImagesIndex++).setImg(result);
 			}
 		}
