@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.gui.taptobuy.datatask.Main;
 import com.gui.taptobuy.phase1.R;
 
 public class MyTapActivity extends Activity implements View.OnClickListener {
@@ -48,7 +49,7 @@ public class MyTapActivity extends Activity implements View.OnClickListener {
 			break;
 			
 		case R.id.myTap_SignOut:
-			SignInActivity.signed = false;
+			Main.signed = false;
 			Intent home = new Intent(this, SignInActivity.class);
 			home.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(home);			

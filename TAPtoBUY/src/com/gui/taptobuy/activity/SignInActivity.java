@@ -1,7 +1,8 @@
 package com.gui.taptobuy.activity;
 
 
-import com.gui.taptobuy.datatask.Host;
+import com.gui.taptobuy.Entities.Cart;
+import com.gui.taptobuy.datatask.Main;
 import com.gui.taptobuy.phase1.R;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -33,7 +34,7 @@ public class SignInActivity extends Activity implements View.OnClickListener {
 	private TextView signInText;
 	private ImageView signOutPic;
 	private TextView registerText;
-	public static boolean signed = false;
+	//public static boolean signed = false;
 	private Dialog dialog; 
 
 
@@ -58,13 +59,15 @@ public class SignInActivity extends Activity implements View.OnClickListener {
 		signInB.setOnClickListener(this);
 		registerB.setOnClickListener(this);
 		signOutB.setOnClickListener(this);	
+		
+		//Main.ourCart = new Cart();
 
 	}
 
 	@Override
 	protected void onRestart() {
 		super.onRestart();
-		if(SignInActivity.signed){			
+		if(Main.signed){			
 			signInB.setVisibility(View.GONE);
 			signInText.setVisibility(View.GONE);
 			registerB.setVisibility(View.GONE);
@@ -89,7 +92,7 @@ public class SignInActivity extends Activity implements View.OnClickListener {
 		switch( v.getId() ) {
 
 		case R.id.bCart:
-			if(!signed){
+			if(!Main.signed){
 
 				btnSignIn.setOnClickListener(new View.OnClickListener() {
 
@@ -150,7 +153,7 @@ public class SignInActivity extends Activity implements View.OnClickListener {
 
 	private void signInDisabler()
 	{
-		signed = true;
+		Main.signed = true;
 		signInB.setVisibility(View.GONE);
 		signInText.setVisibility(View.GONE);
 		registerB.setVisibility(View.GONE);
@@ -160,7 +163,7 @@ public class SignInActivity extends Activity implements View.OnClickListener {
 	}
 	private void signInEnabler()
 	{
-		signed = false;
+		Main.signed = false;
 		signInB.setVisibility(View.VISIBLE);
 		signInText.setVisibility(View.VISIBLE);
 		registerB.setVisibility(View.VISIBLE);
@@ -172,7 +175,7 @@ public class SignInActivity extends Activity implements View.OnClickListener {
 	private boolean signIn(String username, String password){
 		boolean correct = false;
 		HttpClient httpClient = new DefaultHttpClient();
-		HttpPost post = new HttpPost(Host.hostName+ "/login");
+		HttpPost post = new HttpPost(Main.hostName+ "/login");
 		post.setHeader("content-type", "application/json");
 		try
 		{

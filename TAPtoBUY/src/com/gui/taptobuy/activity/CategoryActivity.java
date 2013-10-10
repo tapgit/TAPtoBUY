@@ -13,7 +13,7 @@ import org.json.JSONObject;
 
 import com.gui.taptobuy.Entities.Category;
 import com.gui.taptobuy.customadapter.CategoriesCustomListAdapter;
-import com.gui.taptobuy.datatask.Host;
+import com.gui.taptobuy.datatask.Main;
 import com.gui.taptobuy.phase1.R;
 
 import android.app.Activity;
@@ -50,7 +50,7 @@ public class CategoryActivity extends Activity implements OnItemClickListener {
 	
 	private ArrayList<Category> getSubCategories(String clickedCategory){
 		HttpClient httpClient = new DefaultHttpClient();
-		String categoryDir = Host.hostName + "/categories/";
+		String categoryDir = Main.hostName + "/categories/";
 		if(currentParentCategoryName == null && clickedCategory.equals("All")){
 			categoryDir+="All";
 		}

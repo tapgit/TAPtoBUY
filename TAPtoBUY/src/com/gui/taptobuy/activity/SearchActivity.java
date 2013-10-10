@@ -19,7 +19,7 @@ import com.gui.taptobuy.Entities.ProductForAuction;
 import com.gui.taptobuy.Entities.ProductForSale;
 import com.gui.taptobuy.customadapter.CategoriesCustomListAdapter;
 import com.gui.taptobuy.customadapter.ItemCustomListAdapter;
-import com.gui.taptobuy.datatask.Host;
+import com.gui.taptobuy.datatask.Main;
 import com.gui.taptobuy.datatask.ImageDownload;
 import com.gui.taptobuy.phase1.R;
 
@@ -97,7 +97,7 @@ public class SearchActivity extends Activity implements OnClickListener   {
 		signOut.setOnClickListener(this);
 		myTap.setOnClickListener(this);	
 
-		if(SignInActivity.signed){
+		if(Main.signed){
 			signIn.setVisibility(View.GONE);		
 		}
 		else{
@@ -152,7 +152,7 @@ public class SearchActivity extends Activity implements OnClickListener   {
 		switch (v.getId())
 		{		
 		case R.id.bCart:			
-			if(!SignInActivity.signed){
+			if(!Main.signed){
 
 				btnSignIn.setOnClickListener(new View.OnClickListener() {
 
@@ -205,7 +205,7 @@ public class SearchActivity extends Activity implements OnClickListener   {
 			break;
 
 		case R.id.bSignOut:
-			SignInActivity.signed = false;
+			Main.signed = false;
 			Intent home = new Intent(this, SignInActivity.class);
 			home.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(home);			
@@ -216,7 +216,7 @@ public class SearchActivity extends Activity implements OnClickListener   {
 
 	private void signInDisabler()
 	{
-		SignInActivity.signed = true;
+		Main.signed = true;
 		signIn.setVisibility(View.GONE);
 		signOut.setVisibility(View.VISIBLE);
 		myTap.setVisibility(View.VISIBLE);
@@ -234,7 +234,7 @@ public class SearchActivity extends Activity implements OnClickListener   {
 	}	
 	private ArrayList<Product> getSearchItems(String searchString){
 		HttpClient httpClient = new DefaultHttpClient();
-		String searchDir = Host.hostName +"/search/" + "aaaaaaaaaaaaaaaaaaaaaaaaa";
+		String searchDir = Main.hostName +"/search/" + "aaaaaaaaaaaaaaaaaaaaaaaaa";
 		HttpGet get = new HttpGet(searchDir);
 		get.setHeader("content-type", "application/json");
 		try

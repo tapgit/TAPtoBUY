@@ -7,7 +7,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONObject;
 
-import com.gui.taptobuy.datatask.Host;
+import com.gui.taptobuy.datatask.Main;
 import com.gui.taptobuy.phase1.R;
 
 import android.app.Activity;
@@ -179,7 +179,7 @@ public class RegisterActivity extends Activity {
 	private int register(){
 		int result = -1;
 		HttpClient httpClient = new DefaultHttpClient();
-		HttpPost post = new HttpPost(Host.hostName + "/register");
+		HttpPost post = new HttpPost(Main.hostName + "/register");
 		post.setHeader("content-type", "application/json");
 		try
 		{
