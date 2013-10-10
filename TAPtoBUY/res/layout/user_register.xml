@@ -17,19 +17,14 @@
         android:textStyle="bold"
         android:textAppearance="?android:attr/textAppearanceMedium" />
       
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-
+    
         <Button            
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="400dp"
-            android:layout_height="4dp"           
-            android:layout_weight="21.07"
+            android:layout_width="fill_parent"
+            android:layout_height="4dp"             
             android:background="@drawable/customb2"
             android:clickable="false" />
 
-    	</LinearLayout>
     	
      <ScrollView
         android:layout_width="fill_parent"
@@ -114,21 +109,15 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:textStyle="bold"
-            android:text="Shipping Address:" />
-        
-         <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+            android:text="Shipping Address:" />      
 
         <Button            
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="400dp"
-            android:layout_height="4dp"           
-            android:layout_weight="21.07"
+            android:layout_width="fill_parent"
+            android:layout_height="4dp"              
             android:background="@drawable/customb2"
             android:clickable="false" />
 
-    	</LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
@@ -215,21 +204,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:textStyle="bold"
-            android:text="Billing Address:" />
-        
-         <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-
+            android:text="Billing Address:" />        
+      
         <Button            
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="400dp"
-            android:layout_height="4dp"           
-            android:layout_weight="21.07"
+            android:layout_width="fill_parent"
+            android:layout_height="4dp"          
             android:background="@drawable/customb2"
             android:clickable="false" />
-
-    	</LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
@@ -317,19 +299,14 @@
             android:textStyle="bold"
             android:text="Credit Card:" />
         
-         <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-
+     
         <Button            
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="400dp"
-            android:layout_height="4dp"           
-            android:layout_weight="21.07"
+            android:layout_width="fill_parent"
+            android:layout_height="4dp"             
             android:background="@drawable/customb2"
             android:clickable="false" />
 
-    	</LinearLayout>
     	
           <TextView
             android:layout_marginLeft="5dp"

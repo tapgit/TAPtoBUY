@@ -64,6 +64,7 @@ public class SearchActivity extends Activity implements OnClickListener   {
 	private Product item;
 	private ImageView pic;
 	/////////////////////////////////////////////////
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
@@ -74,7 +75,9 @@ public class SearchActivity extends Activity implements OnClickListener   {
 		/////////////////////////////////////////////////////////////////////////////////
 				pic = (ImageView)findViewById(R.id.BuyItProductPic);
 				itemsOnSale = new ArrayList<Product>();
+				Intent myIntent = getIntent();
 				
+				//Toast.makeText(this,myIntent.getStringExtra("toSearch"),Toast.LENGTH_LONG).show();
 				
 		//		item1 = new Item(true,001,4,pic,"$190.50","$154.00","lumia","nokia","5.2 x 3 inches","new, unopend, factory unlocked","Einstein","free shipping","Nokia sasda 920 black 32gb","Phones","10/12/2013","10/1/2014");
 		//		item2 = new Item(false,002,5,pic,"$10","$154.00","lumia","nokia","5.2 x 3 inches","new, unopend, factory unlocked","Gauss","free shipping","Nokia SHAshasha 920 black 32gb","Phones","10/12/2013","10/1/2014");
@@ -97,10 +100,6 @@ public class SearchActivity extends Activity implements OnClickListener   {
 		
 //		item = new ProductForSale(0, "iphone 5s", "3d 7h", false, 0, "iphone", "5s", "apple", "100x35", "brand new", "http:image","kido" , (float) 4.5, 10, 7, 670.45);
 //		itemsOnSale.add(item);
-		
-		
-
-
 
 		///////////////////////////////////////////////////////////////////////////////////////
 		categories = (Button)findViewById(R.id.bCategories);
@@ -134,6 +133,7 @@ public class SearchActivity extends Activity implements OnClickListener   {
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_single_choice, sortingOptions);
 		sorter.setAdapter(adapter);
 
+	
 
 		// setting action for when an sorting instance is selected
 		sorter.setOnItemSelectedListener(new OnItemSelectedListener(){	
@@ -280,17 +280,18 @@ public class SearchActivity extends Activity implements OnClickListener   {
 		try
 		{
 			HttpResponse resp = httpClient.execute(get);
-			if(resp.getStatusLine().getStatusCode() == 200){
+			//if(resp.getStatusLine().getStatusCode() == 200){
 				String jsonString = EntityUtils.toString(resp.getEntity());
 				JSONObject json = new JSONObject(jsonString);
 				itemsOnSale = new ArrayList<Product>();		
+				
 				//				String tmpCatName = "";
 				//				Iterator<String> iter = (Iterator<String>) json.keys();
 				//				while(iter.hasNext()){
 				//					tmpCatName = String.valueOf(iter.next());
 				//					showingCategories.add(new Category(tmpCatName,json.getBoolean(tmpCatName)));
 				//				}
-
+				
 				JSONObject aSearchRes = null;
 				JSONObject item = null;
 				Product tempProduct = null;
@@ -313,11 +314,11 @@ public class SearchActivity extends Activity implements OnClickListener   {
 					}
 					itemsOnSale.add(tempProduct);
 				}
-
-			}
-			else{
-				Log.e("JSON","search json could not be downloaded.");
-			}
+//
+//			}
+//			else{
+//				Log.e("JSON","search json could not be downloaded.");
+//			}
 		}
 		catch(Exception ex)
 		{
