@@ -100,7 +100,7 @@
         android:layout_alignParentBottom="true"        
         android:layout_toRightOf="@+id/BidInfoProdBrand"
         android:layout_marginBottom="5dp"
-        android:hint="cb+cb*.01"        
+        android:hint="bid here!"        
         android:inputType="numberDecimal" />
 
     <Button

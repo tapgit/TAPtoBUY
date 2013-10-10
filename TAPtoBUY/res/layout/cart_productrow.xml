@@ -4,15 +4,6 @@
     android:layout_height="match_parent" 
     android:orientation="horizontal" >
 
-    <TextView
-        android:id="@+id/cartProdName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/cartSellerID"
-        android:layout_alignTop="@+id/cartProductPic"
-        android:text="Product Name"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
     <Button
         android:id="@+id/cartBuyNowB"
         android:layout_width="wrap_content"
@@ -40,14 +31,33 @@
         android:layout_toRightOf="@+id/checkBox"
         android:src="@drawable/android" />
 
+    <Button
+        android:id="@+id/cartBuyItRemoveB"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignLeft="@+id/cartBuyNowB"
+        android:layout_below="@+id/cartBuyNowB"
+        android:text="Remove"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textSize="12sp" />
+
     <TextView
         android:id="@+id/cartPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/cartButton"
+        android:layout_below="@+id/cartProdName"
         android:layout_toRightOf="@+id/cartProductPic"
         android:text="Price + ship"
         android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/cartProdName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/cartSellerUsername"
+        android:layout_alignParentTop="true"
+        android:text="Product Name"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/cartSellerUsername"
@@ -63,21 +73,10 @@
         style="@style/productRatingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/cartSellerID"
-        android:layout_toRightOf="@+id/cartProductPic"
+        android:layout_alignBottom="@+id/cartBuyItRemoveB"
+        android:layout_alignLeft="@+id/cartSellerUsername"
         android:isIndicator="false"
         android:numStars="5"
         android:rating="3.5" />
-
-    <Button
-        android:id="@+id/cartBuyItRemoveB"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_alignLeft="@+id/cartButton"
-        android:layout_alignRight="@+id/cartButton"
-        android:layout_below="@+id/cartButton"
-        android:text="Remove"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textSize="12sp" />
     
 </RelativeLayout>
