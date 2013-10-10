@@ -58,7 +58,7 @@ public class SearchActivity extends Activity implements OnClickListener   {
 	private Spinner sorter;
 	private EditText searchET;
 	//private boolean searchDone;
-public static ArrayList<Product> searchResultItems;
+	public static ArrayList<Product> searchResultItems;
 	private ListView itemsList;
 	private LayoutInflater layoutInflator;
 	/////////////////////////////////////////////
@@ -67,7 +67,7 @@ public static ArrayList<Product> searchResultItems;
 	private Product item;
 	private ImageView pic;
 	/////////////////////////////////////////////////
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
@@ -109,7 +109,7 @@ public static ArrayList<Product> searchResultItems;
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_single_choice, sortingOptions);
 		sorter.setAdapter(adapter);
 
-	
+
 
 		// setting action for when an sorting instance is selected
 		sorter.setOnItemSelectedListener(new OnItemSelectedListener(){	
@@ -184,7 +184,7 @@ public static ArrayList<Product> searchResultItems;
 			break;
 
 		case R.id.bSearch:
-//itemsList.setAdapter(new ItemCustomListAdapter(this,this.pic,this.layoutInflator, this.itemsOnSale));
+			//itemsList.setAdapter(new ItemCustomListAdapter(this,this.pic,this.layoutInflator, this.itemsOnSale));
 			new searchProductsTask().execute("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");//searchET.getText().toString());
 			break;
 
@@ -232,7 +232,7 @@ public static ArrayList<Product> searchResultItems;
 		public Button cartBuy;
 		public Button cartRemove;
 	}	
-private ArrayList<Product> getSearchItems(String searchString){
+	private ArrayList<Product> getSearchItems(String searchString){
 		HttpClient httpClient = new DefaultHttpClient();
 		String searchDir = Main.hostName +"/search/" + "aaaaaaaaaaaaaaaaaaaaaaaaa";
 		HttpGet get = new HttpGet(searchDir);
@@ -290,11 +290,13 @@ private ArrayList<Product> getSearchItems(String searchString){
 			itemsList.setAdapter(new ItemCustomListAdapter(SearchActivity.this,SearchActivity.this.pic,SearchActivity.this.layoutInflator, searchResultItems));
 		}			
 		private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+
 			protected Bitmap doInBackground(String... urls) {
 				return ImageDownload.downloadImage(urls[0]);
 			}
 			protected void onPostExecute(Bitmap result) {
-					searchResultItems.get(downloadadImagesIndex++).setImg(result);
+				itemsList.invalidateViews();
+				searchResultItems.get(downloadadImagesIndex++).setImg(result);
 			}
 		}
 	}

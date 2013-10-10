@@ -1,7 +1,6 @@
 package com.gui.taptobuy.activity;
 
 
-import com.gui.taptobuy.Entities.Cart;
 import com.gui.taptobuy.datatask.Main;
 import com.gui.taptobuy.phase1.R;
 import org.apache.http.HttpResponse;
@@ -60,7 +59,7 @@ public class SignInActivity extends Activity implements View.OnClickListener {
 		registerB.setOnClickListener(this);
 		signOutB.setOnClickListener(this);	
 		
-		//Main.ourCart = new Cart();
+		
 
 	}
 
