@@ -6,7 +6,7 @@ public class Bid
 	private int user_id, product_id;
 	private double amount;
 	String BidderUserName;
-	
+	///prueba
 	
 	public Bid(int placerId, double bidPrice, int productId, String BidderUsername){
 		super();
