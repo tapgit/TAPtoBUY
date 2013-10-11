@@ -44,6 +44,25 @@ public class BuyItProductInfoActivity extends Activity implements OnClickListene
 		buyNow.setOnClickListener(this);
 		addtoCart = (Button) findViewById(R.id.BuyInfoAddToCartb);
 		addtoCart.setOnClickListener(this);
+		
+		
+		prodPic.setImageBitmap(showingProductInfo.getImg());
+		prodTitle.setText(showingProductInfo.getTitle());
+		prodId.setText("Product Id: " +showingProductInfo.getId());
+		prodTime.setText(showingProductInfo.getTimeRemaining());
+		prodBrand.setText("Brand: " + showingProductInfo.getBrand());
+		prodDimen.setText("Dimensions: " + showingProductInfo.getDimensions());
+		prodDescrip.setText("Description: " + showingProductInfo.getDescription());
+		prodSellerUserN.setText("Seller: " + showingProductInfo.getSellerUsername());
+		
+		double shippingPrice = showingProductInfo.getShippingPrice();
+		if(shippingPrice==0){
+			prodPriceAndShip.setText("$"+showingProductInfo.getInstantPrice() + " (Free shipping)");
+		}
+		else{
+			prodPriceAndShip.setText("$"+showingProductInfo.getInstantPrice() + " (Shipping: $" + showingProductInfo.getShippingPrice() + ")");
+		}
+
 	}
 
 	@Override

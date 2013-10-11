@@ -40,14 +40,15 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ItemCustomListAdapter extends BaseAdapter implements OnClickListener{
+public class SearchResultsCustomListAdapter extends BaseAdapter implements OnClickListener{
 
 	private SearchActivity activity;
+	//private IconTask imgFetcher;  -- clases que usa para loadear las imagenes
+	//private ImageView itemPic;
 	private LayoutInflater layoutInflater;
 	private ArrayList<Product> items;	
-	
 
-	public ItemCustomListAdapter (SearchActivity a, ImageView i, LayoutInflater l, ArrayList<Product> items)
+	public SearchResultsCustomListAdapter (SearchActivity a, ImageView i, LayoutInflater l, ArrayList<Product> items)
 	{
 		this.activity = a;
 		//this.itemPic = i;
@@ -135,7 +136,8 @@ public class ItemCustomListAdapter extends BaseAdapter implements OnClickListene
 		itemHolder.productName.setText(item.getTitle());   		
 		itemHolder.sellerUserName.setText(item.getSellerUsername());		
 		itemHolder.sellerRating.setRating((float)item.getSellerRate());
-		itemHolder.timeRemaining.setText(item.getTimeRemaining());
+		itemHolder.timeRemaining.setText(item.getTimeRemaining());	
+
 		itemHolder.itemPic.setImageBitmap(item.getImg());
 
 		return itemRow;
@@ -144,18 +146,13 @@ public class ItemCustomListAdapter extends BaseAdapter implements OnClickListene
 	@Override
 	public void onClick(View v) 
 	{
-		
 		MyViewItem itemHolder = (MyViewItem) v.getTag();    
 		new productInfoTask().execute(itemHolder.item.getId() + "");
 	}
-	public void startBidProductInfoActivity(){
-		this.activity.startActivity(new Intent(this.activity, BidProductInfoActivity.class));
-	}
-
 
 	private Product getProductInfo(String productId){
 		HttpClient httpClient = new DefaultHttpClient();
-		String productInfoDir = Main.hostName +"/product/" + productId;
+		String productInfoDir = Main.hostName +"/productInfo/" + productId;
 		HttpGet get = new HttpGet(productInfoDir);
 		get.setHeader("content-type", "application/json");
 		Product theItem = null;
@@ -185,7 +182,7 @@ public class ItemCustomListAdapter extends BaseAdapter implements OnClickListene
 		}
 		catch(Exception ex)
 		{
-			Log.e("Search","Error!", ex);
+			Log.e("Product Info","Error!", ex);
 		}
 		return theItem;
 	}
@@ -206,14 +203,13 @@ public class ItemCustomListAdapter extends BaseAdapter implements OnClickListene
 				return ImageDownload.downloadImage(params[0]);
 			}
 			protected void onPostExecute(Bitmap result) {
-				//downloadedProductInfo.setImg(result);
+				downloadedProductInfo.setImg(result);
 				if(downloadedProductInfo instanceof ProductForAuctionInfo){//for auction
 					BidProductInfoActivity.showingProductInfo = (ProductForAuctionInfo) downloadedProductInfo;
-					
-					startBidProductInfoActivity();
+					activity.startActivity(new Intent(activity, BidProductInfoActivity.class));
 				}
 				else{//for sale
-					//BuyItProductInfoActivity.showingProductInfo = (ProductForSaleInfo) downloadedProductInfo;
+					BuyItProductInfoActivity.showingProductInfo = (ProductForSaleInfo) downloadedProductInfo;
 					activity.startActivity(new Intent(activity, BuyItProductInfoActivity.class));
 				}
 			}
