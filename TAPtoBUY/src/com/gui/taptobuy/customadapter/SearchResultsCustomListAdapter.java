@@ -51,7 +51,7 @@ public class SearchResultsCustomListAdapter extends BaseAdapter implements OnCli
 	public SearchResultsCustomListAdapter (SearchActivity a, ImageView i, LayoutInflater l, ArrayList<Product> items)
 	{
 		this.activity = a;
-		//this.itemPic = i;
+		
 		this.layoutInflater = l;
 		this.items = items;
 	}

@@ -68,7 +68,7 @@ public class CartCustomListAdapter extends BaseAdapter implements OnClickListene
 		itemHolder.sellerUserName = (TextView) itemRow.findViewById(R.id.cartSellerUsername);
 		itemHolder.priceAndShiping = (TextView) itemRow.findViewById(R.id.cartPrice);                               
 		itemHolder.sellerRating = (RatingBar)itemRow.findViewById(R.id.cartSellerRating);
-		itemHolder.check = (CheckBox) itemRow.findViewById(R.id.cartcheckBox);
+		//itemHolder.check = (CheckBox) itemRow.findViewById(R.id.cartcheckBox);
 		itemHolder.cartBuy = (Button) itemRow.findViewById(R.id.cartBuyNowB);
 		itemHolder.cartRemove = (Button) itemRow.findViewById(R.id.cartBuyItRemoveB);                
 

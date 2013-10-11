@@ -32,23 +32,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/sell_Brand"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="12dp"
             android:layout_marginLeft="5dp"
             android:text="Dimensions:"
             android:textAppearance="?android:attr/textAppearanceSmall" />
-
-        <TextView
-            android:id="@+id/sell_Description"
-            android:layout_width="140dp"
-            android:layout_height="65dp"
-            android:layout_alignLeft="@+id/sell_Dimensions"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/sell_Dimensions"
-            android:layout_marginTop="3dp"
-            android:inputType="textMultiLine"
-            android:text="Description:\n"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/sell_StartingPrice"
@@ -57,6 +44,7 @@
             android:layout_alignLeft="@+id/sell_buyNowPricetext"
             android:layout_below="@+id/sell_ForBiddingCheck"
             android:layout_toLeftOf="@+id/sell_BuyNowPriceInput"
+            android:layout_marginTop="5dp"
             android:text="Starting Price: $"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -94,15 +82,6 @@
             android:layout_alignLeft="@+id/sell_inputBrand"
             android:layout_alignRight="@+id/sell_inputProduct"
             android:ems="10" />
-
-        <Button
-            android:id="@+id/sell_uploadPicB"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_below="@+id/sell_Description"
-            android:layout_toLeftOf="@+id/sell_sellItemB"
-            android:text="Upload Pic" />
 
         <EditText
             android:id="@+id/sell_picPath"
@@ -196,15 +175,6 @@
             android:text="Numbers of days for sale:"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <Button
-            android:id="@+id/sell_sellItemB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/sell_inputNumofDays"
-            android:layout_marginTop="5dp"
-            android:layout_centerHorizontal="true"
-            android:text="Sell this Item!" />
-
         <TextView
             android:id="@+id/sell_ProdTitle"
             android:layout_width="wrap_content"
@@ -258,5 +228,46 @@
             android:layout_toLeftOf="@+id/sell_inputQty"
             android:text="Quantity:"
             android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <EditText
+            android:id="@+id/sell_inputDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/sell_Description"
+            android:layout_alignBottom="@+id/sell_Description"
+            android:layout_alignLeft="@+id/sell_inputDimensions"
+            android:layout_alignRight="@+id/sell_ForBiddingCheck"
+            android:inputType="textMultiLine"
+            android:ems="10" />
+
+        <TextView
+            android:id="@+id/sell_Description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_alignLeft="@+id/sell_Dimensions"
+            android:layout_below="@+id/sell_inputDimensions"
+            android:text="Description:"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/sell_uploadPicB"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="7dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/sell_inputDescription"
+            android:layout_toLeftOf="@+id/sell_picPath"
+            android:text="Upload Pic" />
+
+        <Button
+            android:id="@+id/sell_sellItemB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sell_inputNumofDays"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:text="Sell this Item!" />
 
 </RelativeLayout>

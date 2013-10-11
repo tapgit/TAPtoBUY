@@ -58,17 +58,25 @@ public class SellAnItemActivity extends Activity implements OnClickListener
 	        prodProduct = (EditText) findViewById(R.id.sell_inputProduct);
 	        prodBrand = (EditText) findViewById(R.id.sell_inputBrand);
 	        prodDimen = (EditText) findViewById(R.id.sell_inputDimensions);
-	        prodDescrip = (TextView) findViewById(R.id.sell_Description);
+	        prodDescrip = (EditText) findViewById(R.id.sell_inputDescription);
 	        prodBuyPriceIn = (EditText) findViewById(R.id.sell_inputBuyNowPrice);
 	        prodStartingPrice = (EditText) findViewById(R.id.sell_inputStartingPrice);
 	        shippingPrice = (EditText) findViewById(R.id.sell_inputShipping);	        
 	        prodTime = (EditText) findViewById(R.id.sell_inputNumofDays);
-	        forBidCheck = (CheckBox) findViewById(R.id.sell_ForBiddingCheck);	        
+	        forBidCheck = (CheckBox) findViewById(R.id.sell_ForBiddingCheck);        
 	         
+	        forBidCheck.setOnClickListener(this);
 	}
 
 	@Override
-	public void onClick(View v) {		
+	public void onClick(View v) {	
+		
+			if(v.getId() == R.id.sell_ForBiddingCheck){
+				if(!forBidCheck.isChecked()){
+					prodBuyPriceIn.setClickable(false);
+				}
+			}
+				
       		// in onCreate or any event where your want the user to
             //   select a file
       		if (v.getId() == R.id.sell_uploadPicB)
@@ -80,21 +88,21 @@ public class SellAnItemActivity extends Activity implements OnClickListener
       		 
       		}
       		      		
-    		if(v.getId( )== R.id.sell_sellItemB){
+    		if(v.getId() == R.id.sell_sellItemB){
     			if(forBidCheck.isChecked()){
-    				newProd = new ProductForAuctionInfo(prodID, prodTitle.getText().toString(),prodTime.getText().toString(), new Double(shippingPrice.getText().toString()), 
-    						 picPathInput.getText().toString(), sellerUsername, sellerRate,  new Double(shippingPrice.getText().toString()), 
+    				newProd = new ProductForAuctionInfo(prodID, prodTitle.getText().toString(),prodTime.getText().toString(), Double.parseDouble(shippingPrice.getText().toString()), 
+    						 picPathInput.getText().toString(), sellerUsername, sellerRate,  Double.parseDouble(shippingPrice.getText().toString()), 
     						 -1, -1, prodProduct.getText().toString(), prodModel.getText().toString(), prodBrand.getText().toString(), prodDimen.getText().toString(), prodDescrip.getText().toString());    				
     				//add to server
     			}
-//    			else{    	    				
-//    				
-//    				newProd = new ProductForSaleInfo(prodID, prodTitle.getText().toString(),prodTime.getText().toString(), Double.parseDouble(shippingPrice.getText().toString()), 
-//   						 picPathInput.getText().toString(), sellerUsername, sellerRate, Integer.parseInt(prodQty.getText().toString()), Double.parseDouble(prodBuyPriceIn.getText().toString()),
-//   						 prodProduct.getText().toString(), prodModel.getText().toString(), prodBrand.getText().toString(), prodDimen.getText().toString(), prodDescrip.getText().toString());
-//    						    						
-//    			//add to server
-//    			}
+    			else{    	    				
+    				
+    				newProd = new ProductForSaleInfo(prodID, prodTitle.getText().toString(),prodTime.getText().toString(), Double.parseDouble(shippingPrice.getText().toString()), 
+   						 picPathInput.getText().toString(), sellerUsername, sellerRate, Integer.parseInt(prodQty.getText().toString()), Double.parseDouble(prodBuyPriceIn.getText().toString()),
+   						 prodProduct.getText().toString(), prodModel.getText().toString(), prodBrand.getText().toString(), prodDimen.getText().toString(), prodDescrip.getText().toString());
+    						    						
+   			//add to server
+    			}
     			Toast.makeText(this, "Your product has been put on sale", Toast.LENGTH_SHORT).show();
     		}
 		  }
