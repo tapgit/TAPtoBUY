@@ -5,12 +5,15 @@ import java.util.ArrayList;
 import com.gui.taptobuy.Entities.Product;
 import com.gui.taptobuy.Entities.ProductForAuction;
 import com.gui.taptobuy.Entities.ProductForSale;
+
+import com.gui.taptobuy.activity.BidsActivity;
 import com.gui.taptobuy.activity.MySellingActivity;
 import com.gui.taptobuy.activity.SearchActivity.MyViewItem;
 import com.gui.taptobuy.phase1.R;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -124,8 +127,10 @@ public class MySellingListCustomAdapter extends BaseAdapter implements OnClickLi
 		switch(v.getId()){
 		
 		case R.id.mySell_BidList:
+			activity.startActivity(new Intent(activity, BidsActivity.class));
 			break;
 		case R.id.mySell_AcceptBidB:
+			Toast.makeText(this.activity, "Your Auction has not ended yet", Toast.LENGTH_SHORT);
 			break;
 		case R.id.mySell_QuitB:
 			Toast.makeText(this.activity, "Your Item will be removed from sale", Toast.LENGTH_SHORT);
