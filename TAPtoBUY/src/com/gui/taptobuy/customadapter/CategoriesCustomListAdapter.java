@@ -17,8 +17,7 @@ import android.widget.TextView;
 
 public class CategoriesCustomListAdapter extends BaseAdapter {
 	
-	private CategoryActivity activity;
-	//private IconTask imgFetcher;  -- clases que usa para loadear las imagenes	
+	private CategoryActivity activity;	
 	private LayoutInflater layoutInflater;
 	private ArrayList<Category> categories;		
 	

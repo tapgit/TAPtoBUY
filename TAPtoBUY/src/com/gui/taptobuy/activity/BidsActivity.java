@@ -2,8 +2,9 @@ package com.gui.taptobuy.activity;
 
 import java.util.ArrayList;
 
-import com.gui.taptobuy.Entities.Bids;
+import com.gui.taptobuy.Entities.Bid;
 import com.gui.taptobuy.Entities.Category;
+import com.gui.taptobuy.Entities.Product;
 
 import com.gui.taptobuy.phase1.R;
 
@@ -13,6 +14,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SearchView.OnCloseListener;
@@ -20,7 +26,7 @@ import android.widget.SearchView.OnCloseListener;
 public class BidsActivity extends Activity implements OnItemClickListener {
 	private LayoutInflater layoutInflator;
 	private ListView bidsList;
-	private ArrayList<Bids> bids;
+	private ArrayList<Bid> bids;
 	private String currentParentCategoryName;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {		
@@ -37,4 +43,15 @@ public class BidsActivity extends Activity implements OnItemClickListener {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
+	public static class MyBidHolder {
+		public Bid bidToshow;
+		public TextView bidPrice;
+		public TextView placerUsername;
+		public int productId;
+		public int placerUserId;
+	}
 }
+
+
