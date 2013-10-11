@@ -42,7 +42,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/myHist_BuyersName"
+        android:id="@+id/myHist_soldBuyersName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/myHist_soldPrice"

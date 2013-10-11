@@ -38,7 +38,7 @@ public class MyHistoryActivity extends Activity{
 	}
 	
 	public static class MyViewHistory {
-		public TextView productName, sellerUserName, priceAndShiping,bidsAmount,timeRemaining;
+		public TextView productName, sellerUserName, priceAndShiping,bidsAmount,wonOr,buyerUserN;
 		public RatingBar sellerRating;		
 		public ImageView itemPic;
 		public Product item;		

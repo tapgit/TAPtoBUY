@@ -31,7 +31,7 @@
         android:layout_marginLeft="4dp"
         android:layout_below="@+id/myHist_BoughtPrice"
         android:layout_toRightOf="@+id/myHist_BoughtProductPic"
-        android:text="sellerID"
+        android:text="sellerUsername"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <RatingBar
@@ -62,6 +62,15 @@
         android:layout_alignLeft="@+id/myHist_BoughtSellerID"
         android:layout_below="@+id/myHist_BoughtProdName"
         android:text="Price + Shipp"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/myHist_pruchOrWon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/myHist_BoughtSellerID"
+        android:layout_below="@+id/myHist_BoughtSellerID"
+        android:text="Purchased or Won"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>
