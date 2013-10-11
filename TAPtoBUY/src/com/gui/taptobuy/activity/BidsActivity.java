@@ -6,6 +6,8 @@ import com.gui.taptobuy.Entities.Bid;
 import com.gui.taptobuy.Entities.Category;
 import com.gui.taptobuy.Entities.Product;
 
+import com.gui.taptobuy.customadapter.MySellingBidListCustomAdapter;
+import com.gui.taptobuy.customadapter.MySellingListCustomAdapter;
 import com.gui.taptobuy.phase1.R;
 
 import android.app.Activity;
@@ -27,23 +29,22 @@ public class BidsActivity extends Activity implements OnItemClickListener {
 	private LayoutInflater layoutInflator;
 	private ListView bidsList;
 	private ArrayList<Bid> bids;
-	private String currentParentCategoryName;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {		
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.emptylist);	
+		setContentView(R.layout.emptylist);			
 		bidsList = (ListView)findViewById(R.id.ViewList);
-		this.layoutInflator = LayoutInflater.from(this);	
-		bidsList.setOnItemClickListener(this);
-		
+		this.layoutInflator = LayoutInflater.from(this);
+		bidsList.setAdapter(new MySellingBidListCustomAdapter(this,this.layoutInflator, this.bids));
+		bidsList.setOnItemClickListener(this);		
 	}
 	
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		// TODO Auto-generated method stub
 		
-	}
-	
+	}	
 	
 	public static class MyBidHolder {
 		public Bid bidToshow;

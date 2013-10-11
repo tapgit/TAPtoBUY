@@ -49,8 +49,7 @@ public class ItemCustomListAdapter extends BaseAdapter implements OnClickListene
 
 	public ItemCustomListAdapter (SearchActivity a, ImageView i, LayoutInflater l, ArrayList<Product> items)
 	{
-		this.activity = a;
-		//this.itemPic = i;
+		this.activity = a;		
 		this.layoutInflater = l;
 		this.items = items;
 	}
@@ -143,8 +142,7 @@ public class ItemCustomListAdapter extends BaseAdapter implements OnClickListene
 
 	@Override
 	public void onClick(View v) 
-	{
-		
+	{		
 		MyViewItem itemHolder = (MyViewItem) v.getTag();    
 		new productInfoTask().execute(itemHolder.item.getId() + "");
 	}
@@ -206,14 +204,14 @@ public class ItemCustomListAdapter extends BaseAdapter implements OnClickListene
 				return ImageDownload.downloadImage(params[0]);
 			}
 			protected void onPostExecute(Bitmap result) {
-				//downloadedProductInfo.setImg(result);
+				downloadedProductInfo.setImg(result);
 				if(downloadedProductInfo instanceof ProductForAuctionInfo){//for auction
 					BidProductInfoActivity.showingProductInfo = (ProductForAuctionInfo) downloadedProductInfo;
 					
 					startBidProductInfoActivity();
 				}
 				else{//for sale
-					//BuyItProductInfoActivity.showingProductInfo = (ProductForSaleInfo) downloadedProductInfo;
+					BuyItProductInfoActivity.showingProductInfo = (ProductForSaleInfo) downloadedProductInfo;
 					activity.startActivity(new Intent(activity, BuyItProductInfoActivity.class));
 				}
 			}

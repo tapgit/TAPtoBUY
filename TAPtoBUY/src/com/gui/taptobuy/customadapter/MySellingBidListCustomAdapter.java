@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.gui.taptobuy.Entities.Bid;
 
+import com.gui.taptobuy.activity.BidsActivity;
 import com.gui.taptobuy.activity.BidsActivity.MyBidHolder;
 import com.gui.taptobuy.activity.MyBiddingActivity;
 
@@ -20,12 +21,12 @@ import android.widget.TextView;
 
 public class MySellingBidListCustomAdapter extends BaseAdapter {
 	
-	private MyBiddingActivity activity;	
+	private BidsActivity activity;	
 	private LayoutInflater layoutInflater;
 	private ArrayList<Bid> bids;		
 	
 	
-	public MySellingBidListCustomAdapter (MyBiddingActivity a, LayoutInflater l, ArrayList<Bid> bids)
+	public MySellingBidListCustomAdapter (BidsActivity a, LayoutInflater l, ArrayList<Bid> bids)
     {
     	this.activity = a;    	
     	this.layoutInflater = l;
