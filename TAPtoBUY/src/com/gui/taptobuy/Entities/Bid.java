@@ -6,7 +6,7 @@ public class Bid
 	private int BidderID, prodId;
 	private double bidPrice;
 	String BidderUserName;
-	
+	///prueba
 	
 	public Bid(int placerId, double bidPrice, int productId, String BidderUsername){
 		this.BidderID = placerId;
