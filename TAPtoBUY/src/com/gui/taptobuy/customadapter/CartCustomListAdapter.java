@@ -25,8 +25,6 @@ import com.gui.taptobuy.phase1.R;
 public class CartCustomListAdapter extends BaseAdapter implements OnClickListener{
 	
 	private CartActivity activity;
-	//private IconTask imgFetcher;  -- clases que usa para loadear las imagenes
-	private ImageView itemPic;
 	private LayoutInflater layoutInflater;
 	private ArrayList<ProductForSale> items;	
 	

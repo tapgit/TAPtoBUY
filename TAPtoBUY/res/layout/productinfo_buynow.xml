@@ -119,4 +119,12 @@
         android:text="Time left: "
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
+    <RatingBar
+        android:id="@+id/ratingBar1"
+        style="@style/productRatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/BuyInfoSellerUserName"
+        android:layout_alignTop="@+id/BuyInfoSellerUserName" />
+
 </RelativeLayout>

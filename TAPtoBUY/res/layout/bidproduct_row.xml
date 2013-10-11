@@ -8,8 +8,9 @@
         android:id="@+id/BidProductPic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="4dip"
+        android:layout_marginLeft="2dp"
         android:layout_marginTop="4dip"
+        android:layout_marginRight="4dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:src="@drawable/android" />
@@ -45,21 +46,11 @@
         android:id="@+id/BidSellerUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="3dp"
         android:layout_below="@+id/BidPrice"
         android:layout_toRightOf="@+id/BidProductPic"
         android:text="SellerUserName"
         android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <RatingBar
-        android:id="@+id/BidSellerRating"
-        style="@style/productRatingBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/BidSellerUserName"
-        android:layout_toRightOf="@+id/BidProductPic"
-        android:isIndicator="true"
-        android:numStars="5"
-        android:rating="2.5" />
 
     <TextView
         android:id="@+id/bids"
@@ -71,5 +62,16 @@
         android:textSize="15sp"
         android:text="24 bids"
         android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <RatingBar
+        android:id="@+id/BidSellerRating"
+        style="@style/productRatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/BidSellerUserName"
+        android:layout_below="@+id/BidSellerUserName"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:rating="2.5" />
     
 </RelativeLayout>

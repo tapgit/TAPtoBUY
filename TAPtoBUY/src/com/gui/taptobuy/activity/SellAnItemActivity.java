@@ -1,5 +1,8 @@
 package com.gui.taptobuy.activity;
 
+import com.gui.taptobuy.Entities.Product;
+import com.gui.taptobuy.Entities.ProductForAuctionInfo;
+import com.gui.taptobuy.Entities.ProductForSaleInfo;
 import com.gui.taptobuy.phase1.R;
 
 import android.app.Activity;
@@ -9,21 +12,56 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
+import android.webkit.WebView.FindListener;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.Toast;
 
 public class SellAnItemActivity extends Activity implements OnClickListener
 {	
 	private static final int SELECT_PICTURE = 1;
-
+	private EditText picPathInput;
+	private EditText prodTitle;
+	private int prodID = -1;
+	private double sellerRate = -1;
+	private String sellerUsername = null;
+	private EditText prodModel;
+	private EditText prodBrand;
+	private EditText prodDimen;
+	private EditText prodDescrip;
+	private EditText prodProduct;
+	private EditText prodBuyPriceIn;
+	private EditText prodStartingPrice;
+	private EditText shippingPrice;
+	private EditText prodTime;
+	private EditText prodQty;
+	private CheckBox forBidCheck;
+	private Product newProd;
+	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {		
+	protected void onCreate(Bundle savedInstanceState) {
+		
+		
 		super.onCreate(savedInstanceState);
 		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 		setContentView(R.layout.account_sellanitem);	 
 
 	        ((Button) findViewById(R.id.sell_uploadPicB)).setOnClickListener(this);  
 	        ((Button) findViewById(R.id.sell_sellItemB)).setOnClickListener(this); 
+	        
+	        picPathInput = (EditText) findViewById(R.id.sell_picPath);
+	        prodTitle = (EditText) findViewById(R.id.sell_inputProdTitle);
+	        prodQty = (EditText) findViewById(R.id.sell_inputQty);
+	        prodModel = (EditText) findViewById(R.id.sell_model);
+	        prodProduct = (EditText) findViewById(R.id.sell_Product);
+	        prodBrand = (EditText) findViewById(R.id.sell_Brand);
+	        prodDimen = (EditText) findViewById(R.id.sell_Dimensions);
+	        prodDescrip = (EditText) findViewById(R.id.sell_Description);
+	        prodBuyPriceIn = (EditText) findViewById(R.id.sell_inputBuyNowPrice);
+	        prodBuyPriceIn = (EditText) findViewById(R.id.sell_StartingPrice);
+	        shippingPrice = (EditText) findViewById(R.id.sell_ShippinText);	        
+	        prodTime = (EditText) findViewById(R.id.sell_NumOfDays);
 	         
 	}
 
@@ -41,6 +79,20 @@ public class SellAnItemActivity extends Activity implements OnClickListener
       		}
       		      		
     		if(v.getId( )== R.id.sell_sellItemB){
+    			if(forBidCheck.isChecked()){
+    				newProd = new ProductForAuctionInfo(prodID, prodTitle.getText().toString(),prodTime.getText().toString(), Double.parseDouble(shippingPrice.getText().toString()), 
+    						 picPathInput.getText().toString(), sellerUsername, sellerRate, Double.parseDouble(prodStartingPrice.getText().toString()), 
+    						 -1, -1, prodProduct.getText().toString(), prodModel.getText().toString(), prodBrand.getText().toString(), prodDimen.getText().toString(), prodDescrip.getText().toString());    				
+    				//add to server
+    			}
+    			else{    	    				
+    				
+    				newProd = new ProductForSaleInfo(prodID, prodTitle.getText().toString(),prodTime.getText().toString(), Double.parseDouble(shippingPrice.getText().toString()), 
+   						 picPathInput.getText().toString(), sellerUsername, sellerRate, Integer.parseInt(prodQty.getText().toString()), Double.parseDouble(prodBuyPriceIn.getText().toString()),
+   						 prodProduct.getText().toString(), prodModel.getText().toString(), prodBrand.getText().toString(), prodDimen.getText().toString(), prodDescrip.getText().toString());
+    						    						
+    			//add to server
+    			}
     			Toast.makeText(this, "Your product has been put on sale", Toast.LENGTH_SHORT);
     		}
 		  }

@@ -229,12 +229,11 @@ public class SearchActivity extends Activity implements OnClickListener   {
 		public ImageView itemPic;
 		public Product item;
 		public CheckBox check;
-		public Button cartBuy;
-		public Button cartRemove;
+		public Button cartBuy, cartRemove, bidListB, AcceptBid,Quit;
 	}	
 	private ArrayList<Product> getSearchItems(String searchString){
 		HttpClient httpClient = new DefaultHttpClient();
-		String searchDir = Main.hostName +"/search/" + "aaaaaaaaaaaaaaaaaaaaaaaaa";
+		String searchDir = Main.hostName +"/search/" + "aaaaaaaaaaaaaaaaaaaaa";
 		HttpGet get = new HttpGet(searchDir);
 		get.setHeader("content-type", "application/json");
 		try
