@@ -133,6 +133,15 @@
         android:text="$"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
+    <RatingBar
+        android:id="@+id/ratingBar1"
+        style="@style/productRatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/BidInfoDescription"
+        android:layout_alignTop="@+id/BidInfoUserName"
+        android:numStars="5" />
+
 </RelativeLayout>
 
 

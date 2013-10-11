@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="4dip"
         android:layout_marginTop="4dip"
+        
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:src="@drawable/android" />
@@ -17,6 +18,7 @@
         android:id="@+id/myHist_BoughtProdName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+       
         android:layout_alignLeft="@+id/myHist_BoughtSellerID"
         android:layout_alignTop="@+id/myHist_BoughtProductPic"
         android:text="Product Name"
@@ -26,6 +28,7 @@
         android:id="@+id/myHist_BoughtSellerID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
         android:layout_below="@+id/myHist_BoughtPrice"
         android:layout_toRightOf="@+id/myHist_BoughtProductPic"
         android:text="sellerID"
@@ -56,8 +59,8 @@
         android:id="@+id/myHist_BoughtPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/myHist_BoughtSellerID"
         android:layout_below="@+id/myHist_BoughtProdName"
-        android:layout_toRightOf="@+id/myHist_BoughtProductPic"
         android:text="Price + Shipp"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 

@@ -44,14 +44,14 @@ public class BidProductInfoActivity extends Activity implements OnClickListener{
 		
 		prodPic.setImageBitmap(showingProductInfo.getImg());
 		prodTitle.setText(showingProductInfo.getTitle());
-		prodId.setText(showingProductInfo.getId());
-//		prodTime.setText(showingProductInfo.getTimeRemaining());
-//		prodBrand.setText(showingProductInfo.getBrand());
-//		prodDimen.setText(showingProductInfo.getDimensions());
-//		prodDescrip.setText(showingProductInfo.getDescription());
-//		prodSellerUserN.setText(showingProductInfo.getSellerUsername());
-//		prodPrice.setText(showingProductInfo.getStartinBidPrice()+"");
-//		prodShipPrice.setText(showingProductInfo.getShippingPrice()+"");
+		prodId.setText("Product Id: "+showingProductInfo.getId());		
+		prodTime.setText(showingProductInfo.getTimeRemaining());
+		prodBrand.setText("Brand: "+showingProductInfo.getBrand());
+		prodDimen.setText("Dimensions: "+showingProductInfo.getDimensions());
+		prodDescrip.setText("Description: "+showingProductInfo.getDescription());
+		prodSellerUserN.setText("Seller: "+showingProductInfo.getSellerUsername());
+		prodPrice.setText("Price: "+showingProductInfo.getStartinBidPrice());
+		prodShipPrice.setText(showingProductInfo.getShippingPrice()+"");
 		
 		
 	}

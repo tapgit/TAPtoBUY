@@ -43,10 +43,9 @@ import android.widget.Toast;
 public class ItemCustomListAdapter extends BaseAdapter implements OnClickListener{
 
 	private SearchActivity activity;
-	//private IconTask imgFetcher;  -- clases que usa para loadear las imagenes
-	//private ImageView itemPic;
 	private LayoutInflater layoutInflater;
 	private ArrayList<Product> items;	
+	public View itemRow;
 
 	public ItemCustomListAdapter (SearchActivity a, ImageView i, LayoutInflater l, ArrayList<Product> items)
 	{
@@ -136,8 +135,7 @@ public class ItemCustomListAdapter extends BaseAdapter implements OnClickListene
 		itemHolder.productName.setText(item.getTitle());   		
 		itemHolder.sellerUserName.setText(item.getSellerUsername());		
 		itemHolder.sellerRating.setRating((float)item.getSellerRate());
-		itemHolder.timeRemaining.setText(item.getTimeRemaining());	
-
+		itemHolder.timeRemaining.setText(item.getTimeRemaining());
 		itemHolder.itemPic.setImageBitmap(item.getImg());
 
 		return itemRow;
@@ -146,11 +144,16 @@ public class ItemCustomListAdapter extends BaseAdapter implements OnClickListene
 	@Override
 	public void onClick(View v) 
 	{
+		itemRow = v;
 		MyViewItem itemHolder = (MyViewItem) v.getTag();    
 		new productInfoTask().execute(itemHolder.item.getId() + "");
 	}
 	public void startBidProductInfoActivity(){
 		this.activity.startActivity(new Intent(this.activity, BidProductInfoActivity.class));
+	}
+	public ImageView getHoldersPic(){
+		MyViewItem itemHolder = (MyViewItem) itemRow.getTag();   
+		return itemHolder.itemPic;
 	}
 
 	private Product getProductInfo(String productId){
@@ -209,6 +212,7 @@ public class ItemCustomListAdapter extends BaseAdapter implements OnClickListene
 				//downloadedProductInfo.setImg(result);
 				if(downloadedProductInfo instanceof ProductForAuctionInfo){//for auction
 					BidProductInfoActivity.showingProductInfo = (ProductForAuctionInfo) downloadedProductInfo;
+					
 					startBidProductInfoActivity();
 				}
 				else{//for sale
