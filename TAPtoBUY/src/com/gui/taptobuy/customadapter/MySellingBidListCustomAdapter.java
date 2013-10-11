@@ -18,14 +18,14 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 
-public class BiddingItemsCustomListAdapter extends BaseAdapter {
+public class MySellingBidListCustomAdapter extends BaseAdapter {
 	
 	private MyBiddingActivity activity;	
 	private LayoutInflater layoutInflater;
 	private ArrayList<Bid> bids;		
 	
 	
-	public BiddingItemsCustomListAdapter (MyBiddingActivity a, LayoutInflater l, ArrayList<Bid> bids)
+	public MySellingBidListCustomAdapter (MyBiddingActivity a, LayoutInflater l, ArrayList<Bid> bids)
     {
     	this.activity = a;    	
     	this.layoutInflater = l;
