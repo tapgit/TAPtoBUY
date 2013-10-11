@@ -20,6 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/BidSellerUserName"
+        android:layout_alignRight="@+id/bids"
         android:layout_alignTop="@+id/BidProductPic"
         android:text="Product Name"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -28,7 +29,7 @@
         android:id="@+id/BidRemaningTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/bids"
+        android:layout_alignRight="@+id/bids"        
         android:layout_below="@+id/bids"
         android:text="2d 13h"
         android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -39,6 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/BidProdName"
         android:layout_below="@+id/BidProdName"
+        android:layout_toLeftOf="@+id/bids"
         android:text="Price + ship"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -46,8 +48,9 @@
         android:id="@+id/BidSellerUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="3dp"
         android:layout_below="@+id/BidPrice"
+        android:layout_marginLeft="3dp"
+        android:layout_toLeftOf="@+id/BidRemaningTime"
         android:layout_toRightOf="@+id/BidProductPic"
         android:text="SellerUserName"
         android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -59,7 +62,7 @@
         android:layout_above="@+id/BidSellerUserName"
         android:layout_marginRight="8dp"
         android:layout_alignParentRight="true"
-        android:textSize="15sp"
+        android:textSize="15sp"        
         android:text="24 bids"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -72,6 +75,6 @@
         android:layout_below="@+id/BidSellerUserName"
         android:isIndicator="true"
         android:numStars="5"
-        android:rating="2.5" />
+         />
     
 </RelativeLayout>
