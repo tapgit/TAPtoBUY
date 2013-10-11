@@ -110,11 +110,6 @@ public class BiddingsCustomListAdapter extends BaseAdapter implements OnClickLis
 		new productInfoTask().execute(itemHolder.item.getId() + "");		
 	}
 	
-	public void startBidProductInfoActivity(){
-		this.activity.startActivity(new Intent(this.activity, BidProductInfoActivity.class));
-	}
-
-
 	private Product getProductInfo(String productId){
 		HttpClient httpClient = new DefaultHttpClient();
 		String productInfoDir = Main.hostName +"/product/" + productId;
@@ -166,7 +161,7 @@ public class BiddingsCustomListAdapter extends BaseAdapter implements OnClickLis
 			{
 				downloadedProductInfo.setImg(result);				
 				BidProductInfoActivity.showingProductInfo = (ProductForAuctionInfo) downloadedProductInfo;					
-				startBidProductInfoActivity();		
+				activity.startActivity(new Intent(activity, BidProductInfoActivity.class));		
 			}
 		}
 	}

@@ -55,6 +55,11 @@ public class AdministratorActivity extends Activity implements OnClickListener {
 		RegUser2.setOnClickListener(this);
 		Admin2.setOnClickListener(this);
 		Admin1.setOnClickListener(this);
+		viewUser.setOnClickListener(this);
+		createAcc.setOnClickListener(this);
+		loadSales.setOnClickListener(this);
+		salesViewB.setOnClickListener(this);
+		totalRevViewB.setOnClickListener(this);
 	}
 
 

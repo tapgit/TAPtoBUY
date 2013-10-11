@@ -75,6 +75,6 @@
         android:layout_below="@+id/BidSellerUserName"
         android:isIndicator="true"
         android:numStars="5"
-         />
+        android:rating="3.5"/>
     
 </RelativeLayout>

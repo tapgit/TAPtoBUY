@@ -3,46 +3,47 @@ package com.gui.taptobuy.Entities;
 
 public class Bid 
 {
-	private int BidderID, prodId;
-	private double bidPrice;
+	private int user_id, product_id;
+	private double amount;
 	String BidderUserName;
 	
 	
 	public Bid(int placerId, double bidPrice, int productId, String BidderUsername){
-		this.BidderID = placerId;
-		this.prodId = productId;
-		this.bidPrice = bidPrice;
+		super();
+		this.user_id = placerId;
+		this.product_id = productId;
+		this.amount = bidPrice;
 		this.BidderUserName = BidderUsername;
 	}
 
 
-	public int getBidderID() {
-		return BidderID;
+	public int getUser_id() {
+		return user_id;
 	}
 
 
-	public void setBidderID(int bidderID) {
-		BidderID = bidderID;
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
 	}
 
 
-	public int getProdId() {
-		return prodId;
+	public int getProduct_id() {
+		return product_id;
 	}
 
 
-	public void setProdId(int prodId) {
-		this.prodId = prodId;
+	public void setProduct_id(int product_id) {
+		this.product_id = product_id;
 	}
 
 
-	public double getBidPrice() {
-		return bidPrice;
+	public double getAmount() {
+		return amount;
 	}
 
 
-	public void setBidPrice(double bidPrice) {
-		this.bidPrice = bidPrice;
+	public void setAmount(double amount) {
+		this.amount = amount;
 	}
 
 
@@ -54,6 +55,7 @@ public class Bid
 	public void setBidderUserName(String bidderUserName) {
 		BidderUserName = bidderUserName;
 	}
+
 
 }
 

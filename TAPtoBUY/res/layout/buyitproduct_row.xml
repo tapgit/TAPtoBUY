@@ -19,6 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/BuyItSellerID"
+        android:layout_alignRight="@+id/BuyItNowText"
         android:layout_alignTop="@+id/BuyItProductPic"
         android:text="Product Name"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -54,7 +55,7 @@
         android:layout_below="@+id/BuyItSellerID"
         android:isIndicator="true"
         android:numStars="5"
-         />
+        android:rating="4.5"/>
 
     <TextView
         android:id="@+id/BuyItPrice"
