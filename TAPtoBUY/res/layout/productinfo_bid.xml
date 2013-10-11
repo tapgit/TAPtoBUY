@@ -134,7 +134,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <RatingBar
-        android:id="@+id/ratingBar1"
+        android:id="@+id/BidInfoSellerRate"
         style="@style/productRatingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

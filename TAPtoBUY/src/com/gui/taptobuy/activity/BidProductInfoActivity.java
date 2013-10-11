@@ -10,6 +10,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ public class BidProductInfoActivity extends Activity implements OnClickListener{
 	private EditText bidInput;
 	public static ProductForAuctionInfo showingProductInfo;	
 	private ImageView prodPic;
+	private RatingBar sellerRating;
 	private TextView prodTitle, prodId, prodTime, prodBrand, prodDimen, prodDescrip, prodSellerUserN, prodPrice, prodShipPrice;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {		
@@ -35,36 +37,30 @@ public class BidProductInfoActivity extends Activity implements OnClickListener{
 		prodSellerUserN = (TextView) findViewById(R.id.BidInfoUserName);
 		prodPrice = (TextView) findViewById(R.id.BidsInfoCurrentBid);
 		prodShipPrice = (TextView) findViewById(R.id.BidInfoShippingPrice);
-		
+		sellerRating = (RatingBar)findViewById(R.id.BidInfoSellerRate);
 		
 		placeBid = (Button) findViewById(R.id.BidInfoPlaceBidb);
 		bidInput = (EditText) findViewById(R.id.BidInfoPlaceBidInput);
 		placeBid.setOnClickListener(this);
 		bidInput.setOnClickListener(this);
 		
+		sellerRating.setRating((float)showingProductInfo.getSellerRate());
 		prodPic.setImageBitmap(showingProductInfo.getImg());
 		prodTitle.setText(showingProductInfo.getTitle());
 	    prodId.setText("Product Id: " +showingProductInfo.getId());
-	//	prodTime.setText(showingProductInfo.getTimeRemaining());
-	//	prodBrand.setText("Brand: " + showingProductInfo.getBrand());
-	//	prodDimen.setText("Dimensions: " + showingProductInfo.getDimensions());
-	//	prodDescrip.setText("Description: " + showingProductInfo.getDescription());
-	//	prodSellerUserN.setText("Seller: " + showingProductInfo.getSellerUsername());
-	//	prodPrice.setText("$"+showingProductInfo.getCurrentBidPrice());
-	//	double shippingPrice = showingProductInfo.getShippingPrice();
-	//	if(shippingPrice==0){
-	//		prodShipPrice.setText("Free shipping");
-	//	}
-	//	else{
-	//		prodShipPrice.setText("Shipping price: " + showingProductInfo.getShippingPrice()+"");
-	//	}
-
-	//}Price==0){
-	//		prodShipPrice.setText("Free shipping");
-	//	}
-	//	else{
-	//		prodShipPrice.setText("Shipping price: " + showingProductInfo.getShippingPrice()+"");
-	//	}
+		prodTime.setText(showingProductInfo.getTimeRemaining());
+		prodBrand.setText("Brand: " + showingProductInfo.getBrand());
+		prodDimen.setText("Dimensions: " + showingProductInfo.getDimensions());
+		prodDescrip.setText("Description: " + showingProductInfo.getDescription());
+		prodSellerUserN.setText("Seller: " + showingProductInfo.getSellerUsername());
+		prodPrice.setText("$"+showingProductInfo.getCurrentBidPrice());
+		double shippingPrice = showingProductInfo.getShippingPrice();
+		if(shippingPrice==0){
+			prodShipPrice.setText("Free shipping");
+		}
+		else{
+			prodShipPrice.setText("Shipping price: " + showingProductInfo.getShippingPrice()+"");
+		}
 		
 	}
 	@Override
