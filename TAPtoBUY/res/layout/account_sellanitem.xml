@@ -159,14 +159,14 @@
             android:id="@+id/sell_inputNumofDays"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignRight="@+id/editText1"
+            android:layout_alignRight="@+id/sell_shippingInput"
             android:layout_below="@+id/sell_ShippinText"
             android:layout_toRightOf="@+id/sell_NumOfDays"
             android:ems="10"
             android:inputType="date" />
 
         <EditText
-            android:id="@+id/editText1"
+            android:id="@+id/sell_inputShipping"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignRight="@+id/sell_inputStartingPrice"
@@ -179,8 +179,8 @@
             android:id="@+id/sell_ShippinText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/editText1"
-            android:layout_alignBottom="@+id/editText1"
+            android:layout_alignBaseline="@+id/sell_inputShipping"
+            android:layout_alignBottom="@+id/sell_inputShipping"
             android:layout_alignLeft="@+id/sell_buyNowPricetext"
             android:text="Shipping price: $"
             android:textAppearance="?android:attr/textAppearance" />
