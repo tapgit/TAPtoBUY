@@ -45,26 +45,19 @@ public class BidProductInfoActivity extends Activity implements OnClickListener{
 		prodPic.setImageBitmap(showingProductInfo.getImg());
 		prodTitle.setText(showingProductInfo.getTitle());
 	    prodId.setText("Product Id: " +showingProductInfo.getId());
-	//	prodTime.setText(showingProductInfo.getTimeRemaining());
-	//	prodBrand.setText("Brand: " + showingProductInfo.getBrand());
-	//	prodDimen.setText("Dimensions: " + showingProductInfo.getDimensions());
-	//	prodDescrip.setText("Description: " + showingProductInfo.getDescription());
-	//	prodSellerUserN.setText("Seller: " + showingProductInfo.getSellerUsername());
-	//	prodPrice.setText("$"+showingProductInfo.getCurrentBidPrice());
-	//	double shippingPrice = showingProductInfo.getShippingPrice();
-	//	if(shippingPrice==0){
-	//		prodShipPrice.setText("Free shipping");
-	//	}
-	//	else{
-	//		prodShipPrice.setText("Shipping price: " + showingProductInfo.getShippingPrice()+"");
-	//	}
-
-	//}Price==0){
-	//		prodShipPrice.setText("Free shipping");
-	//	}
-	//	else{
-	//		prodShipPrice.setText("Shipping price: " + showingProductInfo.getShippingPrice()+"");
-	//	}
+		prodTime.setText(showingProductInfo.getTimeRemaining());
+		prodBrand.setText("Brand: " + showingProductInfo.getBrand());
+		prodDimen.setText("Dimensions: " + showingProductInfo.getDimensions());
+		prodDescrip.setText("Description: " + showingProductInfo.getDescription());
+		prodSellerUserN.setText("Seller: " + showingProductInfo.getSellerUsername());
+		prodPrice.setText("$"+showingProductInfo.getCurrentBidPrice());
+		double shippingPrice = showingProductInfo.getShippingPrice();
+		if(shippingPrice==0){
+			prodShipPrice.setText("Free shipping");
+		}
+		else{
+			prodShipPrice.setText("Shipping price: " + showingProductInfo.getShippingPrice()+"");
+		}
 		
 	}
 	@Override

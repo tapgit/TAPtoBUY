@@ -38,7 +38,7 @@
         android:id="@+id/BuyItSellerID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="3dp"
+        android:layout_marginLeft="3dp"
         android:layout_below="@+id/BuyItPrice"
         android:layout_toRightOf="@+id/BuyItProductPic"
         android:text="sellerID"
