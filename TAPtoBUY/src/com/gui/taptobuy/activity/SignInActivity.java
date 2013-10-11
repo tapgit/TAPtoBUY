@@ -8,6 +8,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -185,6 +186,7 @@ public class SignInActivity extends Activity implements View.OnClickListener {
 
 			HttpResponse resp = httpClient.execute(post);
 			if(resp.getStatusLine().getStatusCode() == 200){
+				Main.userId = Integer.parseInt(EntityUtils.toString(resp.getEntity()));
 				correct = true;
 			}
 			else{

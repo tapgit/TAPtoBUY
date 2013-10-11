@@ -317,6 +317,7 @@ public class SearchActivity extends Activity implements OnClickListener   {
 
 			HttpResponse resp = httpClient.execute(post);
 			if(resp.getStatusLine().getStatusCode() == 200){
+				Main.userId = Integer.parseInt(EntityUtils.toString(resp.getEntity()));
 				correct = true;
 			}
 			else{
