@@ -49,19 +49,19 @@ public class SellAnItemActivity extends Activity implements OnClickListener
 
 	        ((Button) findViewById(R.id.sell_uploadPicB)).setOnClickListener(this);  
 	        ((Button) findViewById(R.id.sell_sellItemB)).setOnClickListener(this); 
-	        
-	        picPathInput = (EditText) findViewById(R.id.sell_picPath);
-	        prodTitle = (EditText) findViewById(R.id.sell_inputProdTitle);
-	        prodQty = (EditText) findViewById(R.id.sell_inputQty);
-	        prodModel = (EditText) findViewById(R.id.sell_model);
-	        prodProduct = (EditText) findViewById(R.id.sell_Product);
-	        prodBrand = (EditText) findViewById(R.id.sell_Brand);
-	        prodDimen = (EditText) findViewById(R.id.sell_Dimensions);
-	        prodDescrip = (EditText) findViewById(R.id.sell_Description);
-	        prodBuyPriceIn = (EditText) findViewById(R.id.sell_inputBuyNowPrice);
-	        prodBuyPriceIn = (EditText) findViewById(R.id.sell_StartingPrice);
-	        shippingPrice = (EditText) findViewById(R.id.sell_ShippinText);	        
-	        prodTime = (EditText) findViewById(R.id.sell_NumOfDays);
+//	        
+//	        picPathInput = (EditText) findViewById(R.id.sell_picPath);
+//	        prodTitle = (EditText) findViewById(R.id.sell_inputProdTitle);
+//	        prodQty = (EditText) findViewById(R.id.sell_inputQty);
+//	        prodModel = (EditText) findViewById(R.id.sell_model);
+//	        prodProduct = (EditText) findViewById(R.id.sell_Product);
+//	        prodBrand = (EditText) findViewById(R.id.sell_Brand);
+//	        prodDimen = (EditText) findViewById(R.id.sell_Dimensions);
+//	        prodDescrip = (EditText) findViewById(R.id.sell_Description);
+//	        prodBuyPriceIn = (EditText) findViewById(R.id.sell_inputBuyNowPrice);
+//	        prodBuyPriceIn = (EditText) findViewById(R.id.sell_StartingPrice);
+//	        shippingPrice = (EditText) findViewById(R.id.sell_ShippinText);	        
+//	        prodTime = (EditText) findViewById(R.id.sell_NumOfDays);
 	         
 	}
 

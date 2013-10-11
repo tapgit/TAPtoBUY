@@ -14,7 +14,7 @@ import com.gui.taptobuy.Entities.Product;
 import com.gui.taptobuy.Entities.ProductForAuction;
 import com.gui.taptobuy.Entities.ProductForSale;
 
-import com.gui.taptobuy.customadapter.SearchResultsCustomListAdapter;
+
 import com.gui.taptobuy.datatask.ImageDownload;
 import com.gui.taptobuy.datatask.Main;
 import com.gui.taptobuy.phase1.R;

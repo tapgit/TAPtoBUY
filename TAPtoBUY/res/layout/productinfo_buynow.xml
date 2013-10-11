@@ -5,7 +5,7 @@
     android:background="@drawable/description_background"
     >
 
-    <ImageView
+   <ImageView
         android:id="@+id/BuyInfoProdPic"
         android:layout_width="300dp"
         android:layout_height="140dp"
@@ -85,8 +85,8 @@
         android:layout_alignRight="@+id/BuyInfoProdPic"
         android:layout_below="@+id/BuyInfoDimensions"
         android:layout_marginTop="15dp"
-        android:inputType="textMultiLine"  
-        android:textStyle="bold"      
+        android:inputType="textMultiLine"
+        android:textStyle="bold"
         android:text="Description: Nokia 920, New, unlock 32Gb for any network black 8MP camera Windows 8 phone"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
