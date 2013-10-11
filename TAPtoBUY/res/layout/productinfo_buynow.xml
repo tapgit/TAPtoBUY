@@ -120,7 +120,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <RatingBar
-        android:id="@+id/ratingBar1"
+        android:id="@+id/BuyInfoSellerRate"
         style="@style/productRatingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

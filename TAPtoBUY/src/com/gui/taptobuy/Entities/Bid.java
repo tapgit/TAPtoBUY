@@ -1,3 +1,4 @@
+
 package com.gui.taptobuy.Entities;
 
 public class Bid 
@@ -54,5 +55,5 @@ public class Bid
 		BidderUserName = bidderUserName;
 	}
 
-
 }
+

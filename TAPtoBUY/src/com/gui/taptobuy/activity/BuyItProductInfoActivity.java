@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ public class BuyItProductInfoActivity extends Activity implements OnClickListene
 	private Button buyNow;
 	private Button addtoCart;
 	private ImageView prodPic;
+	private RatingBar sellerRating;
 	private TextView prodTitle, prodId, prodTime, prodBrand, prodDimen, prodDescrip, prodSellerUserN, prodPriceAndShip;
 	
 	
@@ -38,14 +40,14 @@ public class BuyItProductInfoActivity extends Activity implements OnClickListene
 		prodDescrip = (TextView) findViewById(R.id.BuyInfoDescription);
 		prodSellerUserN = (TextView) findViewById(R.id.BuyInfoSellerUserName);
 		prodPriceAndShip = (TextView) findViewById(R.id.BuyInfoPrice);
-		
+		sellerRating = (RatingBar)findViewById(R.id.BuyInfoSellerRate);
 		
 		buyNow = (Button) findViewById(R.id.BuyInfoBuyNowb);
 		buyNow.setOnClickListener(this);
 		addtoCart = (Button) findViewById(R.id.BuyInfoAddToCartb);
 		addtoCart.setOnClickListener(this);
 		
-		
+		sellerRating.setRating((float)showingProductInfo.getSellerRate());
 		prodPic.setImageBitmap(showingProductInfo.getImg());
 		prodTitle.setText(showingProductInfo.getTitle());
 		prodId.setText("Product Id: " +showingProductInfo.getId());
