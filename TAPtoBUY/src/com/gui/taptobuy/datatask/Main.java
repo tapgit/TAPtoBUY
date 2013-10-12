@@ -7,5 +7,6 @@ public class Main {
 	//public static Cart ourCart;
 	public static boolean signed = false;
 	public static int userId = -1;
+	public static boolean admin = false;
 	
 }

@@ -55,7 +55,7 @@ public class MyHistoryBoughtListCustomAdapter extends BaseAdapter implements OnC
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return 0;
+		return items.size();
 	}
 
 	@Override
@@ -67,7 +67,7 @@ public class MyHistoryBoughtListCustomAdapter extends BaseAdapter implements OnC
 	@Override
 	public long getItemId(int position) {
 		// TODO Auto-generated method stub
-		return 0;
+		return position;
 	}
 
 	@Override

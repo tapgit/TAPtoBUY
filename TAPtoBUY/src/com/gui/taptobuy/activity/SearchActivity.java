@@ -316,7 +316,15 @@ public class SearchActivity extends Activity implements OnClickListener   {
 
 			HttpResponse resp = httpClient.execute(post);
 			if(resp.getStatusLine().getStatusCode() == 200){
-				Main.userId = Integer.parseInt(EntityUtils.toString(resp.getEntity()));
+				String jsonString = EntityUtils.toString(resp.getEntity());
+				JSONObject json = new JSONObject(jsonString);
+				if(json.getBoolean("admin")){
+					Main.admin  = true;
+				}
+				else{
+					Main.admin = false;
+				}
+				Main.userId = json.getInt("id");
 				correct = true;
 			}
 			else{

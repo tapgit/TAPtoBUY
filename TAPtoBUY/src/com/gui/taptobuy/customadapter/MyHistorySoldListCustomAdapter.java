@@ -53,7 +53,7 @@ public class MyHistorySoldListCustomAdapter extends BaseAdapter implements OnCli
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return 0;
+		return items.size();
 	}
 
 	@Override
@@ -65,7 +65,7 @@ public class MyHistorySoldListCustomAdapter extends BaseAdapter implements OnCli
 	@Override
 	public long getItemId(int position) {
 		// TODO Auto-generated method stub
-		return 0;
+		return position;
 	}
 
 	@Override

@@ -111,7 +111,7 @@ public class SignInActivity extends Activity implements View.OnClickListener {
 			break;
 
 		case R.id.bCategories:			
-			   		
+
 			startActivity(new Intent(this, CategoryActivity.class));   		
 			break;
 
@@ -121,7 +121,7 @@ public class SignInActivity extends Activity implements View.OnClickListener {
 			{	
 				public void onClick(View v) 
 				{	
-				
+
 					String username = usernameET.getText().toString();
 					String password = passwordET.getText().toString();
 					if(username.equals("") || password.equals("")){
@@ -186,7 +186,15 @@ public class SignInActivity extends Activity implements View.OnClickListener {
 
 			HttpResponse resp = httpClient.execute(post);
 			if(resp.getStatusLine().getStatusCode() == 200){
-				Main.userId = Integer.parseInt(EntityUtils.toString(resp.getEntity()));
+				String jsonString = EntityUtils.toString(resp.getEntity());
+				JSONObject json = new JSONObject(jsonString);
+				if(json.getBoolean("admin")){
+					Main.admin  = true;
+				}
+				else{
+					Main.admin = false;
+				}
+				Main.userId = json.getInt("id");
 				correct = true;
 			}
 			else{
@@ -212,7 +220,12 @@ public class SignInActivity extends Activity implements View.OnClickListener {
 				Toast.makeText(SignInActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
 				signInDisabler();
 				dialog.dismiss();   
-				SignInActivity.this.startActivity(new Intent(SignInActivity.this, SearchActivity.class));
+				if(Main.admin){
+					SignInActivity.this.startActivity(new Intent(SignInActivity.this, AdministratorActivity.class));
+				}
+				else{
+					SignInActivity.this.startActivity(new Intent(SignInActivity.this, SearchActivity.class));
+				}
 			}
 			else{
 				Toast.makeText(SignInActivity.this, "Incorrect Password or User", Toast.LENGTH_SHORT).show();

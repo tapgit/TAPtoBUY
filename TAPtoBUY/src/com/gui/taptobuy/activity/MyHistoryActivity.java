@@ -33,6 +33,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MyHistoryActivity extends Activity{
 	public  ArrayList<Product> historyBoughtItems;
@@ -56,7 +57,7 @@ public class MyHistoryActivity extends Activity{
 		this.soldItemsList = (ListView) findViewById(R.id.myHistory_SoldItems);
 		//itemsList.invalidateViews();		
 		//itemsList.setAdapter(new MyHistoryBoughtListCustomAdapter(this,this.layoutInflator, historySoldItems));
-		
+//		Toast.makeText(MyHistoryActivity.this, historyBoughtItems.size() + " "+ historySoldItems.size() + "", Toast.LENGTH_LONG).show();
 		new myHistoryTask().execute();
 
 	}
@@ -119,14 +120,14 @@ public class MyHistoryActivity extends Activity{
 		}
 	}
 
-	private class myHistoryTask extends AsyncTask<Void,Void,Void> {
+	private class myHistoryTask extends AsyncTask<Void,Void,ArrayList<Product>> {
 		public  int downloadadImagesIndexBought = 0;
 		public  int downloadadImagesIndexSold = 0;
-		protected Void doInBackground(Void... params) {
+		protected ArrayList<Product> doInBackground(Void... params) {
 			getMyHistoryItems();//get search result
 			return null;//
 		}
-		protected void onPostExecute () {
+		protected void onPostExecute ( ArrayList<Product> unused) {
 			//download images
 			for(Product itm: historyBoughtItems){
 				new DownloadImageBoughtItemTask().execute(itm.getImgLink());
