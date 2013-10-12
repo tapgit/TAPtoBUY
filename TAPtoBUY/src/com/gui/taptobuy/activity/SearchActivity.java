@@ -227,8 +227,7 @@ public class SearchActivity extends Activity implements OnClickListener   {
 		public RatingBar sellerRating;
 		public TextView buyItNow;
 		public ImageView itemPic;
-		public Product item;
-		public CheckBox check;
+		public Product item;		
 		public Button cartBuy, cartRemove, bidListB, AcceptBid,Quit;
 	}	
 	private ArrayList<Product> getSearchItems(String searchString){

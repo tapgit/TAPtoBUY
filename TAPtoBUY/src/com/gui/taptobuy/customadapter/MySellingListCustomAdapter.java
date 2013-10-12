@@ -27,19 +27,19 @@ import android.widget.Toast;
 public class MySellingListCustomAdapter extends BaseAdapter implements OnClickListener {
 	private MySellingActivity activity;
 	private LayoutInflater layoutInflater;
-	private ArrayList<Product> products;	
+	private ArrayList<Product> items;	
 	
 	public MySellingListCustomAdapter (MySellingActivity a, LayoutInflater l, ArrayList<Product> products)
     {
     	this.activity = a;    	
     	this.layoutInflater = l;
-    	this.products = products;
+    	this.items = products;
     }
 
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return 0;
+		return this.items.size();
 	}
 
 	@Override
@@ -57,7 +57,7 @@ public class MySellingListCustomAdapter extends BaseAdapter implements OnClickLi
 	@Override
 	public View getView(int position, View itemRow, ViewGroup parent) {
 		
-		Product item = products.get(position);
+		Product item = items.get(position);
 		MyViewItem itemHolder;
 		
 		if(activity instanceof MySellingActivity){

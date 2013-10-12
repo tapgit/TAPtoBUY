@@ -53,7 +53,7 @@ public class BidProductInfoActivity extends Activity implements OnClickListener{
 		prodDimen.setText("Dimensions: " + showingProductInfo.getDimensions());
 		prodDescrip.setText("Description: " + showingProductInfo.getDescription());
 		prodSellerUserN.setText("Seller: " + showingProductInfo.getSellerUsername());
-		prodPrice.setText("$"+showingProductInfo.getCurrentBidPrice());
+		prodPrice.setText("Current bid price: $"+showingProductInfo.getCurrentBidPrice());
 		double shippingPrice = showingProductInfo.getShippingPrice();
 		if(shippingPrice==0){
 			prodShipPrice.setText("Free shipping");

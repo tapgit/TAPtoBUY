@@ -35,7 +35,7 @@ public class MyBiddingActivity extends Activity{
 	private ListView biddingList ;
 	private LayoutInflater layoutInflator;
 	public static ArrayList<ProductForAuction> biddingFromItem;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {		
 		super.onCreate(savedInstanceState);
@@ -43,22 +43,22 @@ public class MyBiddingActivity extends Activity{
 		this.layoutInflator = LayoutInflater.from(this);
 		this.biddingList = (ListView) findViewById(R.id.ViewList);	
 		new searchProductsTask().execute("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-		
+
 		//biddingFromItem = new ArrayList<ProductForAuction>();
-	//	ProductForAuction item1 = new ProductForAuction(0, "hg", "ghg", 2.30, "kjhjk", "klkk", 3.5, 4.3, 5.6, 8);
-	//	biddingFromItem.add(item1);
-	//	biddingFromItem.add(item1);
+		//	ProductForAuction item1 = new ProductForAuction(0, "hg", "ghg", 2.30, "kjhjk", "klkk", 3.5, 4.3, 5.6, 8);
+		//	biddingFromItem.add(item1);
+		//	biddingFromItem.add(item1);
 		//biddingList.setAdapter(new BiddingsCustomListAdapter(this,this.layoutInflator, biddingFromItem));
 	}
-	
+
 	public static class MyViewAuctionItem {
 		public TextView productName, sellerUserName, priceAndShiping,bidsAmount,timeRemaining;
 		public RatingBar sellerRating;		
 		public ImageView itemPic;
 		public ProductForAuction item;		
-		
+
 	}
-	
+
 	private ArrayList<ProductForAuction> getSearchItems(String searchString){
 		HttpClient httpClient = new DefaultHttpClient();
 		String searchDir = Main.hostName +"/search/" + "aaaaaaaaaaaaaaaaaaaaa";
@@ -83,8 +83,8 @@ public class MyBiddingActivity extends Activity{
 						anItem = new ProductForAuction(jsonItem.getInt("id"), jsonItem.getString("title"), jsonItem.getString("timeRemaining"), 
 								jsonItem.getDouble("shippingPrice"), jsonItem.getString("imgLink"),  jsonItem.getString("sellerUsername"), 
 								jsonItem.getDouble("sellerRate"),  jsonItem.getDouble("startinBidPrice"),  jsonItem.getDouble("currentBidPrice"),  jsonItem.getInt("totalBids"));
-					
-					biddingFromItem.add(anItem);
+
+						biddingFromItem.add(anItem);
 					}
 				}
 
@@ -110,8 +110,6 @@ public class MyBiddingActivity extends Activity{
 			for(Product itm: biddingFromItem){
 				new DownloadImageTask().execute(itm.getImgLink());
 			}
-			Toast.makeText(MyBiddingActivity.this,biddingFromItem.get(0).getSellerUsername() + "", Toast.LENGTH_LONG).show();
-			//biddingList.setAdapter(new BiddingsCustomListAdapter(MyBiddingActivity.this, MyBiddingActivity.this.layoutInflator, biddingFromItem));
 			biddingList.setAdapter(new BiddingsCustomListAdapter(MyBiddingActivity.this,MyBiddingActivity.this.layoutInflator, biddingFromItem));
 		}			
 		private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
