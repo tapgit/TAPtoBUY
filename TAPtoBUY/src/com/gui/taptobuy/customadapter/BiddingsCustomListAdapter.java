@@ -15,7 +15,6 @@ import com.gui.taptobuy.Entities.ProductForAuctionInfo;
 import com.gui.taptobuy.activity.BidProductInfoActivity;
 import com.gui.taptobuy.activity.MyBiddingActivity;
 import com.gui.taptobuy.activity.MyBiddingActivity.MyViewAuctionItem;
-import com.gui.taptobuy.activity.SearchActivity.MyViewItem;
 import com.gui.taptobuy.datatask.ImageDownload;
 import com.gui.taptobuy.datatask.Main;
 import com.gui.taptobuy.phase1.R;

@@ -111,12 +111,20 @@ public class CartCustomListAdapter extends BaseAdapter implements OnClickListene
 		itemHolder.sellerRating.setTag(itemHolder);
 		itemHolder.itemPic.setTag(itemHolder);
 		itemHolder.cartBuy.setTag(itemHolder);
+
 		itemHolder.cartRemove.setTag(itemHolder);
 
 		// itemHolder.check.setTag(itemHolder);
 		itemRow.setTag(itemHolder);
 
 		itemRow.setOnClickListener(this);
+
+		itemHolder.cartRemove.setTag(itemHolder);           
+		
+	//	itemHolder.check.setTag(itemHolder);
+		itemRow.setTag(itemHolder);      
+		
+		itemRow.setOnClickListener(this);  
 
 		itemHolder.item = item;
 		itemHolder.productName.setText(item.getTitle());

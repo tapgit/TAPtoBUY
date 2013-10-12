@@ -60,8 +60,6 @@ public class CartActivity extends Activity implements OnClickListener{
 		//		removeB = (Button) findViewById(R.id.cartRemoveSelectedB);
 		//		removeB.setOnClickListener(this);
 
-		
-
 		new cartProductsTask().execute();//get products on cart
 	}
 
@@ -118,7 +116,7 @@ public class CartActivity extends Activity implements OnClickListener{
 		}
 		protected void onPostExecute(ArrayList<ProductForSale> cartResultItems ) {
 			//download images
-			
+
 			for(ProductForSale itm: cartResultItems){
 				new DownloadImageTask().execute(itm.getImgLink());
 			}
