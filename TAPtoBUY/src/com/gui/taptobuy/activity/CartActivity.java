@@ -60,8 +60,6 @@ public class CartActivity extends Activity implements OnClickListener{
 		//		removeB = (Button) findViewById(R.id.cartRemoveSelectedB);
 		//		removeB.setOnClickListener(this);
 
-		Toast.makeText(this, cartResultItems.size() + "", Toast.LENGTH_LONG).show();
-
 		new cartProductsTask().execute();//get products on cart
 	}
 
@@ -118,7 +116,7 @@ public class CartActivity extends Activity implements OnClickListener{
 		}
 		protected void onPostExecute(ArrayList<ProductForSale> cartResultItems ) {
 			//download images
-			Toast.makeText(CartActivity.this, cartResultItems.size() + "", Toast.LENGTH_LONG).show();
+			//Toast.makeText(CartActivity.this, cartResultItems.size() + "", Toast.LENGTH_LONG).show();
 			for(ProductForSale itm: cartResultItems){
 				new DownloadImageTask().execute(itm.getImgLink());
 			}

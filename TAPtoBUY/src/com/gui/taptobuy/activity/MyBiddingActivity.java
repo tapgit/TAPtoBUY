@@ -112,7 +112,7 @@ public class MyBiddingActivity extends Activity{
 			}
 			Toast.makeText(MyBiddingActivity.this,biddingFromItem.get(0).getSellerUsername() + "", Toast.LENGTH_LONG).show();
 			//biddingList.setAdapter(new BiddingsCustomListAdapter(MyBiddingActivity.this, MyBiddingActivity.this.layoutInflator, biddingFromItem));
-			biddingList.setAdapter(new BiddingsCustomListAdapter(MyBiddingActivity.this,MyBiddingActivity.this.layoutInflator, biddingFromItem));
+			biddingList.setAdapter(new BiddingsCustomListAdapter(MyBiddingActivity.this,layoutInflator, biddingFromItem));
 		}			
 		private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
 

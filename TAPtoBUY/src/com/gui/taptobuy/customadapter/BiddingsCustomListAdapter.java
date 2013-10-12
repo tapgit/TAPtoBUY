@@ -48,7 +48,7 @@ public class BiddingsCustomListAdapter extends BaseAdapter implements OnClickLis
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return 0;
+		return items.size();
 	}
 
 	@Override
@@ -60,7 +60,7 @@ public class BiddingsCustomListAdapter extends BaseAdapter implements OnClickLis
 	@Override
 	public long getItemId(int position) {
 		// TODO Auto-generated method stub
-		return 0;
+		return position;
 	}
 
 	@Override
@@ -70,7 +70,7 @@ public class BiddingsCustomListAdapter extends BaseAdapter implements OnClickLis
 		
 		itemRow = layoutInflater.inflate(R.layout.bidproduct_row, parent, false); 
 		itemHolder = new MyViewAuctionItem();
-		//itemHolder.itemPic =  (ImageView) itemRow.findViewById(R.id.BidProductPic);
+		itemHolder.itemPic =  (ImageView) itemRow.findViewById(R.id.BidProductPic);
      	itemHolder.productName = (TextView) itemRow.findViewById(R.id.BidProdName);
 		itemHolder.sellerUserName = (TextView) itemRow.findViewById(R.id.BidSellerUserName);
 		itemHolder.priceAndShiping = (TextView) itemRow.findViewById(R.id.BidPrice);
@@ -93,13 +93,13 @@ public class BiddingsCustomListAdapter extends BaseAdapter implements OnClickLis
 			itemHolder.priceAndShiping.setText("$" + ((ProductForAuction) item).getCurrentBidPrice()+" (Shipping: $" + shippingPrice + ")"); 
 		}
 		
-		itemRow.setOnClickListener(this);  	
+		
 		
 		itemHolder.productName.setText(item.getTitle());   		
 		itemHolder.sellerUserName.setText(item.getSellerUsername());		
 		itemHolder.sellerRating.setRating((float)item.getSellerRate());
 		itemHolder.timeRemaining.setText(item.getTimeRemaining());
-		//itemHolder.itemPic.setImageBitmap(item.getImg());
+		itemHolder.itemPic.setImageBitmap(item.getImg());
 
 		return itemRow;
 	}
