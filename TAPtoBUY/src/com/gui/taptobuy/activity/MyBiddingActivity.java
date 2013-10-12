@@ -59,6 +59,7 @@ public class MyBiddingActivity extends Activity{
 
 	}
 
+	//edit name and url info
 	private ArrayList<ProductForAuction> getSearchItems(String searchString){
 		HttpClient httpClient = new DefaultHttpClient();
 		String searchDir = Main.hostName +"/search/" + "aaaaaaaaaaaaaaaaaaaaa";

@@ -91,16 +91,6 @@
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <Button
-        android:id="@+id/BuyInfoAddToCartb"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="100dp"
-        android:layout_height="46dp"
-        android:layout_below="@+id/BuyInfoPrice"
-        android:layout_marginTop="17dp"
-        android:layout_toRightOf="@+id/BuyInfoDimensions"
-        android:text="Add to Cart" />
-
-    <Button
         android:id="@+id/BuyInfoBuyNowb"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="100dp"
@@ -126,5 +116,15 @@
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/BuyInfoSellerUserName"
         android:layout_alignTop="@+id/BuyInfoSellerUserName" />
+
+    <Button
+        android:id="@+id/BuyInfoAddToCartb"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="100dp"
+        android:layout_height="46dp"
+        android:layout_alignRight="@+id/BuyInfoPrice"
+        android:layout_below="@+id/BuyInfoPrice"
+        android:layout_marginTop="14dp"
+        android:text="Add to Cart" />
 
 </RelativeLayout>
