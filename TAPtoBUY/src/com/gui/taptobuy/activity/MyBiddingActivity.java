@@ -34,7 +34,7 @@ public class MyBiddingActivity extends Activity{
 
 	private ListView biddingList ;
 	private LayoutInflater layoutInflator;
-	public ArrayList<ProductForAuction> biddingFromItem;
+	public static ArrayList<ProductForAuction> biddingFromItem;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {		
@@ -42,8 +42,8 @@ public class MyBiddingActivity extends Activity{
 		setContentView(R.layout.emptylist);
 		this.layoutInflator = LayoutInflater.from(this);
 		this.biddingList = (ListView) findViewById(R.id.ViewList);	
-
 		new searchProductsTask().execute("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+		
 		//biddingFromItem = new ArrayList<ProductForAuction>();
 	//	ProductForAuction item1 = new ProductForAuction(0, "hg", "ghg", 2.30, "kjhjk", "klkk", 3.5, 4.3, 5.6, 8);
 	//	biddingFromItem.add(item1);
@@ -105,14 +105,14 @@ public class MyBiddingActivity extends Activity{
 		protected ArrayList<ProductForAuction> doInBackground(String... params) {
 			return getSearchItems(params[0]);//get search result
 		}
-		protected void onPostExecute(ArrayList<ProductForAuction> searchResultItems ) {
+		protected void onPostExecute(ArrayList<ProductForAuction> biddingFromItem ) {
 			//download images
-			for(Product itm: searchResultItems){
+			for(Product itm: biddingFromItem){
 				new DownloadImageTask().execute(itm.getImgLink());
 			}
-			Toast.makeText(MyBiddingActivity.this,searchResultItems.size() + "", Toast.LENGTH_LONG).show();
+			Toast.makeText(MyBiddingActivity.this,biddingFromItem.get(0).getSellerUsername() + "", Toast.LENGTH_LONG).show();
 			//biddingList.setAdapter(new BiddingsCustomListAdapter(MyBiddingActivity.this, MyBiddingActivity.this.layoutInflator, biddingFromItem));
-			biddingList.setAdapter(new BiddingsCustomListAdapter(MyBiddingActivity.this,layoutInflator, biddingFromItem));
+			biddingList.setAdapter(new BiddingsCustomListAdapter(MyBiddingActivity.this,MyBiddingActivity.this.layoutInflator, biddingFromItem));
 		}			
 		private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
 

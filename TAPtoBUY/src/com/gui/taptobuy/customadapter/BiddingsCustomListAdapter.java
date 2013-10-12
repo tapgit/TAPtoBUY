@@ -82,6 +82,7 @@ public class BiddingsCustomListAdapter extends BaseAdapter implements OnClickLis
 		//itemHolder.itemPic.setTag(itemHolder);
 		itemRow.setTag(itemHolder);
 
+		itemHolder.item = item;
 		itemHolder.bidsAmount.setText(((ProductForAuction) item).getTotalBids()+" bids");
 		double shippingPrice = item.getShippingPrice();
 		
@@ -92,9 +93,8 @@ public class BiddingsCustomListAdapter extends BaseAdapter implements OnClickLis
 			itemHolder.priceAndShiping.setText("$" + ((ProductForAuction) item).getCurrentBidPrice()+" (Shipping: $" + shippingPrice + ")"); 
 		}
 		
-		itemRow.setOnClickListener(this);  
-
-		itemHolder.item = item;
+		itemRow.setOnClickListener(this);  	
+		
 		itemHolder.productName.setText(item.getTitle());   		
 		itemHolder.sellerUserName.setText(item.getSellerUsername());		
 		itemHolder.sellerRating.setRating((float)item.getSellerRate());
